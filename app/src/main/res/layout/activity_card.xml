@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CardActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/retry"
+            android:layout_gravity="end"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:background="@drawable/retry"/>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dip"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="38dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            android:layout_margin="4dip"
+            android:layout_marginTop="5dip"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/card01"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:id="@+id/card02"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card03"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card04"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            android:layout_margin="4dip"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/card05"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card06"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card07"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card08"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            android:layout_margin="4dip"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/card09"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card10"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card11"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card12"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            android:layout_margin="4dip"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/card13"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card14"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card15"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/card16"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
