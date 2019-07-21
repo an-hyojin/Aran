@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -15,6 +16,7 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     private int[] cardId = {R.id.card01, R.id.card02,R.id.card03,R.id.card04,R.id.card05,R.id.card06,R.id.card07,R.id.card08,R.id.card09,R.id.card10,R.id.card11,R.id.card12,R.id.card13,R.id.card14,R.id.card15,R.id.card16};
     private Card[] cardArray = new Card[TOTAL_CARD_NUM];
     private ImageButton retryButton;
+    private ImageButton backButton;
     private Card first, second;
     private int CLICK_COUNT = 0;
     private int SUCCESS_COUNT = 0;
@@ -23,6 +25,7 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_card);
 
         for(int i=0; i<TOTAL_CARD_NUM; i++) {
@@ -45,7 +48,9 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
         });
         dialog.show();
         retryButton = (ImageButton) findViewById(R.id.retry);
+        backButton = (ImageButton)findViewById(R.id.back) ;
         retryButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
 
     }
 
@@ -68,7 +73,9 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
                 });
                 dialog.show();
                 return;
-
+            case R.id.back:
+                onBackPressed();
+                return;
         }
         switch (CLICK_COUNT) {
             case 0: // 카드 하나만 뒤집었을 경우
