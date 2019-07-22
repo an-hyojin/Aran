@@ -8,14 +8,15 @@
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:gravity="center"
-        android:background="@color/colorYellow">
+        android:background="@drawable/titlebackground">
         <TextView
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
             android:layout_height="50dp"
+            android:layout_margin="5dp"
             android:text="@string/app_name"/>
     </LinearLayout>
         <LinearLayout
