@@ -31,18 +31,8 @@
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
             android:layout_width="match_parent"
-            android:text="@string/draw_act"/>
+            android:text="@string/calendar_act"/>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="갤러리"
-        android:id="@+id/gallary"/>
-
-    </LinearLayout>
 </LinearLayout>

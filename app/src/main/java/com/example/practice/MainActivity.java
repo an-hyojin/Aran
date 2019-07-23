@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, CardActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btn5:
+                intent = new Intent(this, CalendarActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }
