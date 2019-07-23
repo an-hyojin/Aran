@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">[아란]</string>
+    <string name="card_act">감정 카드 맞추기</string>
 </resources>
