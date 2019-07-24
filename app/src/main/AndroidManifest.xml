@@ -16,6 +16,9 @@
         <activity android:name=".CalendarActivity"></activity>
         <activity android:name=".DrawActivity" />
         <activity android:name=".CardActivity" />
+        <activity android:name=".AnimationActivity"/>
+        <activity android:name=".MatchEmotionActivity" />
+        <activity android:name=".StickerBookActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
