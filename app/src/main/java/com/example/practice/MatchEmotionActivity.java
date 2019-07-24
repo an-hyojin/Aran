@@ -12,7 +12,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
+        setContentView(R.layout.activity_match_emotion);
         backBtn = (ImageButton)findViewById(R.id.back);
         backBtn.setOnClickListener(this);
     }

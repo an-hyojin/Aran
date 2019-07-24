@@ -43,4 +43,17 @@
             android:layout_width="match_parent"
             android:text="@string/animation_act"/>
     </LinearLayout>
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtubeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </com.google.android.youtube.player.YouTubePlayerView>
+    <Button
+        android:id="@+id/youtubeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/playButton"/>
 </LinearLayout>
