@@ -10,7 +10,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class CardActivity extends AppCompatActivity implements View.OnClickListener {
+public class CardActivity extends AppCompatActivity implements View.OnClickListener   {
     private static final int TOTAL_CARD_NUM = 16;
 
     private int[] cardId = {R.id.card01, R.id.card02,R.id.card03,R.id.card04,R.id.card05,R.id.card06,R.id.card07,R.id.card08,R.id.card09,R.id.card10,R.id.card11,R.id.card12,R.id.card13,R.id.card14,R.id.card15,R.id.card16};
