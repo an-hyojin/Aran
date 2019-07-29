@@ -27,6 +27,7 @@ import java.util.ArrayList;
 public class DrawActivity extends AppCompatActivity implements View.OnClickListener {
     private final int GALLERY_CODE=1;
     private final int CROP_FROM_IMAGE=2;
+    private final int DRAW_AND_SAVE=3;
     Button galleryBtn;
     ImageButton backBtn, addBtn;
     GridView gridView;
@@ -128,6 +129,13 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                     if(extras!=null){
                         Bitmap photo = extras.getParcelable("data");
                         showView.setImageBitmap(photo);
+                        intent = new Intent(this, SmallDrawActivity.class);
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                        byte[] byteArray = stream.toByteArray();
+                        intent.putExtra("image",byteArray);
+
+                        startActivityForResult(intent,DRAW_AND_SAVE );
                     }
                     default:
                     break;
