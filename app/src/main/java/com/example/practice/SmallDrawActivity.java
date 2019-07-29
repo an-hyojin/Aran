@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,7 +27,7 @@ public class SmallDrawActivity extends AppCompatActivity {
 
     Button clearbtn, drawbtn, saveBtn;
     ImageButton backbtn;
-
+    EditText textInput;
     LinearLayout drawlinear;
     ImageView showImg;
     ArrayList<Point> points = new ArrayList<Point>();
@@ -35,6 +36,7 @@ public class SmallDrawActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_small_draw);
+        textInput = (EditText)findViewById(R.id.emotion);
         drawbtn = (Button)findViewById(R.id.paint);
         saveBtn = (Button)findViewById(R.id.save);
         backbtn = (ImageButton)findViewById(R.id.back);
@@ -65,7 +67,8 @@ public class SmallDrawActivity extends AppCompatActivity {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 screenshot.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
-                outIntent.putExtra("image",byteArray);
+                outIntent.putExtra("drawing",byteArray);
+                outIntent.putExtra("emotion", textInput.getText().toString());
                 setResult(RESULT_OK, outIntent);
                 finish();
             }

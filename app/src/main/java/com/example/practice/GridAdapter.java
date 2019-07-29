@@ -1,6 +1,7 @@
 package com.example.practice;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,10 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 
 public class GridAdapter extends BaseAdapter {
-    ArrayList<Integer> img;
+    ArrayList<Bitmap> img;
     ArrayList<Integer> id;
     Context context;
-    public GridAdapter(Context context, ArrayList<Integer> img, ArrayList<Integer> id){
+    public GridAdapter(Context context, ArrayList<Bitmap> img, ArrayList<Integer> id){
         this.context = context;
         this.img = img;
         this.id = id;

@@ -11,7 +11,7 @@ public class myDBHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE faceTBL (date INTEGER PRIMARY KEY, emotion TEXT, realImg BLOB, drawImg BLOB)");
+        db.execSQL("CREATE TABLE faceTBL (date LONG PRIMARY KEY, emotion TEXT, realImg BLOB, drawImg BLOB)");
     }
 
     @Override

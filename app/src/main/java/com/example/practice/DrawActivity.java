@@ -28,12 +28,16 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
     private final int GALLERY_CODE=1;
     private final int CROP_FROM_IMAGE=2;
     private final int DRAW_AND_SAVE=3;
+    ArrayList<Bitmap> img;
+    ArrayList<Integer> id;
     Button galleryBtn;
     ImageButton backBtn, addBtn;
     GridView gridView;
     GridAdapter adapter;
     ImageView showView;
     SQLiteDatabase sqlDB;
+    Bitmap realPhoto, drawImage;
+    byte[] realByte, drawByte;
     private Uri ImageCaptureUri;
     myDBHelper faceDBHelper;
     ArrayList<Face> faces = new ArrayList<>();
@@ -49,25 +53,28 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         addBtn.setOnClickListener(this);
         gridView = (GridView)findViewById(R.id.gridview);
         showView = (ImageView)findViewById(R.id.imageshow);
-        ArrayList<Integer> img = new ArrayList<>();
-        img.add(R.drawable.heart);
-        img.add(R.drawable.heart);
-        img.add(R.drawable.heart);
-        img.add(R.drawable.heart);
-        img.add(R.drawable.heart);
-        img.add(R.drawable.plusbtn);
-        ArrayList<Integer> id = new ArrayList<>();
-        id.add(1);
-        id.add(2);
-        id.add(3);
-        id.add(4);
-        id.add(5);
-        id.add(-1);
+        img = new ArrayList<>();
+       id = new ArrayList<>();
+        id.add(1);id.add(1);id.add(1);id.add(1);id.add(1);id.add(1);id.add(1);id.add(1);
         faceDBHelper= new myDBHelper(this);
         sqlDB = faceDBHelper.getWritableDatabase();
-        faceDBHelper.onUpgrade(sqlDB, 1, 2);
 
-        adapter = new GridAdapter(this, img, id);
+        Cursor cursor;
+        cursor = sqlDB.rawQuery("SELECT * FROM faceTBL;", null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            long date = cursor.getLong(0);
+            String emotion = cursor.getString(1);
+            byte[] img1 = cursor.getBlob(2);
+            Bitmap icon = getAppIcon(img1);
+            byte[] img2 = cursor.getBlob(3);
+            Bitmap icon2 = getAppIcon(img2);
+            img.add(icon);
+            cursor.moveToNext();
+        }
+        /*
+        sqlDB = faceDBHelper.getWritableDatabase();
+        faceDBHelper.onUpgrade(sqlDB, 1, 2);
 
         SQLiteStatement p = sqlDB.compileStatement("INSERT INTO faceTBL VALUES (1,?, ?, ?);");
         p.bindString(1, "행복");
@@ -75,6 +82,9 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         p.bindBlob(3, getByteArrayFromDrawable(getResources().getDrawable(R.drawable.heart)));
         p.execute();
         sqlDB.close();
+        */
+        adapter = new GridAdapter(this, img, id);
+
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
@@ -127,18 +137,45 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     final Bundle extras = data.getExtras();
                     if(extras!=null){
-                        Bitmap photo = extras.getParcelable("data");
-                        showView.setImageBitmap(photo);
+                        realPhoto = extras.getParcelable("data");
+                        showView.setImageBitmap(realPhoto);
                         intent = new Intent(this, SmallDrawActivity.class);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                        byte[] byteArray = stream.toByteArray();
-                        intent.putExtra("image",byteArray);
+                        realPhoto.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                        realByte = stream.toByteArray();
+                        intent.putExtra("image",realByte);
 
                         startActivityForResult(intent,DRAW_AND_SAVE );
+
+                    }
+                    break;
+                case DRAW_AND_SAVE:
+                    final Bundle extras2 = data.getExtras();
+                    if(extras2!=null){
+                        drawByte = extras2.getByteArray("drawing");
+                        String emotion = extras2.getString("emotion");
+                        Toast.makeText(this, emotion, Toast.LENGTH_SHORT).show();
+                        drawImage =BitmapFactory.decodeByteArray(drawByte,0, drawByte.length);
+                        showView.setImageBitmap(drawImage);
+                   /*     sqlDB = faceDBHelper.getWritableDatabase();
+                        SQLiteStatement p = sqlDB.compileStatement("INSERT INTO faceTBL VALUES (?,?, ?, ?);");
+                        p.bindLong(1, System.currentTimeMillis());
+                        p.bindString(2, emotion);
+                        p.bindBlob(3, drawByte);
+                        p.bindBlob(4, realByte);
+                        p.execute();
+                        sqlDB.close();
+    */
+                        img.add(drawImage);
+                        id.add(1);
+                        adapter = new GridAdapter(this, img, id);
+                        gridView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+
                     }
                     default:
                     break;
+
              }
         }
     }

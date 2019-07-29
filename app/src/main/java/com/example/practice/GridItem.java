@@ -2,6 +2,11 @@ package com.example.practice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,8 +35,10 @@ public class GridItem extends LinearLayout {
         });
     }
 
-    public void setData(int imageId){
-        btn.setBackgroundResource(imageId);
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public void setData(Bitmap bitmap){
+        Drawable background = new BitmapDrawable(bitmap);
+        btn.setBackground(background);
     }
     public void setId(int id){
         this.id = id;
