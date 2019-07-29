@@ -10,10 +10,12 @@ import java.util.ArrayList;
 
 public class GridAdapter extends BaseAdapter {
     ArrayList<Integer> img;
+    ArrayList<Integer> id;
     Context context;
-    public GridAdapter(Context context, ArrayList<Integer> img){
+    public GridAdapter(Context context, ArrayList<Integer> img, ArrayList<Integer> id){
         this.context = context;
         this.img = img;
+        this.id = id;
     }
     @Override
     public int getCount() {
@@ -36,6 +38,7 @@ public class GridAdapter extends BaseAdapter {
             convertView = new GridItem(context);
         };
         ((GridItem)convertView).setData(img.get(position));
+        ((GridItem)convertView).setId(id.get(position));
 
         return convertView;
     }

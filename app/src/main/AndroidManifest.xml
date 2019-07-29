@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CalendarActivity"></activity>
+        <activity android:name=".SmallDrawActivity"></activity>
+        <activity android:name=".CalendarActivity" />
         <activity android:name=".DrawActivity" />
         <activity android:name=".CardActivity" />
         <activity android:name=".MainActivity">
