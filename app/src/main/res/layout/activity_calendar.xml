@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".DrawActivity"
     android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -13,7 +12,6 @@
         android:orientation="horizontal"
         tools:context=".CardActivity"
         >
-
         <ImageButton
             android:id="@+id/back"
             android:layout_width="90dp"
@@ -26,13 +24,11 @@
         android:layout_width="match_parent"
         android:layout_gravity="center">
         <TextView
-
             android:layout_height="30dp"
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
             android:layout_width="match_parent"
             android:text="@string/calendar_act"/>
-
     </LinearLayout>
 
 </LinearLayout>

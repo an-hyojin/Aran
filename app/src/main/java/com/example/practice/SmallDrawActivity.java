@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.io.ByteArrayOutputStream;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 public class SmallDrawActivity extends AppCompatActivity {
@@ -62,11 +63,17 @@ public class SmallDrawActivity extends AppCompatActivity {
                 drawlinear.setDrawingCacheEnabled(true);    // 캐쉬허용
                 Bitmap screenshot = Bitmap.createBitmap(drawlinear.getDrawingCache());
                 drawlinear.setDrawingCacheEnabled(false);   // 캐쉬닫기
-                showImg.setImageBitmap(screenshot);
+
                 Intent outIntent = new Intent(getApplicationContext(), DrawActivity.class);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                screenshot.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                screenshot.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
+
+                Bitmap bitmap;
+                bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                showImg.setImageBitmap(bitmap);
+
+
                 outIntent.putExtra("drawing",byteArray);
                 outIntent.putExtra("emotion", textInput.getText().toString());
                 setResult(RESULT_OK, outIntent);

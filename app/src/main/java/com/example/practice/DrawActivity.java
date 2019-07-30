@@ -9,8 +9,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class DrawActivity extends AppCompatActivity implements View.OnClickListener {
@@ -157,7 +154,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(this, emotion, Toast.LENGTH_SHORT).show();
                         drawImage =BitmapFactory.decodeByteArray(drawByte,0, drawByte.length);
                         showView.setImageBitmap(drawImage);
-                   /*     sqlDB = faceDBHelper.getWritableDatabase();
+                        sqlDB = faceDBHelper.getWritableDatabase();
                         SQLiteStatement p = sqlDB.compileStatement("INSERT INTO faceTBL VALUES (?,?, ?, ?);");
                         p.bindLong(1, System.currentTimeMillis());
                         p.bindString(2, emotion);
@@ -165,7 +162,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                         p.bindBlob(4, realByte);
                         p.execute();
                         sqlDB.close();
-    */
+
                         img.add(drawImage);
                         id.add(1);
                         adapter = new GridAdapter(this, img, id);
