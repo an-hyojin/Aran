@@ -16,31 +16,28 @@ import android.widget.Toast;
 
 public class GridItem extends LinearLayout {
     ImageButton btn;
-    int id;
+    Bitmap id, image;
+    String emotion;
+    Long date;
     private final int GALLERY_CODE=1112;
-    public GridItem(Context context) {
+    public GridItem(Context context, Bitmap id, Bitmap image, Long date, String emotion) {
         super(context);
-        init(context);
-        id = 0;
+        init(context, id, image, date, emotion);
     }
 
 
-    public void init(Context context){
+    public void init(Context context,Bitmap id, Bitmap image, Long date, String emotion){
         View view = LayoutInflater.from(context).inflate(R.layout.griditem,this);
         btn = (ImageButton)findViewById(R.id.facebutton);
+        Drawable bitmap = new BitmapDrawable(id);
+        btn.setBackgroundDrawable(bitmap);
+        final FaceAndImageDialog faceAndImageDialog = new FaceAndImageDialog(context, id, image, emotion, date);
         btn.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "하이", Toast.LENGTH_SHORT).show();
+                faceAndImageDialog.show();
             }
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void setData(Bitmap bitmap){
-        Drawable background = new BitmapDrawable(bitmap);
-        btn.setBackground(background);
-    }
-    public void setId(int id){
-        this.id = id;
-    }
+
 }

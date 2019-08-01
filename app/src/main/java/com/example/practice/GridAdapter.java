@@ -1,7 +1,11 @@
 package com.example.practice;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +15,16 @@ import java.util.ArrayList;
 
 public class GridAdapter extends BaseAdapter {
     ArrayList<Bitmap> img;
-    ArrayList<Integer> id;
+    ArrayList<Bitmap> id;
+    ArrayList<Long> date;
+    ArrayList<String> emotion;
     Context context;
-    public GridAdapter(Context context, ArrayList<Bitmap> img, ArrayList<Integer> id){
+    public GridAdapter(Context context, ArrayList<Bitmap> img, ArrayList<Bitmap> id, ArrayList<Long> date, ArrayList<String> emotion){
         this.context = context;
         this.img = img;
         this.id = id;
+        this.date = date;
+        this.emotion = emotion;
     }
     @Override
     public int getCount() {
@@ -36,10 +44,9 @@ public class GridAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
-            convertView = new GridItem(context);
+            convertView = new GridItem(context, img.get(position), id.get(position), date.get(position), emotion.get(position));
         };
-        ((GridItem)convertView).setData(img.get(position));
-        ((GridItem)convertView).setId(id.get(position));
+
 
         return convertView;
     }

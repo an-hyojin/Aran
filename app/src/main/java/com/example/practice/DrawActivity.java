@@ -20,13 +20,17 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DrawActivity extends AppCompatActivity implements View.OnClickListener {
     private final int GALLERY_CODE=1;
     private final int CROP_FROM_IMAGE=2;
     private final int DRAW_AND_SAVE=3;
-    ArrayList<Bitmap> img;
-    ArrayList<Integer> id;
+    ArrayList<Bitmap> imgList;
+    ArrayList<Bitmap> idList;
+    ArrayList<String> emotionList;
+    ArrayList<Long> dateList;
+
     Button galleryBtn;
     ImageButton backBtn, addBtn;
     GridView gridView;
@@ -37,22 +41,22 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
     byte[] realByte, drawByte;
     private Uri ImageCaptureUri;
     myDBHelper faceDBHelper;
-    ArrayList<Face> faces = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
-        galleryBtn = (Button) findViewById(R.id.gallary);
-        galleryBtn.setOnClickListener(this);
         backBtn = (ImageButton)findViewById(R.id.back);
         backBtn.setOnClickListener(this);
         addBtn = (ImageButton)findViewById(R.id.add);
         addBtn.setOnClickListener(this);
         gridView = (GridView)findViewById(R.id.gridview);
         showView = (ImageView)findViewById(R.id.imageshow);
-        img = new ArrayList<>();
-       id = new ArrayList<>();
-        id.add(1);id.add(1);id.add(1);id.add(1);id.add(1);id.add(1);id.add(1);id.add(1);
+        imgList = new ArrayList<>();
+        idList = new ArrayList<>();
+        dateList = new ArrayList<>();
+        emotionList = new ArrayList<>();
+
         faceDBHelper= new myDBHelper(this);
         sqlDB = faceDBHelper.getWritableDatabase();
 
@@ -62,11 +66,14 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         while(!cursor.isAfterLast()) {
             long date = cursor.getLong(0);
             String emotion = cursor.getString(1);
-            byte[] img1 = cursor.getBlob(2);
-            Bitmap icon = getAppIcon(img1);
-            byte[] img2 = cursor.getBlob(3);
-            Bitmap icon2 = getAppIcon(img2);
-            img.add(icon);
+            byte[] image = cursor.getBlob(2);
+            Bitmap imgBitmap= getAppIcon(image);
+            byte[] photo = cursor.getBlob(3);
+            Bitmap photoBitmap = getAppIcon(photo);
+            imgList.add(imgBitmap);
+            idList.add(photoBitmap);
+            dateList.add(date);
+            emotionList.add(emotion);
             cursor.moveToNext();
         }
         /*
@@ -80,7 +87,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         p.execute();
         sqlDB.close();
         */
-        adapter = new GridAdapter(this, img, id);
+        adapter = new GridAdapter(this, imgList, idList, dateList, emotionList);
 
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -156,16 +163,18 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                         showView.setImageBitmap(drawImage);
                         sqlDB = faceDBHelper.getWritableDatabase();
                         SQLiteStatement p = sqlDB.compileStatement("INSERT INTO faceTBL VALUES (?,?, ?, ?);");
-                        p.bindLong(1, System.currentTimeMillis());
+                        Date date = new Date();
+                        p.bindLong(1, date.getTime());
                         p.bindString(2, emotion);
                         p.bindBlob(3, drawByte);
                         p.bindBlob(4, realByte);
                         p.execute();
                         sqlDB.close();
-
-                        img.add(drawImage);
-                        id.add(1);
-                        adapter = new GridAdapter(this, img, id);
+                        emotionList.add(emotion);
+                        dateList.add(date.getTime());
+                        imgList.add(drawImage);
+                        idList.add(realPhoto);
+                        adapter = new GridAdapter(this, imgList, idList, dateList, emotionList);
                         gridView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
 

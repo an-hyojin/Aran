@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageButton
         android:id="@+id/facebutton"
+        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintDimensionRatio="1:1"

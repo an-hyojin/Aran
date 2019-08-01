@@ -3,4 +3,5 @@
     <string name="card_act">감정 카드 맞추기</string>
     <string name="draw_act">감정 따라 그리기</string>
     <string name="calendar_act">감정 캘린더</string>
+    <string name="faceandimage">감정 보기</string>
 </resources>
