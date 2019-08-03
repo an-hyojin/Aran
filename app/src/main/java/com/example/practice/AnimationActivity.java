@@ -6,11 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class AnimationActivity extends AppCompatActivity implements View.OnClickListener {
+public class AnimationActivity extends YouTubeBaseActivity implements View.OnClickListener {
 
     YouTubePlayerView youtubeView;
     ImageButton backBtn;
@@ -21,10 +22,13 @@ public class AnimationActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
+
         backBtn = (ImageButton)findViewById(R.id.back);
         backBtn.setOnClickListener(this);
+
         button = (Button) findViewById(R.id.youtubeButton);
-        youtubeView = (YouTubePlayerView) findViewById(R.id.youtubeView);
+        youtubeView = (YouTubePlayerView) findViewById(R.id.youtubeViewer);
+
         listener = new YouTubePlayer.OnInitializedListener() {
 
             @Override
@@ -37,6 +41,7 @@ public class AnimationActivity extends AppCompatActivity implements View.OnClick
                 onBackPressed();
             }//유튜브 로드 실패했을 때
         };
+
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override

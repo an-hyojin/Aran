@@ -10,8 +10,7 @@
         android:layout_height="50dp"
         android:background="@color/colorYellow"
         android:orientation="horizontal"
-        tools:context=".CardActivity"
-        >
+        tools:context=".AnimationActivity">
 
         <ImageButton
             android:id="@+id/back"
@@ -21,6 +20,7 @@
             android:layout_margin="5dp"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -35,15 +35,19 @@
 
     <view
         class="com.google.android.youtube.player.YouTubePlayerView"
-        id="@+id/youtubeView"
+        id="@+id/youtubeViewer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <!--<fragment-->
+        <!--android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"-->
+        <!--android:id="@+id/youtubeViewer"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"/>-->
 
     <Button
         android:id="@+id/youtubeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="재생" />
-
 
 </LinearLayout>
