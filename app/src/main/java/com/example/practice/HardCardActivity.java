@@ -1,5 +1,6 @@
 package com.example.practice;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 
-public class CardActivity extends AppCompatActivity implements View.OnClickListener {
+public class HardCardActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int TOTAL_CARD_NUM = 16;
 
     private int[] cardId = {R.id.card01, R.id.card02,R.id.card03,R.id.card04,R.id.card05,R.id.card06,R.id.card07,R.id.card08,R.id.card09,R.id.card10,R.id.card11,R.id.card12,R.id.card13,R.id.card14,R.id.card15,R.id.card16};
@@ -18,7 +19,6 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     private Card first, second;
     private int CLICK_COUNT = 0;
     private int SUCCESS_COUNT = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,43 +207,4 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 }
-class Card{
-    private final static int backImageID = R.drawable.back;
-    private final static int[] frontImageID = {R.drawable.smilecard, R.drawable.sadcard, R.drawable.angrycard,R.drawable.disgustcard, R.drawable.fullcard, R.drawable.surprisedcard,R.drawable.heartcard, R.drawable.scarycard};
-
-    int value;
-    boolean isBack;
-    ImageButton card;
-
-    Card(int value){
-        this.value = value;
-    }
-
-    public void back(){
-        if(!isBack){
-            card.setBackgroundResource(backImageID);
-            isBack = true;
-        }
-    }
-
-
-    public void turn(){
-        if(!isBack){
-            card.setBackgroundResource(backImageID);
-            isBack = true;
-        }else{
-            card.setBackgroundResource(frontImageID[value]);
-            isBack = false;
-        }
-    }
-
-    public void front(){
-        if(isBack){
-            card.setBackgroundResource(frontImageID[value]);
-            isBack = false;
-        }
-    }
-
-}
-
 

@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -30,7 +31,7 @@ public class ImageActivity extends Activity {
 
     ImageButton backBtn;
     ImageView photoView, drawingView;
-    TextView emotionView;
+    TextView emotionView, dateView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +42,14 @@ public class ImageActivity extends Activity {
         photoView = (ImageView) findViewById(R.id.photo);
         drawingView = (ImageView)findViewById(R.id.drawing);
         emotionView = (TextView)findViewById(R.id.emotion);
+        dateView = (TextView)findViewById(R.id.date);
         removeBtn = (Button)findViewById(R.id.remove);
         backBtn = (ImageButton)findViewById(R.id.back);
         Intent intent = getIntent();
         final Long key = intent.getLongExtra("dateKey", 0);
-
+        SimpleDateFormat dayTime = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
+        String str = dayTime.format(new Date(key));
+        dateView.setText(str);
         Cursor cursor = sqlDB.rawQuery("SELECT * FROM faceTBL;", null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {

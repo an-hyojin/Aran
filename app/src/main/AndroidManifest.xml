@@ -13,11 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ImageActivity"></activity>
+        <activity android:name=".EasyCardActivity"></activity>
+        <activity android:name=".MiddleCardActivity" />
+        <activity android:name=".SelectActivity" />
+        <activity android:name=".ImageActivity" />
         <activity android:name=".SmallDrawActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".DrawActivity" />
-        <activity android:name=".CardActivity" />
+        <activity android:name=".HardCardActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
