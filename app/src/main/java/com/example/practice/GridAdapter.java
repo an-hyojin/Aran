@@ -3,6 +3,7 @@ package com.example.practice;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -19,6 +20,7 @@ public class GridAdapter extends BaseAdapter {
     ArrayList<Long> date;
     ArrayList<String> emotion;
     Context context;
+
     public GridAdapter(Context context, ArrayList<Bitmap> img, ArrayList<Bitmap> id, ArrayList<Long> date, ArrayList<String> emotion){
         this.context = context;
         this.img = img;
@@ -46,9 +48,24 @@ public class GridAdapter extends BaseAdapter {
         if(convertView == null){
             convertView = new GridItem(context, img.get(position), id.get(position), date.get(position), emotion.get(position));
         };
-
-
+        final int positionF = position;
+      /*  convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ImageActivity.class);
+                intent.putExtra("dateKey", date.get(positionF));
+                context.startActivity(intent);
+            }
+        });
+        */
+        /*
+        GridItemClickListener gridItemClickListener
+                = new GridItemClickListener(context, date.get(position));
+        convertView.setOnClickListener(gridItemClickListener);
+*/
         return convertView;
+
+
     }
 
 

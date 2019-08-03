@@ -11,7 +11,7 @@
         android:layout_height="50dp"
         android:background="@color/colorYellow"
         android:orientation="horizontal"
-        tools:context=".CardActivity"
+        tools:context=".DrawActivity"
         >
 
         <ImageButton
@@ -38,12 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_gravity="center">
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:id="@+id/imageshow"/>
         <TextView
-
             android:layout_height="30dp"
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
@@ -51,23 +46,18 @@
             android:text="@string/draw_act"/>
 
     </LinearLayout>
-    <LinearLayout
+    <GridView
+        android:gravity="center"
+        android:id="@+id/gridview"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:columnWidth="90dp"
+        android:numColumns="3"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:stretchMode="columnWidth"
+        />
 
-
-        <GridView
-            android:id="@+id/gridview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:stretchMode="columnWidth"
-            android:numColumns="3"
-            />
-
-
-    </LinearLayout>
 </LinearLayout>

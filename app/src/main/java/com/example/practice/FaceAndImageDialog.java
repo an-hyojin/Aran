@@ -35,12 +35,7 @@ public class FaceAndImageDialog extends Dialog implements View.OnClickListener {
         photo.setBackgroundDrawable(photoDrawable);
         image.setBackgroundDrawable(imageDrawable);
         SimpleDateFormat dayTime = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
-
         String str = dayTime.format(new Date(dateString));
-
-
-
-
         emotion.setText(emotionString);
         date.setText(str);
     }

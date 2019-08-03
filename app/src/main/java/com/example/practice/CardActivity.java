@@ -1,13 +1,11 @@
 package com.example.practice;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class CardActivity extends AppCompatActivity implements View.OnClickListener {
@@ -109,8 +107,10 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
                         CustomDialog dialog = new CustomDialog(this, first.value);
                         dialog.show();
                     }else{
-                       Timer t = new Timer(0);
+                       Timer t = new Timer(0,v);
+
                        t.start();
+
                     }
                     CLICK_COUNT = 0;
                 }
@@ -149,7 +149,8 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
             cardArray[i].card = (ImageButton) findViewById(cardId[random[i]]);
             cardArray[i].front();
         }
-        Timer t = new Timer(1);
+        Timer t = new Timer(1,null);
+
         t.start();
         SUCCESS_COUNT = 0;
         CLICK_COUNT = 0;
@@ -159,19 +160,23 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
 
     class Timer extends Thread {
         int kind;
-
-        Timer (int kind) {
+        View v;
+        Timer (int kind, View v) {
             super();
+            this.v = v;
             this.kind = kind;
         }
+
         @Override
         public void run() {
 
             // TODO Auto-generated method stub
             try {
                 if (kind == 0) {
+                    v.setClickable(false);
                     Thread.sleep(500);
                     mHandler.sendEmptyMessage(0);
+                    v.setClickable(true);
                 }
                 else if (kind == 1) {
                     Thread.sleep(3000);
