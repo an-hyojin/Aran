@@ -44,7 +44,7 @@ public class SmallDrawActivity extends AppCompatActivity {
         byte[] arr = getIntent().getByteArrayExtra("image");
         Bitmap img = BitmapFactory.decodeByteArray(arr, 0, arr.length);
         showImg.setImageBitmap(img);
-        final MyView m = new MyView(this);
+        final DrawView m = new DrawView(this);
 
         clearBtn = (Button)findViewById(R.id.clear);
         drawLinear = (LinearLayout)findViewById(R.id.drawLayout);
@@ -103,9 +103,9 @@ public class SmallDrawActivity extends AppCompatActivity {
         }
     }
 
-    class MyView extends View {
+    class DrawView extends View {
         int color = Color.BLACK;
-        public MyView(Context context) {
+        public DrawView(Context context) {
             super(context);
         }
 
