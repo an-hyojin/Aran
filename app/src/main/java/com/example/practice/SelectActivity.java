@@ -4,18 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class SelectActivity extends AppCompatActivity {
     ImageButton backBtn;
     private final int END_GAME =1;
-    Button easyBtn, middleBtn, hardBtn;
+    ImageButton easyBtn, middleBtn, hardBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
-        easyBtn = (Button)findViewById(R.id.easy);
+        easyBtn = findViewById(R.id.easy);
         easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,7 +24,7 @@ public class SelectActivity extends AppCompatActivity {
             }
         });
 
-        middleBtn = (Button)findViewById(R.id.middle);
+        middleBtn = findViewById(R.id.middle);
         middleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +35,7 @@ public class SelectActivity extends AppCompatActivity {
 
         });
 
-        hardBtn = (Button)findViewById(R.id.hard);
+        hardBtn = findViewById(R.id.hard);
         hardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

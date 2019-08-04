@@ -3,6 +3,7 @@ package com.example.practice;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -15,21 +16,15 @@ public class HardCardActivity extends AppCompatActivity implements View.OnClickL
     private Card[] cardArray = new Card[TOTAL_CARD_NUM];
 
     private Card first, second;
-    private int CLICK_COUNT = 0;
+    private boolean isClicked = false;
     private int SUCCESS_COUNT = 0;
-
+    private long clickTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_card);
-
-        for(int i=0; i<TOTAL_CARD_NUM; i++) {
-            cardArray[i] = new Card(i/2); // 카드 생성
-            findViewById(cardId[i]).setOnClickListener(this); // 카드 클릭 리스너 설정
-            cardArray[i].card =  findViewById(cardId[i]); // 카드 할당
-            cardArray[i].back(); // 카드 뒤집어 놓음
-        }
+        setCards();
         CustomDialog dialog = new CustomDialog(this, 11);
         dialog.setDialogListener(new DialogListenerInterface() {
             @Override
@@ -49,19 +44,34 @@ public class HardCardActivity extends AppCompatActivity implements View.OnClickL
         backButton.setOnClickListener(this);
 
     }
+
+
+    public void setCards(){
+        for(int i=0; i<TOTAL_CARD_NUM; i++) {
+            cardArray[i] = new Card(i/2);
+            findViewById(cardId[i]).setOnClickListener(this);
+            cardArray[i].card = findViewById(cardId[i]);
+            cardArray[i].back();
+        }
+    }
+
     public void cardGame(View v){
-        if(CLICK_COUNT==0) {
-            for (int i=0; i<TOTAL_CARD_NUM; i++) {
-                if (cardArray[i].card == v) {
-                    first = cardArray[i];
-                    break;
+        if(!isClicked) {
+            long thisTime = SystemClock.elapsedRealtime();
+            if (thisTime-clickTime>500) {
+                for (int i=0; i<TOTAL_CARD_NUM; i++) {
+                    if (cardArray[i].card == v) {
+                        first = cardArray[i];
+                        break;
+                    }
+                }
+                if (first.isBack()) {
+                    first.front();
+                    isClicked = true;
                 }
             }
-            if (first.isBack()) {
-                first.front();
-                CLICK_COUNT = 1;
-            }
         }else{
+            clickTime = SystemClock.elapsedRealtime();
             for (int i=0; i<TOTAL_CARD_NUM; i++) {
                 if (cardArray[i].card == v) {
                     second = cardArray[i];
@@ -83,10 +93,11 @@ public class HardCardActivity extends AppCompatActivity implements View.OnClickL
                     Timer t = new Timer(0,v);
                     t.start();
                 }
-                CLICK_COUNT = 0;
+                isClicked = false;
             }
         }
     }
+
     @Override
     public void onClick(View v) {
         switch(v.getId()){
@@ -148,7 +159,7 @@ public class HardCardActivity extends AppCompatActivity implements View.OnClickL
 
         t.start();
         SUCCESS_COUNT = 0;
-        CLICK_COUNT = 0;
+        isClicked = false;
 
 
     }

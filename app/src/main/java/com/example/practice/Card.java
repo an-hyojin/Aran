@@ -25,25 +25,15 @@ class Card{
     public void back(){
         if(!isBack){
             card.setBackgroundResource(backImageID);
-            isBack = true;
+            setIsBack(true);
         }
     }
 
-
-    public void turn(){
-        if(!isBack){
-            card.setBackgroundResource(backImageID);
-            isBack = true;
-        }else{
-            card.setBackgroundResource(frontImageID[value]);
-            isBack = false;
-        }
-    }
 
     public void front(){
-        if(isBack){
+        if(isBack()){
             card.setBackgroundResource(frontImageID[value]);
-            isBack = false;
+            setIsBack(false);
         }
     }
 

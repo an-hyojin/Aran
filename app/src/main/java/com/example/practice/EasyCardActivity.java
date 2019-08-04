@@ -2,6 +2,7 @@ package com.example.practice;
 
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,21 +16,17 @@ public class EasyCardActivity extends AppCompatActivity implements View.OnClickL
     private int[] cardId = {R.id.card01, R.id.card02, R.id.card03, R.id.card04, R.id.card05, R.id.card06, R.id.card07, R.id.card08};
     private Card[] cardArray = new Card[TOTAL_CARD_NUM];
     private Card first, second;
-    private int CLICK_COUNT = 0;
+    private boolean isClicked = false;
     private int SUCCESS_COUNT = 0;
-
+    private long clickTime =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_easy_card);
 
-        for (int i = 0; i < TOTAL_CARD_NUM; i++) {
-            cardArray[i] = new Card(i / 2); // 카드 생성
-            findViewById(cardId[i]).setOnClickListener(this); // 카드 클릭 리스너 설정
-            cardArray[i].card =  findViewById(cardId[i]); // 카드 할당
-            cardArray[i].back(); // 카드 뒤집어 놓음
-        }
+        setCards();
+
         CustomDialog dialog = new CustomDialog(this, 11);
         dialog.setDialogListener(new DialogListenerInterface() {
             @Override
@@ -49,8 +46,19 @@ public class EasyCardActivity extends AppCompatActivity implements View.OnClickL
         backButton.setOnClickListener(this);
 
     }
-        public void cardGame(View v){
-            if(CLICK_COUNT==0) {
+
+    public void setCards(){
+        for(int i=0; i<TOTAL_CARD_NUM; i++) {
+            cardArray[i] = new Card(i/2);
+            findViewById(cardId[i]).setOnClickListener(this);
+            cardArray[i].card = findViewById(cardId[i]);
+            cardArray[i].back();
+        }
+    }
+    public void cardGame(View v){
+        if(!isClicked) {
+            long thisTime = SystemClock.elapsedRealtime();
+            if (thisTime-clickTime>500) {
                 for (int i=0; i<TOTAL_CARD_NUM; i++) {
                     if (cardArray[i].card == v) {
                         first = cardArray[i];
@@ -59,34 +67,36 @@ public class EasyCardActivity extends AppCompatActivity implements View.OnClickL
                 }
                 if (first.isBack()) {
                     first.front();
-                    CLICK_COUNT = 1;
-                }
-            }else{
-                for (int i=0; i<TOTAL_CARD_NUM; i++) {
-                    if (cardArray[i].card == v) {
-                        second = cardArray[i];
-                        break;
-                    }
-                }
-                if (second.isBack()) {
-                    second.front();
-                    if (first.value == second.value) {
-                        SUCCESS_COUNT++;
-                        if (SUCCESS_COUNT == TOTAL_CARD_NUM/2) {
-                            CustomDialog finalDialog = new CustomDialog(this,10);
-                            finalDialog.show();
-                        }
-                        CustomDialog dialog = new CustomDialog(this, first.value);
-                        dialog.show();
-                    }
-                    else{
-                        Timer t = new Timer(0,v);
-                        t.start();
-                    }
-                    CLICK_COUNT = 0;
+                    isClicked = true;
                 }
             }
+        }else{
+            clickTime = SystemClock.elapsedRealtime();
+            for (int i=0; i<TOTAL_CARD_NUM; i++) {
+                if (cardArray[i].card == v) {
+                    second = cardArray[i];
+                    break;
+                }
+            }
+            if (second.isBack()) {
+                second.front();
+                if (first.value == second.value) {
+                    SUCCESS_COUNT++;
+                    if (SUCCESS_COUNT == TOTAL_CARD_NUM/2) {
+                        CustomDialog finalDialog = new CustomDialog(this,10);
+                        finalDialog.show();
+                    }
+                    CustomDialog dialog = new CustomDialog(this, first.value);
+                    dialog.show();
+                }
+                else{
+                    Timer t = new Timer(0,v);
+                    t.start();
+                }
+                isClicked = false;
+            }
         }
+    }
 
     @Override
     public void onClick(View v) {
@@ -149,7 +159,7 @@ public class EasyCardActivity extends AppCompatActivity implements View.OnClickL
 
         t.start();
         SUCCESS_COUNT = 0;
-        CLICK_COUNT = 0;
+        isClicked = false;
 
 
     }
@@ -170,10 +180,8 @@ public class EasyCardActivity extends AppCompatActivity implements View.OnClickL
 
             try {
                 if (kind == 0) {
-                    v.setClickable(false);
                     Thread.sleep(500);
                     mHandler.sendEmptyMessage(0);
-                    v.setClickable(true);
                 } else if (kind == 1) {
                     Thread.sleep(3000);
                     mHandler.sendEmptyMessage(1);
