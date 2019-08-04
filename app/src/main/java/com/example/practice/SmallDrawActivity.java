@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -21,15 +20,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.io.ByteArrayOutputStream;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 public class SmallDrawActivity extends AppCompatActivity {
 
-    Button clearbtn, drawbtn, saveBtn;
-    ImageButton backbtn;
+    Button clearBtn, drawBtn, saveBtn;
+    ImageButton backBtn;
     EditText textInput;
-    LinearLayout drawlinear;
+    LinearLayout drawLinear;
     ImageView showImg;
     ArrayList<Point> points = new ArrayList<Point>();
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -38,9 +36,9 @@ public class SmallDrawActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_small_draw);
         textInput = (EditText)findViewById(R.id.emotion);
-        drawbtn = (Button)findViewById(R.id.paint);
+        drawBtn = (Button)findViewById(R.id.paint);
         saveBtn = (Button)findViewById(R.id.save);
-        backbtn = (ImageButton)findViewById(R.id.back);
+        backBtn = (ImageButton)findViewById(R.id.back);
         showImg = (ImageView)findViewById(R.id.backgroundImage);
         Intent intent = getIntent();
         byte[] arr = getIntent().getByteArrayExtra("image");
@@ -48,9 +46,9 @@ public class SmallDrawActivity extends AppCompatActivity {
         showImg.setImageBitmap(img);
         final MyView m = new MyView(this);
 
-        clearbtn = (Button)findViewById(R.id.clear);
-        drawlinear = (LinearLayout)findViewById(R.id.drawLayout);
-        clearbtn.setOnClickListener(new View.OnClickListener() { //지우기 버튼 눌렸을때
+        clearBtn = (Button)findViewById(R.id.clear);
+        drawLinear = (LinearLayout)findViewById(R.id.drawLayout);
+        clearBtn.setOnClickListener(new View.OnClickListener() { //지우기 버튼 눌렸을때
             @Override
             public void onClick(View v) {
                 points.clear();
@@ -60,9 +58,9 @@ public class SmallDrawActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                drawlinear.setDrawingCacheEnabled(true);    // 캐쉬허용
-                Bitmap screenshot = Bitmap.createBitmap(drawlinear.getDrawingCache());
-                drawlinear.setDrawingCacheEnabled(false);   // 캐쉬닫기
+                drawLinear.setDrawingCacheEnabled(true);    // 캐쉬허용
+                Bitmap screenshot = Bitmap.createBitmap(drawLinear.getDrawingCache());
+                drawLinear.setDrawingCacheEnabled(false);   // 캐쉬닫기
 
                 Intent outIntent = new Intent(getApplicationContext(), DrawActivity.class);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -81,13 +79,13 @@ public class SmallDrawActivity extends AppCompatActivity {
             }
 
         });
-        backbtn.setOnClickListener(new View.OnClickListener(){
+        backBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 onBackPressed();
             }
         });
-        drawlinear.addView(m);
+        drawLinear.addView(m);
 
     }
 
@@ -106,8 +104,6 @@ public class SmallDrawActivity extends AppCompatActivity {
     }
 
     class MyView extends View {
-
-
         int color = Color.BLACK;
         public MyView(Context context) {
             super(context);

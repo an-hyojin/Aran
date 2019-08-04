@@ -22,8 +22,8 @@ public class GridItem extends LinearLayout {
 
     public void init(final Context context, Bitmap id, Bitmap image, final Long date, String emotion){
         View view = LayoutInflater.from(context).inflate(R.layout.griditem,this);
-        btn = (ImageButton)findViewById(R.id.facebutton);
-        title = (TextView)findViewById(R.id.emotion);
+        btn = (ImageButton)findViewById(R.id.faceButton);
+        title = (TextView)findViewById(R.id.emotionGrid);
         title.setText(emotion);
 
         Drawable bitmap = new BitmapDrawable(id);

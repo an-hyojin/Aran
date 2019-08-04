@@ -75,6 +75,12 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
                 text.setText("같은 표정을 가진 카드를 짝지어보세요");
                 positiveBtn.setBackgroundResource(R.drawable.start);
                 break;
+            case 12:
+                title.setText("감정 따라그리기");
+                imageView.setBackgroundResource(R.drawable.drawing);
+                text.setText("갤러리에서 사진을 선택한 후 그때 느낀 감정을 따라 그려보세요");
+                positiveBtn.setBackgroundResource(R.drawable.start);
+                break;
             default:
                 title.setText("게임종료");
                 text.setText("카드게임이 끝났습니다!");
@@ -84,6 +90,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
     public void setDialogListener(DialogListenerInterface customDialogListener){
         this.customDialogLister = customDialogListener;
     }
+
     public void onClick(View v){
         if(v == positiveBtn){
             if(customDialogLister!=null) {

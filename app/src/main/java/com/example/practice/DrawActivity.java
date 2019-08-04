@@ -32,7 +32,6 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
     SQLiteDatabase sqlDB;
     Bitmap realPhoto, drawImage;
     byte[] realByte, drawByte;
-    private Uri ImageCaptureUri;
     FaceDBHelper faceDBHelper;
 
     @Override
@@ -43,9 +42,12 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         backBtn.setOnClickListener(this);
         addBtn = (ImageButton)findViewById(R.id.add);
         addBtn.setOnClickListener(this);
-        gridView = (GridView)findViewById(R.id.gridview);
+        gridView = (GridView)findViewById(R.id.gridView);
 
         init();
+        CustomDialog dialog = new CustomDialog(this, 12);
+
+        dialog.show();
 
     }
 
@@ -105,7 +107,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case GALLERY_CODE:
-                    ImageCaptureUri = data.getData();
+                    Uri ImageCaptureUri = data.getData();
                     Intent intent = new Intent("com.android.camera.action.CROP");
                     intent.setDataAndType(ImageCaptureUri, "image/*");
                     intent.putExtra("outputX", 200);

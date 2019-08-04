@@ -2,6 +2,8 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
+    android:background="@color/colorWhite"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,28 +20,28 @@
         android:layout_margin="5dp"/>
     </LinearLayout>
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="450dp">
+        android:layout_gravity="center"
+        android:layout_width="380dp"
+        android:layout_height="380dp"
+        android:layout_margin="20dp">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/backgroundImage"/>
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:id="@+id/drawLayout">
+            android:background="@drawable/border"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/drawLayout">
 
     </LinearLayout>
     </FrameLayout>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="감정을 입력하세요"
-        android:id="@+id/emotion"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +58,22 @@
             android:layout_height="wrap_content"
             android:text="저장하기"
             android:id="@+id/save"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이때느낀 감정은 무엇인가요?  "
+          />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emotion"
+            android:text="감정을 입력하세요"/>
     </LinearLayout>
 
 </LinearLayout>

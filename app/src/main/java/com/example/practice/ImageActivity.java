@@ -80,20 +80,11 @@ public class ImageActivity extends Activity {
                 onBackPressed();
             }
         });
-        //----------------------------------------------------------------
-        // 확대되는 이미지를 보여주기 위해 ImageView 뷰를 설정합니다.
-  //      ImageView imageView = (ImageView)findViewById(R.id.imageView);
-   //     setImage(imageView);
-    }
-
-    private void setImage(ImageView imageView) {
-
-
     }
 
     public Drawable BitmapToDrawable(byte[] b){
         Bitmap temp = BitmapFactory.decodeByteArray(b, 0, b.length);
-        Drawable toReturn = new BitmapDrawable(temp);
-        return toReturn;
+        return new BitmapDrawable(temp);
+
     }
 }
