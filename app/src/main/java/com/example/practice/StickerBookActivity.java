@@ -12,7 +12,7 @@ public class StickerBookActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
+        setContentView(R.layout.activity_sticker_book);
         backBtn = (ImageButton)findViewById(R.id.back);
         backBtn.setOnClickListener(this);
     }

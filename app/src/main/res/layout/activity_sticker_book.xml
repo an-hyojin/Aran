@@ -19,18 +19,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/backbtn"
             android:layout_margin="5dp"/>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:gravity="right">
 
-            <ImageButton
-                android:id="@+id/retry"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/retry" />
-        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_height="wrap_content"
@@ -41,6 +30,6 @@
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
             android:layout_width="match_parent"
-            android:text="@string/matchEmotion_act"/>
+            android:text="@string/stickerBook_ack"/>
     </LinearLayout>
 </LinearLayout>
