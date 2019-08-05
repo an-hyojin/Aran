@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn3:
-                intent = new Intent(this, CardActivity.class);
+                intent = new Intent(this, SelectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn4:

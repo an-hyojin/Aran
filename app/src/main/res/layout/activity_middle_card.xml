@@ -163,40 +163,7 @@
                     android:layout_weight="1" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="100dip"
-                android:layout_margin="4dip"
-                android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/card13"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/card14"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/card15"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/card16"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
