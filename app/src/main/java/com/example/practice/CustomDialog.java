@@ -39,35 +39,35 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         switch (caseNum){
             case 0:
                 title.setText("웃음");
-                text.setText("기쁠때 어쩌구");
+                text.setText("기쁘거나 좋아서 마음이 벅참.");
                 break;
             case 1:
                 title.setText("슬픔");
-                text.setText("기쁠때 어쩌구");
+                text.setText("가슴 아프거나 불쌍한 생각이 들거나 하여 마음이 아프고 괴로움.");
                 break;
             case 2:
                 title.setText("화남");
-                text.setText("기쁠때 어쩌구");
+                text.setText("몹시 못마땅하거나 언짢아서 성을 냄.");
                 break;
             case 3:
                 title.setText("싫어함(증오)");
-                text.setText("기쁠때 어쩌구");
+                text.setText("마음에 들지 않거나 나쁘게 생각하여 가까이하거나 가지거나 받아들이고 싶지 않음.");
                 break;
             case 4:
                 title.setText("뿌듯함");
-                text.setText("기쁠때 어쩌구");
+                text.setText("욕구가 충족되었을 때의 흐뭇하고 흡족한 마음이나 느낌.");
                 break;
             case 5:
                 title.setText("놀람");
-                text.setText("기쁠때 어쩌구");
+                text.setText("기대하지 않던 일을 겪게 될 때 느끼는 감정.");
                 break;
             case 6:
                 title.setText("사랑");
-                text.setText("기쁠때 어쩌구");
+                text.setText("남을 돕고 이해하고 가까이하려는 마음.");
                 break;
             case 7:
-                title.setText("두려움");
-                text.setText("기쁠때 어쩌구");
+                title.setText("무서움");
+                text.setText("어떤것에 대하여 두려운 느낌이 있고 무슨일이 일어날까봐 겁남.");
                 break;
             case 11:
                 title.setText("감정카드놀이");
@@ -75,15 +75,22 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
                 text.setText("같은 표정을 가진 카드를 짝지어보세요");
                 positiveBtn.setBackgroundResource(R.drawable.start);
                 break;
+            case 12:
+                title.setText("감정 따라그리기");
+                imageView.setBackgroundResource(R.drawable.drawing);
+                text.setText("갤러리에서 사진을 선택한 후 그때 느낀 감정을 따라 그려보세요");
+                positiveBtn.setBackgroundResource(R.drawable.start);
+                break;
             default:
                 title.setText("게임종료");
-                text.setText("기쁠때 어쩌구");
+                text.setText("카드게임이 끝났습니다!");
         }
     }
 
     public void setDialogListener(DialogListenerInterface customDialogListener){
         this.customDialogLister = customDialogListener;
     }
+
     public void onClick(View v){
         if(v == positiveBtn){
             if(customDialogLister!=null) {

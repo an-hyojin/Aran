@@ -10,8 +10,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button button1, button2, button3,button4,button5,button6;
     @Override
+    // 액티비티가 생성되는 순간에 딱 한번 호출
+    // 모든 초기화와 사용자 인터페이스 설정이 여기에 들어감
     protected void onCreate(Bundle savedInstanceState) {
+        // 부모클래스인 appCompatiactivity 클래스의 onCreate 호출
         super.onCreate(savedInstanceState);
+        //setContentView() 함수는 액티비티의 화면을 설정 하는 함수
         setContentView(R.layout.activity_main);
         button1 = (Button)findViewById(R.id.btn1);
         button1.setOnClickListener(this);
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn3:
-                intent = new Intent(this, CardActivity.class);
+                intent = new Intent(this, SelectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn4:

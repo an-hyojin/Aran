@@ -33,7 +33,7 @@ public class AnimationActivity extends YouTubeBaseActivity implements View.OnCli
 
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("hJorGesHoFQ");
+                youTubePlayer.loadVideo("hJorGesHoFQ&t=593s");
             }//유튜브 로드 성공했을 때
 
             @Override
@@ -54,7 +54,7 @@ public class AnimationActivity extends YouTubeBaseActivity implements View.OnCli
     @Override
     public void onClick(View v) {
          switch (v.getId()){
-            case R.id.back:
+             case R.id.back:
                 onBackPressed();
         }
     }

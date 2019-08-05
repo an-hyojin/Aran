@@ -32,21 +32,18 @@
                 android:background="@drawable/retry" />
         </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         android:layout_gravity="center">
-
         <TextView
-            android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:autoSizeTextType="uniform"
             android:gravity="center_horizontal"
-            android:text="@string/card_act" />
+            android:autoSizeTextType="uniform"
+            android:layout_width="match_parent"
+            android:text="@string/card_act"/>
 
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
@@ -131,75 +128,7 @@
                     android:layout_weight="1" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="100dip"
-                android:layout_margin="4dip"
-                android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/card09"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/card10"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/card11"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/card12"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="100dip"
-                android:layout_margin="4dip"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/card13"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/card14"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/card15"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-
-                <ImageButton
-                    android:id="@+id/card16"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dip"
-                    android:layout_weight="1" />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
