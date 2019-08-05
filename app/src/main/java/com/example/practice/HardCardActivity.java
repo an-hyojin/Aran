@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 
-
 public class HardCardActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int TOTAL_CARD_NUM = 16;
 
