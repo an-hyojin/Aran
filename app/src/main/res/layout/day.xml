@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/day_cell_ll_background"
-    android:layout_width="83dp"
-    android:layout_height="91dp"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
     <TextView
         android:id="@+id/day_cell_tv_day"
-        android:layout_width="fill_parent"
-        android:layout_height="8dp"
-        android:gravity="left"
-        android:paddingLeft="3dp"
-        android:paddingTop="2dp"
-        android:textSize="10sp" />
+        android:autoSizeTextType="uniform"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="center" />
 
     <ImageButton
         android:id="@+id/emotion_cell"
         android:layout_width="match_parent"
-        android:layout_height="83dp"
-        android:background="@color/colorYellow"
-        android:padding="3dp" />
+        android:layout_height="match_parent"
+        android:background="@color/colorYellow"/>
 </LinearLayout>

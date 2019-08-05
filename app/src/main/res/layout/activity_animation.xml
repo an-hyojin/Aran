@@ -38,11 +38,7 @@
         id="@+id/youtubeViewer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <!--<fragment-->
-        <!--android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"-->
-        <!--android:id="@+id/youtubeViewer"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"/>-->
+
 
     <Button
         android:id="@+id/youtubeButton"
