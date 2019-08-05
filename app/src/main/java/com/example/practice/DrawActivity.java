@@ -65,9 +65,9 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
             long date = cursor.getLong(0);
             String emotion = cursor.getString(1);
             byte[] image = cursor.getBlob(2);
-            Bitmap imgBitmap= getAppIcon(image);
+            Bitmap imgBitmap= getBitmapBybyte(image);
             byte[] photo = cursor.getBlob(3);
-            Bitmap photoBitmap = getAppIcon(photo);
+            Bitmap photoBitmap = getBitmapBybyte(photo);
             imgList.add(imgBitmap);
             idList.add(photoBitmap);
             dateList.add(date);
@@ -119,10 +119,9 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                     startActivityForResult(intent, CROP_FROM_IMAGE);
                     break;
                 case CROP_FROM_IMAGE:
-                    final Bundle extras = data.getExtras();
+                    Bundle extras = data.getExtras();
                     if(extras!=null){
                         realPhoto = extras.getParcelable("data");
-
                         intent = new Intent(this, SmallDrawActivity.class);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         realPhoto.compress(Bitmap.CompressFormat.JPEG, 100, stream);
@@ -132,13 +131,12 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     break;
                 case DRAW_AND_SAVE:
-                    final Bundle extras2 = data.getExtras();
+                    Bundle extras2 = data.getExtras();
                     if(extras2!=null){
                         drawByte = extras2.getByteArray("drawing");
                         String emotion = extras2.getString("emotion");
                         Toast.makeText(this, emotion, Toast.LENGTH_SHORT).show();
                         drawImage =BitmapFactory.decodeByteArray(drawByte,0, drawByte.length);
-
                         sqlDB = faceDBHelper.getWritableDatabase();
                         SQLiteStatement p = sqlDB.compileStatement("INSERT INTO faceTBL VALUES (?,?, ?, ?);");
                         Date date = new Date();
@@ -163,7 +161,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public Bitmap getAppIcon(byte[] b){
+    public Bitmap getBitmapBybyte(byte[] b){
         return BitmapFactory.decodeByteArray(b, 0, b.length);
     }
 }

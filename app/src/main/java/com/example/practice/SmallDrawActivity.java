@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -24,12 +26,15 @@ import java.util.ArrayList;
 
 public class SmallDrawActivity extends AppCompatActivity {
 
-    Button clearBtn, drawBtn, saveBtn;
+    Button clearBtn, drawBtn, saveBtn, blackBtn, redBtn, blueBtn, eraserBtn;
     ImageButton backBtn;
     EditText textInput;
     LinearLayout drawLinear;
     ImageView showImg;
+    Paint p = new Paint();
+    PorterDuffXfermode clear = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
     ArrayList<Point> points = new ArrayList<Point>();
+    DrawView m;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +43,18 @@ public class SmallDrawActivity extends AppCompatActivity {
         textInput = (EditText)findViewById(R.id.emotion);
         drawBtn = (Button)findViewById(R.id.paint);
         saveBtn = (Button)findViewById(R.id.save);
+        blackBtn = findViewById(R.id.black);
+        redBtn = findViewById(R.id.red);
+        blueBtn = findViewById(R.id.blue);
+        eraserBtn = findViewById(R.id.eraser);
         backBtn = (ImageButton)findViewById(R.id.back);
         showImg = (ImageView)findViewById(R.id.backgroundImage);
         Intent intent = getIntent();
         byte[] arr = getIntent().getByteArrayExtra("image");
         Bitmap img = BitmapFactory.decodeByteArray(arr, 0, arr.length);
         showImg.setImageBitmap(img);
-        final DrawView m = new DrawView(this);
-
+        m = new DrawView(this);
+        p.setColor(Color.BLACK);
         clearBtn = (Button)findViewById(R.id.clear);
         drawLinear = (LinearLayout)findViewById(R.id.drawLayout);
         clearBtn.setOnClickListener(new View.OnClickListener() { //지우기 버튼 눌렸을때
@@ -71,7 +80,6 @@ public class SmallDrawActivity extends AppCompatActivity {
                 bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                 showImg.setImageBitmap(bitmap);
 
-
                 outIntent.putExtra("drawing",byteArray);
                 outIntent.putExtra("emotion", textInput.getText().toString());
                 setResult(RESULT_OK, outIntent);
@@ -85,8 +93,37 @@ public class SmallDrawActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        drawLinear.addView(m);
+        redBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                p.setXfermode(null);
+                p.setColor(Color.RED);
+            }
+        });
+        blackBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                p.setXfermode(null);
+                p.setColor(Color.BLACK);
+            }
+        });
+        blueBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                p.setXfermode(null);
+                p.setColor(Color.BLUE);
+            }
+        });
+        eraserBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                p.setXfermode(clear);
 
+            }
+        });
+
+
+        drawLinear.addView(m);
     }
 
     class Point {
