@@ -203,7 +203,7 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     };
 }
 class Card{
-    private final static int backImageID = R.drawable.back;
+    private final static int backImageID = R.drawable.back; // R.drawable.파일명 <-
     private final static int[] frontImageID = {R.drawable.smilecard, R.drawable.sadcard, R.drawable.angrycard,R.drawable.disgustcard, R.drawable.fullcard, R.drawable.surprisedcard,R.drawable.heartcard, R.drawable.scarycard};
 
     int value;
@@ -216,7 +216,7 @@ class Card{
 
     public void back(){
         if(!isBack){
-            card.setBackgroundResource(backImageID);
+            card.setBackgroundResource(backImageID); // backImageID를 배경으로 넣는 리소스
             isBack = true;
         }
     }
