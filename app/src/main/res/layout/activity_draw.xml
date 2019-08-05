@@ -11,7 +11,7 @@
         android:layout_height="50dp"
         android:background="@color/colorYellow"
         android:orientation="horizontal"
-        tools:context=".CardActivity"
+        tools:context=".DrawActivity"
         >
 
         <ImageButton
@@ -20,13 +20,25 @@
             android:layout_height="match_parent"
             android:background="@drawable/backbtn"
             android:layout_margin="5dp"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/add"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/addbtn" />
+        </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_gravity="center">
         <TextView
-
             android:layout_height="30dp"
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
@@ -36,13 +48,22 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="갤러리"
-        android:id="@+id/gallary"/>
-
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_margin="10dp">
+    <GridView
+        android:gravity="center"
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:layout_gravity="center"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:stretchMode="columnWidth"
+        />
     </LinearLayout>
+
 </LinearLayout>
