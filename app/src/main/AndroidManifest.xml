@@ -18,9 +18,10 @@
         <activity android:name=".SelectActivity" />
         <activity android:name=".ImageActivity" />
         <activity android:name=".SmallDrawActivity" />
-        <activity android:name=".CalendarActivity" />
-        <activity android:name=".DrawActivity" />
         <activity android:name=".HardCardActivity" />
+        <activity android:name=".CalendarActivity"></activity>
+        <activity android:name=".DrawActivity" />
+        <activity android:name=".AnimationActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

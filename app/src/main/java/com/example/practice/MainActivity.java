@@ -36,12 +36,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, DrawActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btn2:
+                intent = new Intent(this, MatchEmotionActivity.class);
+                startActivity(intent);
+                break;
             case R.id.btn3:
                 intent = new Intent(this, SelectActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btn4:
+                intent = new Intent(this, AnimationActivity.class);
+                startActivity(intent);
+                break;
             case R.id.btn5:
                 intent = new Intent(this, CalendarActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn6:
+                intent = new Intent(this, StickerBookActivity.class);
                 startActivity(intent);
                 break;
         }
