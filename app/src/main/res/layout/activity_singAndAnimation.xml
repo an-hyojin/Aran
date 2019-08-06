@@ -30,24 +30,25 @@
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
             android:layout_width="match_parent"
-            android:text="@string/sing_act"/>
+            android:text="골라주세여"/>
     </LinearLayout>
 
-    <view
-        class="com.google.android.youtube.player.YouTubePlayerView"
-        android:id="@+id/singViewer"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <!--<fragment-->
-        <!--android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"-->
-        <!--android:id="@+id/youtubeViewer"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"/>-->
+        android:layout_height="match_parent"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/singButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="재생" />
+        <Button
+            android:id="@+id/animationButtonA"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/animation_act" />
+        <Button
+            android:id="@+id/singButtonA"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sing_act" />
+    </LinearLayout>
+
 
 </LinearLayout>

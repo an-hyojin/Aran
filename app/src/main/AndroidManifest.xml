@@ -24,6 +24,8 @@
         <activity android:name=".ImageActivity" />
         <activity android:name=".SmallDrawActivity" />
         <activity android:name=".HardCardActivity" />
+        <activity android:name=".SingActivity" />
+        <activity android:name=".SingAndAnimationSelectActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn4:
-                intent = new Intent(this, AnimationActivity.class);
+                intent = new Intent(this, SingAndAnimationSelectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn5:
