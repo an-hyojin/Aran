@@ -42,7 +42,6 @@ public class AnimationActivity extends YouTubeBaseActivity implements View.OnCli
         };
 
         button.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 youtubeView.initialize("AIzaSyDjVs7eH1IZAxpoEjufARWr_sMrM8KbV98", listener);
