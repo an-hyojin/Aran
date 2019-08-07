@@ -109,24 +109,26 @@ public class CalendarAdapter extends BaseAdapter {
         public TextView tvDay;
 
     }
+    // int width랑 height 부분 원래 주석처리 되어있었음.
+    // 원래 주석처리 되어있는 부분이 안드로이드 스크린 사이즈, 해상도,밀도 구하는 코드 이거 수정하면..?
+    // 안드로이드 화면 해상도
 
     private int getCellWidthDP() {
-//      int width = mContext.getResources().getDisplayMetrics().widthPixels;
-        int cellWidth = 480 / 7;
+        int width = mContext.getResources().getDisplayMetrics().widthPixels;
+        int cellWidth = width / 7;
 
         return cellWidth;
     }
 
     private int getRestCellWidthDP() {
-//      int width = mContext.getResources().getDisplayMetrics().widthPixels;
-        int cellWidth = 480 % 7;
+        int width = mContext.getResources().getDisplayMetrics().widthPixels;
+        int cellWidth = width % 7;
 
         return cellWidth;
     }
 
     private int getCellHeightDP() {
-//      int height = mContext.getResources().getDisplayMetrics().widthPixels;
-        int cellHeight = 480 / 6;
+        int cellHeight = (int)(getCellWidthDP()*1.4);
 
         return cellHeight;
     }
