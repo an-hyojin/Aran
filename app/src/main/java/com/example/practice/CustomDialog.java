@@ -38,7 +38,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         }
         switch (caseNum){
             case 0:
-                title.setText("웃음");
+                title.setText("기쁨");
                 text.setText("기쁘거나 좋아서 마음이 벅참.");
                 break;
             case 1:

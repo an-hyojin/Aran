@@ -6,20 +6,16 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:layout_weight="1">
-    <!-- layout_weight 추가 -->
-
     <TextView
-        android:id="@+id/day_cell_tv_day"
+        android:id="@+id/dateNumber"
         android:autoSizeTextType="uniform"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:gravity="center" />
-
-    <!-- ImageView로 수정-->
-
-    <ImageButton
-        android:id="@+id/emotion_cell"
+    <ImageView
+        android:id="@+id/emotionImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorYellow"/>
+
 </LinearLayout>

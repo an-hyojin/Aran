@@ -1,8 +1,12 @@
 package com.example.practice;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,29 +15,24 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CalendarFrag extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
     View view;
     public static int SUNDAY        = 1;
-    public static int MONDAY        = 2;
-    public static int TUESDAY       = 3;
-    public static int WEDNSESDAY    = 4;
-    public static int THURSDAY      = 5;
-    public static int FRIDAY        = 6;
-    public static int SATURDAY      = 7;
 
+    DayEmotionDBHelper dayEmotionDBHelper;
     private TextView mTvCalendarTitle;
     private GridView mGvCalendar;
 
     private ArrayList<DayInfo> mDayList;
     private CalendarAdapter mCalendarAdapter;
 
-    Calendar mLastMonthCalendar;
     Calendar mThisMonthCalendar;
-    Calendar mNextMonthCalendar;
-
+    SQLiteDatabase sqlDB;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
         mThisMonthCalendar = Calendar.getInstance();
         mThisMonthCalendar.set(Calendar.DAY_OF_MONTH, 1);
         getCalendar(mThisMonthCalendar);
-            return view;
+        return view;
     }
 
     private void getCalendar(Calendar calendar)
@@ -86,12 +85,37 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
         // 캘린더 타이틀(년월 표시)을 세팅한다.
         mTvCalendarTitle.setText(mThisMonthCalendar.get(Calendar.YEAR) + "년 "
                 + (mThisMonthCalendar.get(Calendar.MONTH) + 1) + "월");
+        dayEmotionDBHelper = new DayEmotionDBHelper(getContext());
+        sqlDB = dayEmotionDBHelper.getWritableDatabase();
 
+/*
+        SQLiteStatement p1 = sqlDB.compileStatement("INSERT INTO dayEmotionDB VALUES (?,?, ?, ?,?);");
+
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
+        String str = dayTime.format(today);
+        String[] infos = str.split("-");
+        p1.bindString(1, str);
+        p1.bindLong(2, Long.valueOf(infos[0]));
+        p1.bindLong(3, Long.valueOf(infos[1]));
+        p1.bindLong(4, Long.valueOf(infos[2]));
+        p1.bindString(5, "뿌듯함");
+        p1.execute();
+*/
         DayInfo day;
+        Cursor cursor = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE (year="+mThisMonthCalendar.get(Calendar.YEAR)+" and month="+(mThisMonthCalendar.get(Calendar.MONTH) + 1)+") ORDER BY day;", null);
+
+        System.out.println("카운트=" + cursor.getCount());
+        cursor.moveToFirst();
 
 
-        for(int i=0; i<dayOfMonth-1; i++)
-        {
+
+//        if(cursor.getCount()!=0){
+//            cursor.moveToFirst();
+//
+//            System.out.println("들어옴1");
+//
+//        }
+        for(int i=0; i<dayOfMonth-1; i++) {//이번 달 이전
             int date = lastMonthStartDay+i;
             day = new DayInfo();
             day.setDay(Integer.toString(date));
@@ -99,16 +123,21 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
 
             mDayList.add(day);
         }
-        for(int i=1; i <= thisMonthLastDay; i++)
-        {
+        for(int i=1; i <= thisMonthLastDay; i++) {//이번달
             day = new DayInfo();
             day.setDay(Integer.toString(i));
             day.setInMonth(true);
+            if(!cursor.isAfterLast()) {
+                if (i == (int)(cursor.getLong(3))) {
+                    day.setEmotion(cursor.getString(4));
+                    cursor.moveToNext();
+                }
+           }
 
             mDayList.add(day);
+
         }
-        for(int i=1; i<42-(thisMonthLastDay+dayOfMonth-1)+1; i++)
-        {
+        for(int i=1; i<42-(thisMonthLastDay+dayOfMonth-1)+1; i++) {//다음달
             day = new DayInfo();
             day.setDay(Integer.toString(i));
             day.setInMonth(false);

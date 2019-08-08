@@ -2,8 +2,6 @@ package com.example.practice;
 
 import java.util.ArrayList;
 
-import com.example.practice.R;
-import com.example.practice.DayInfo;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -11,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,13 +26,7 @@ public class CalendarAdapter extends BaseAdapter {
     private int mResource;
     private LayoutInflater mLiInflater;
 
-    /**
-     * Adpater 생성자
-     *
-     * @param context      컨텍스트
-     * @param textResource 레이아웃 리소스
-     * @param dayList      날짜정보가 들어있는 리스트
-     */
+
     public CalendarAdapter(Context context, int textResource, ArrayList<DayInfo> dayList) {
         this.mContext = context;
         this.mDayList = dayList;
@@ -49,7 +42,6 @@ public class CalendarAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        // TODO Auto-generated method stub
         return mDayList.get(position);
     }
 
@@ -61,32 +53,35 @@ public class CalendarAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         DayInfo day = mDayList.get(position);
-
-        DayViewHolde dayViewHolder;
+        DayViewHolder dayViewHolder;
 
         if (convertView == null) {
             convertView = mLiInflater.inflate(mResource, null);
-
+            int width = getCellWidthDP();
+            int restWidth = getRestCellWidthDP();
+            double height = 1.4*width;
             if (position % 7 == 6) {
-                convertView.setLayoutParams(new GridView.LayoutParams(getCellWidthDP() + getRestCellWidthDP(), getCellHeightDP()));
+                convertView.setLayoutParams(new GridView.LayoutParams(width+restWidth, (int)height));
             } else {
-                convertView.setLayoutParams(new GridView.LayoutParams(getCellWidthDP(), getCellHeightDP()));
+                convertView.setLayoutParams(new GridView.LayoutParams(width,(int)height));
             }
 
-
-            dayViewHolder = new DayViewHolde();
-
+            dayViewHolder = new DayViewHolder();
             dayViewHolder.llBackground = (LinearLayout) convertView.findViewById(R.id.day_cell_ll_background);
-            dayViewHolder.tvDay = (TextView) convertView.findViewById(R.id.day_cell_tv_day);
-
+            dayViewHolder.tvDay = (TextView) convertView.findViewById(R.id.dateNumber);
+            dayViewHolder.emotionImg = (ImageView) convertView.findViewById(R.id.emotionImg);
             convertView.setTag(dayViewHolder);
+
         } else {
-            dayViewHolder = (DayViewHolde) convertView.getTag();
+            dayViewHolder = (DayViewHolder) convertView.getTag();
         }
 
         if (day != null) {
             dayViewHolder.tvDay.setText(day.getDay());
-
+            int resource = stringToEmotion(day.getEmotion());
+            if(resource!=-1){
+                dayViewHolder.emotionImg.setImageResource(resource);
+            }
             if (day.isInMonth()) {
                 if (position % 7 == 0) {
                     dayViewHolder.tvDay.setTextColor(Color.RED);
@@ -98,40 +93,47 @@ public class CalendarAdapter extends BaseAdapter {
             } else {
                 dayViewHolder.tvDay.setTextColor(Color.GRAY);
             }
-
         }
-
         return convertView;
     }
-
-    public class DayViewHolde {
+    public int stringToEmotion(String emotion){
+        if(emotion==null){
+            return -1;
+        }else if(emotion.equals("기쁨")) {
+            return R.drawable.smile;
+        }else if(emotion.equals("슬픔")){
+            return R.drawable.sad;
+        }else if(emotion.equals("놀라움")){
+            return R.drawable.surprised;
+        }else if(emotion.equals("화남")){
+            return R.drawable.angry;
+        }else if(emotion.equals("싫어함")){
+            return R.drawable.disgust;
+        }else if(emotion.equals("사랑")){
+            return R.drawable.heart;
+        }else if(emotion.equals("무서움")){
+            return R.drawable.scary;
+        }else if(emotion.equals("뿌듯함")){
+            return R.drawable.full;
+        }else{
+            return R.drawable.yesbtn;
+        }
+    }
+    public class DayViewHolder {
         public LinearLayout llBackground;
         public TextView tvDay;
-
+        public ImageView emotionImg;
     }
-    // int width랑 height 부분 원래 주석처리 되어있었음.
-    // 원래 주석처리 되어있는 부분이 안드로이드 스크린 사이즈, 해상도,밀도 구하는 코드 이거 수정하면..?
-    // 안드로이드 화면 해상도
-
     private int getCellWidthDP() {
         int width = mContext.getResources().getDisplayMetrics().widthPixels;
-        int cellWidth = width / 7;
-
-        return cellWidth;
+        return width / 7;
     }
 
     private int getRestCellWidthDP() {
         int width = mContext.getResources().getDisplayMetrics().widthPixels;
-        int cellWidth = width % 7;
-
-        return cellWidth;
+        return width % 7;
     }
 
-    private int getCellHeightDP() {
-        int cellHeight = (int)(getCellWidthDP()*1.4);
-
-        return cellHeight;
-    }
 
 }
 

@@ -6,12 +6,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DayEmotionDBHelper extends SQLiteOpenHelper {
     public DayEmotionDBHelper(Context context){
-        super(context, "DayEmotionDB", null, 1);
+        super(context, "dayEmotion", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE dayEmotionDB (date LONG PRIMARY KEY, year INTEGER, month INTEGER, day INTEGER, emotion TEXT)");
+        db.execSQL("CREATE TABLE dayEmotionDB (date TEXT PRIMARY KEY, year LONG, month LONG, day LONG, emotion TEXT)");
     }
 
     @Override
