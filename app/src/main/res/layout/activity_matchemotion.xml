@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -42,5 +43,106 @@
             android:autoSizeTextType="uniform"
             android:layout_width="match_parent"
             android:text="@string/matchEmotion_act"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="316dp"
+        android:gravity="top"
+        tools:layout_editor_absoluteX="-130dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:id="@+id/emotion_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+            //android:background="@drawable" />.
+           // tools:srcCompat="@tools:sample/avatars" />
+    </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="-130dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dip"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="100dip"
+                android:layout_margin="4dip"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/emotion01"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/emotion02"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/emotion03"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/emotion04"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="100dip"
+                android:layout_margin="4dip"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/emotion05"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/emotion06"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/emotion07"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/emotion08"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
