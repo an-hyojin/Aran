@@ -50,21 +50,16 @@ public class ImageActivity extends Activity {
         SimpleDateFormat dayTime = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
         String str = dayTime.format(new Date(key));
         dateView.setText(str);
-        Cursor cursor = sqlDB.rawQuery("SELECT * FROM faceTBL;", null);
+        Cursor cursor = sqlDB.rawQuery("SELECT * FROM faceTBL WHERE date=="+key+";", null);
         cursor.moveToFirst();
-        while(!cursor.isAfterLast()) {
-            long date = cursor.getLong(0);
-            if(date==key){
-                emotion = cursor.getString(1);
-                drawing = cursor.getBlob(2);
-                photo = cursor.getBlob(3);
-                photoView.setBackgroundDrawable(BitmapToDrawable(photo));
-                emotionView.setText(emotion);
-                drawingView.setBackgroundDrawable(BitmapToDrawable(drawing));
-                break;
-            }
-            cursor.moveToNext();
-        }
+        long date = cursor.getLong(0);
+        emotion = cursor.getString(1);
+        drawing = cursor.getBlob(2);
+        photo = cursor.getBlob(3);
+        photoView.setBackgroundDrawable(BitmapToDrawable(photo));
+        emotionView.setText(emotion);
+        drawingView.setBackgroundDrawable(BitmapToDrawable(drawing));
+
         removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
