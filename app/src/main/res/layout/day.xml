@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/day_cell_ll_background"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:layout_weight="1">
+    <!-- layout_weight 추가 -->
 
     <TextView
         android:id="@+id/day_cell_tv_day"
@@ -12,6 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:gravity="center" />
+
+    <!-- ImageView로 수정-->
 
     <ImageButton
         android:id="@+id/emotion_cell"

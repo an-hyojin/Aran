@@ -103,13 +103,16 @@
             android:textColor="@color/colorBlue"
             android:textSize="9sp" />
     </LinearLayout>
+
+    <!-- layout_height match_parent로 수정-->
+
     <GridView
-        android:id="@+id/gv_calendar_activity_gv_calendar"
-        android:layout_width="match_parent"
-        android:layout_height="496dp"
-        android:layout_marginTop="5dp"
-        android:listSelector="@drawable/gridview_selector"
-        android:numColumns="7"
-        android:stretchMode="columnWidth" />
+    android:id="@+id/gv_calendar_activity_gv_calendar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    android:listSelector="@drawable/gridview_selector"
+    android:numColumns="7"
+    android:stretchMode="columnWidth" />
 
 </LinearLayout>
