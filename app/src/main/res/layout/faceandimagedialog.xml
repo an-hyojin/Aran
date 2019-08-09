@@ -35,9 +35,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/emotion"/>
-    <ImageButton
+    <Button
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:id="@+id/admit"
-        android:background="@drawable/admitbtn"/>
+        android:text="확인"
+        android:textColor="@color/colorBlack"
+        android:textSize="24dp"
+        android:background="@drawable/out"/>
 </LinearLayout>
