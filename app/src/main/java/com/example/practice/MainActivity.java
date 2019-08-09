@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button button1, button2, button3,button4,button5,button6;
+    Button button1,button2,button3,button4,button5,button6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn3:
-                intent = new Intent(this, CardActivity.class);
+                intent = new Intent(this, SelectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn4:
-                intent = new Intent(this, AnimationActivity.class);
+                intent = new Intent(this, SingAndAnimationSelectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn5:

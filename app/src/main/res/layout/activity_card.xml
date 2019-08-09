@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:background="@color/colorYellow"
         android:orientation="horizontal"
-        tools:context=".CardActivity"
+        tools:context=".HardCardActivity"
         >
 
         <ImageButton
@@ -32,18 +32,21 @@
                 android:background="@drawable/retry" />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center">
+
         <TextView
-            android:layout_height="30dp"
-            android:gravity="center_horizontal"
-            android:autoSizeTextType="uniform"
             android:layout_width="match_parent"
-            android:text="@string/card_act"/>
+            android:layout_height="30dp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center_horizontal"
+            android:text="@string/card_act" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"

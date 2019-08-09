@@ -64,7 +64,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="20dip"/>
                 <Button
-                    android:text="애니메이션"
+                    android:text="애니메이션/동요"
                     android:id="@+id/btn4"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"

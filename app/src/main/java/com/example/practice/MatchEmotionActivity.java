@@ -1,23 +1,24 @@
+
 package com.example.practice;
 
-import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+        import android.content.DialogInterface;
+        import android.graphics.drawable.Drawable;
+        import android.media.Image;
+        import android.os.Bundle;
+        import android.os.Handler;
+        import android.os.Message;
+        import android.support.v7.app.AlertDialog;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.View;
+        import android.view.Window;
+        import android.widget.Button;
+        import android.widget.ImageButton;
+        import android.widget.ImageView;
+        import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+        import java.util.ArrayList;
+        import java.util.Collections;
+        import java.util.Random;
 
 public class MatchEmotionActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView countLabel;
@@ -33,83 +34,83 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
     private ImageButton retryButton;
     private ImageButton backButton;
 
-    private String rightAnswer;
+    private int rightAnswer;
     private int rightAnswerCount = 0;
     private int quizCount = 1;
 
     ArrayList<ArrayList<Integer>> quizArray = new ArrayList<>();
 
     int quizData[][] = {
-            {R.drawable.angry1, R.drawable.angrycard, R.drawable.smilecard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.angry2, R.drawable.angrycard, R.drawable.smilecard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.angry3, R.drawable.angrycard, R.drawable.smilecard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.angry4, R.drawable.angrycard, R.drawable.smilecard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.angry5, R.drawable.angrycard, R.drawable.smilecard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.angry6, R.drawable.angrycard, R.drawable.smilecard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.angry7, R.drawable.angrycard, R.drawable.smilecard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.angry8, R.drawable.angrycard, R.drawable.smilecard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.delight1, R.drawable.smilecard, R.drawable.angrycard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.delight2, R.drawable.smilecard, R.drawable.angrycard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.delight3, R.drawable.smilecard, R.drawable.angrycard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.delight4, R.drawable.smilecard, R.drawable.angrycard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.delight5, R.drawable.smilecard, R.drawable.angrycard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.delight6, R.drawable.smilecard, R.drawable.angrycard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.delight7, R.drawable.smilecard, R.drawable.angrycard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.delight8, R.drawable.smilecard, R.drawable.angrycard, R.drawable.disgustcard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.hate1, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.hate2, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.hate3, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.hate4, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.hate5, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.hate6, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.hate7, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.hate8, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.heartcard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely1, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely2, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely3, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely4, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely5, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely6, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely7, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely8, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely9, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely10, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.lovely11, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.sadcard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.sad1, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.sad2, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.sad3, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.sad4, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.sad5, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.sad6, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.sad7, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.sad8, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.scarycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary1, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary2, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary3, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary4, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary5, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary6, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary7, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary8, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary9, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary10, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.scary11, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.surprisedcard, R.drawable.fullcard},
-            {R.drawable.surprise1, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.fullcard},
-            {R.drawable.surprise2, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.fullcard},
-            {R.drawable.surprise3, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.fullcard},
-            {R.drawable.surprise4, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.fullcard},
-            {R.drawable.surprise5, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.fullcard},
-            {R.drawable.surprise6, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.fullcard},
-            {R.drawable.surprise7, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.fullcard},
-            {R.drawable.surprise8, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard, R.drawable.fullcard},
-            {R.drawable.satisfied1, R.drawable.fullcard, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard},
-            {R.drawable.satisfied2, R.drawable.fullcard, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard},
-            {R.drawable.satisfied3, R.drawable.fullcard, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard},
-            {R.drawable.satisfied4, R.drawable.fullcard, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard},
-            {R.drawable.satisfied5, R.drawable.fullcard, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard},
-            {R.drawable.satisfied6, R.drawable.fullcard, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard},
-            {R.drawable.satisfied7, R.drawable.fullcard, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard},
-            {R.drawable.satisfied8, R.drawable.fullcard, R.drawable.surprisedcard, R.drawable.scarycard, R.drawable.sadcard, R.drawable.heartcard, R.drawable.disgustcard, R.drawable.smilecard, R.drawable.angrycard},
+            {R.drawable.angry1, 1},
+            {R.drawable.angry2, 1},
+            {R.drawable.angry3, 1},
+            {R.drawable.angry4, 1},
+            {R.drawable.angry5, 1},
+            {R.drawable.angry6, 1},
+            {R.drawable.angry7, 1},
+            {R.drawable.angry8, 1},
+            {R.drawable.delight1, 2},
+            {R.drawable.delight2, 2},
+            {R.drawable.delight3, 2},
+            {R.drawable.delight4, 2},
+            {R.drawable.delight5, 2},
+            {R.drawable.delight6, 2},
+            {R.drawable.delight7, 2},
+            {R.drawable.delight8, 2},
+            {R.drawable.hate1, 3},
+            {R.drawable.hate2, 3},
+            {R.drawable.hate3, 3},
+            {R.drawable.hate4, 3},
+            {R.drawable.hate5, 3},
+            {R.drawable.hate6, 3},
+            {R.drawable.hate7, 3},
+            {R.drawable.hate8, 3},
+            {R.drawable.lovely1, 4},
+            {R.drawable.lovely2, 4},
+            {R.drawable.lovely3, 4},
+            {R.drawable.lovely4, 4},
+            {R.drawable.lovely5, 4},
+            {R.drawable.lovely6, 4},
+            {R.drawable.lovely7, 4},
+            {R.drawable.lovely8, 4},
+            {R.drawable.lovely9, 4},
+            {R.drawable.lovely10, 4},
+            {R.drawable.lovely11, 4},
+            {R.drawable.sad1, 5},
+            {R.drawable.sad2, 5},
+            {R.drawable.sad3, 5},
+            {R.drawable.sad4, 5},
+            {R.drawable.sad5, 5},
+            {R.drawable.sad6, 5},
+            {R.drawable.sad7, 5},
+            {R.drawable.sad8, 5},
+            {R.drawable.scary1, 6},
+            {R.drawable.scary2, 6},
+            {R.drawable.scary3, 6},
+            {R.drawable.scary4, 6},
+            {R.drawable.scary5, 6},
+            {R.drawable.scary6, 6},
+            {R.drawable.scary7, 6},
+            {R.drawable.scary8, 6},
+            {R.drawable.scary9, 6},
+            {R.drawable.scary10, 6},
+            {R.drawable.scary11, 6},
+            {R.drawable.surprise1, 7},
+            {R.drawable.surprise2, 7},
+            {R.drawable.surprise3, 7},
+            {R.drawable.surprise4, 7},
+            {R.drawable.surprise5, 7},
+            {R.drawable.surprise6, 7},
+            {R.drawable.surprise7, 7},
+            {R.drawable.surprise8, 7},
+            {R.drawable.satisfied1, 8},
+            {R.drawable.satisfied2, 8},
+            {R.drawable.satisfied3, 8},
+            {R.drawable.satisfied4, 8},
+            {R.drawable.satisfied5, 8},
+            {R.drawable.satisfied6, 8},
+            {R.drawable.satisfied7, 8},
+            {R.drawable.satisfied8, 8},
     };
 
     @Override
@@ -139,13 +140,6 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
             ArrayList<Integer> tmpArray = new ArrayList<>();
             tmpArray.add(quizData[i][0]); //image name
             tmpArray.add(quizData[i][1]); //right answer
-            tmpArray.add(quizData[i][2]); //choice
-            tmpArray.add(quizData[i][3]);
-            tmpArray.add(quizData[i][4]);
-            tmpArray.add(quizData[i][5]);
-            tmpArray.add(quizData[i][6]);
-            tmpArray.add(quizData[i][7]);
-            tmpArray.add(quizData[i][8]);
 
             //add tmpArray to quizArray
             quizArray.add(tmpArray);
@@ -155,47 +149,17 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
     }
 
     public void showNextQuiz(){
-
         //update quiz countlabel.
         countLabel.setText("Q"+quizCount);
 
-        //generate random number between 0 and 8 (quizArray's size -1)
         Random random = new Random();
+
         int randomNum = random.nextInt(quizArray.size());
 
-        //pick one quiz set.
         ArrayList<Integer> quiz = quizArray.get(randomNum);
 
-        //set Image and right answer.
-        //array format: {"image name", "right answer", "choice" ...}
-
-        //수정
         questionImage.setImageResource(quiz.get(0));
-
-        rightAnswer = quiz.get(1).toString();
-
-//        rightAnswer.setBackgroundResource(quiz.get(1));
-       // rightAnswer = quiz.get(1).toString();
-
-
-//        questionImage.setImageResource(
-//                getResources().getIdentifier(quiz.get(0), "drawble", getPackageName()));
-//        rightAnswer = quiz.get(1);
-
-
-        //remove "image name" from quiz and shuffle choices.
-        quiz.remove(0);
-        Collections.shuffle(quiz);
-
-        //set choices.
-        emotion01.setBackgroundResource(quiz.get(0));
-        emotion02.setBackgroundResource(quiz.get(1));
-        emotion03.setBackgroundResource(quiz.get(2));
-        emotion04.setBackgroundResource(quiz.get(3));
-        emotion05.setBackgroundResource(quiz.get(4));
-        emotion06.setBackgroundResource(quiz.get(5));
-        emotion07.setBackgroundResource(quiz.get(6));
-        emotion08.setBackgroundResource(quiz.get(7));
+        rightAnswer = quiz.get(1);
 
         //remove this quiz from quizArray.
         quizArray.remove(randomNum);
@@ -216,16 +180,31 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
 
     }
 
+    public int getIdFromButton(ImageButton imageButton){
+        int id = imageButton.getId();
+        if(id ==R.id.emotion01){
+            return 1;
+        }else if(id ==R.id.emotion02){
+            return 2;
+        }else if(id ==R.id.emotion03){
+            return 3;
+        }else if(id ==R.id.emotion04){
+            return 4;
+        }else if(id ==R.id.emotion05){
+            return 5;
+        }else if(id ==R.id.emotion06){
+            return 6;
+        }else if(id ==R.id.emotion07){
+            return 7;
+        }else{
+            return 8;
+        }
+    }
+
     @Override
     public void onClick(View view) {
         //get pushed button.
-        //수정
         ImageButton answerBtn = (ImageButton) findViewById(view.getId());
-        String btnText = answerBtn.toString();
-
-//        int btn = Integer.parseInt(answerBtn.toString());
-
-        String alertTitle;
 
         switch(view.getId()){
             case R.id.retry:
@@ -247,38 +226,107 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
                 onBackPressed();
                 return;
         }
-//수정
-        if(btnText.equals(rightAnswer)){
-            //correct!
-            alertTitle = "맞았습니다!";
+
+        int id = getIdFromButton(answerBtn);
+        if(id==rightAnswer){
+
+            CustomDialog custom = new CustomDialog(this, "정답입니다!", getIdText(rightAnswer), getIdResource(rightAnswer), R.drawable.admitbtn);
+
+            custom.setDialogListener(new DialogListenerInterface() {
+                @Override
+                public void onPositiveClicked() {
+                    if(quizArray.size()<1){
+                        //quizArray is empty.
+                        showResult();
+
+                    }
+                    else if(quizCount==10){
+                        showResult();
+                    }
+                    else{
+                        quizCount++;
+                        showNextQuiz();
+                    }
+
+                }
+                @Override
+                public void onNegativeClicked() {
+                }
+            });
+            custom.show();
             rightAnswerCount++;
-        }else{
-            //wrong
-            alertTitle = "다시 생각해보세요.";
+        }else {
+
+            CustomDialog custom = new CustomDialog(this, "다시 생각해보세요!", getIdText(rightAnswer), getIdResource(rightAnswer), R.drawable.admitbtn);
+
+            custom.setDialogListener(new DialogListenerInterface() {
+                @Override
+                public void onPositiveClicked() {
+                    if (quizArray.size() < 1) {
+                        //quizArray is empty.
+                        showResult();
+
+                    } else if (quizCount == 10) {
+                        showResult();
+                    } else {
+                        quizCount++;
+                        showNextQuiz();
+                    }
+
+                }
+
+                @Override
+                public void onNegativeClicked() {
+
+                }
+            });
+            custom.show();
         }
+    }
 
-        //create dialog.
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(alertTitle);
-        builder.setMessage("정답: "+ rightAnswer);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if(quizArray.size()<1){
-                    //quizArray is empty.
-                    showResult();
+    public String getIdText(int id){
+        switch (id){
+            case 1:
+                return "화남";
+            case 2:
+                return "기쁨";
+            case 3:
+                return "싫어함";
+            case 4:
+                return "사랑";
+            case 5:
+                return "슬픔";
+            case 6:
+                return "무서움";
+            case 7:
+                return "놀람";
+            case 8:
+                return "뿌듯함";
+                default:
+                    return "";
+        }
+    }
 
-                }
-                else if(quizCount==10){
-                    showResult();
-                }
-                else{
-                    quizCount++;
-                    showNextQuiz();
-                }
-            }
-        });
-        builder.setCancelable(false);
-        builder.show();
+    public int getIdResource(int id){
+        switch (id){
+            case 1:
+                return R.drawable.angry;
+            case 2:
+                return R.drawable.smile;
+            case 3:
+                return R.drawable.disgust;
+            case 4:
+                return R.drawable.heart;
+            case 5:
+                return R.drawable.sad;
+            case 6:
+                return R.drawable.scary;
+            case 7:
+                return R.drawable.surprised;
+            case 8:
+                return R.drawable.full;
+                default:
+                    return R.drawable.angry;
+        }
     }
 }
