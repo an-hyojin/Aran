@@ -40,29 +40,6 @@ public class StatisticsFrag extends Fragment {
         dayEmotionDBHelper = new DayEmotionDBHelper(getContext());
         sqlDB = dayEmotionDBHelper.getWritableDatabase();
 
-        Cursor smile = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion='기쁨'",null);
-        int smileCnt = smile.getCount();
-        System.out.println("smile"+smile.getCount());
-
-        Cursor sad = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion='슬픔'",null);
-        System.out.println("sad"+sad.getCount());
-        int sadCnt = sad.getCount();
-        Cursor surprise = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion='놀라움'",null);
-        int surpriseCnt = surprise.getCount();
-        Cursor angry = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion='화남'",null);
-        int angryCnt = angry.getCount();
-        Cursor disgust = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion='싫어함'",null);
-        int disgustCnt = disgust.getCount();
-        Cursor heart = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion='사랑'",null);
-        int heartCnt = heart.getCount();
-        Cursor scary = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion='무서움'",null);
-        int scaryCnt = scary.getCount();
-        Cursor full = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion='뿌듯함'",null);
-        int fullCnt = full.getCount();
-        Cursor all = sqlDB.rawQuery("SELECT * FROM dayEmotionDB",null);
-        int allCnt = all.getCount();
-        int etcCnt = allCnt - ( smileCnt + sadCnt + angryCnt + disgustCnt + heartCnt + scaryCnt + fullCnt + surpriseCnt);
-
         pieChart.setUsePercentValues(true);
         pieChart.setTouchEnabled(false);
         pieChart.getDescription().setEnabled(false);
@@ -74,33 +51,41 @@ public class StatisticsFrag extends Fragment {
         pieChart.setHoleColor(Color.WHITE);
         pieChart.setTransparentCircleRadius(61f);
         ArrayList<PieEntry> yValues = new ArrayList<PieEntry>();
+        Cursor all = sqlDB.rawQuery("SELECT * FROM dayEmotionDB",null);
+        int allCnt = all.getCount();
 
-        yValues.add(new PieEntry(smileCnt,"기쁨"));
-        yValues.add(new PieEntry(sadCnt,"슬픔"));
-        yValues.add(new PieEntry(surpriseCnt,"놀라움"));
-        yValues.add(new PieEntry(angryCnt,"화남"));
-        yValues.add(new PieEntry(disgustCnt,"싫어함"));
-        yValues.add(new PieEntry(heartCnt,"사랑"));
-        yValues.add(new PieEntry(scaryCnt,"무서움"));
-        yValues.add(new PieEntry(fullCnt,"뿌듯함"));
-        yValues.add(new PieEntry(etcCnt, "기타"));
+        ArrayList<String> emotionList = new ArrayList<>();
+        ArrayList<Integer> emotionCountList = new ArrayList<>();
+
+        for(Emotion e : Emotion.values()) {
+            Cursor temp = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion = '" + e.name() + "'", null);
+            int count = temp.getCount();
+            if (count != 0) {
+                emotionList.add(e.name());
+                emotionCountList.add(count);
+                allCnt -= count;
+                yValues.add(new PieEntry(count, e.name()));
+            }
+        }
+        yValues.add(new PieEntry(allCnt, "기타"));
         Description description = new Description();
         description.setText("기록한 감정들"); //라벨
         description.setTextSize(15);
         pieChart.setDescription(description);
-
         pieChart.animateY(1000, Easing.EasingOption.EaseInOutCubic); //애니메이션
 
 
-        PieDataSet dataSet = new PieDataSet(yValues,"Countries");
+        PieDataSet dataSet = new PieDataSet(yValues,"감정");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
-        dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+        dataSet.setColors(ColorTemplate.PASTEL_COLORS);
 
         PieData data = new PieData((dataSet));
         data.setValueTextSize(10f);
         data.setValueTextColor(Color.YELLOW);
-
+        listViewAdapter listAdapter = new listViewAdapter(getContext(), emotionList, emotionCountList);
+        listView.setAdapter(listAdapter);
+        listAdapter.notifyDataSetChanged();
         pieChart.setData(data);
         return view;
     }

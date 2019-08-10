@@ -16,11 +16,11 @@ public class GridItem extends LinearLayout {
     TextView title;
     public GridItem(Context context, Bitmap id, Bitmap image, Long date, String emotion) {
         super(context);
-        init(context, id, image, date, emotion);
+        setItem(context, id, image, date, emotion);
     }
 
 
-    public void init(final Context context, Bitmap id, Bitmap image, final Long date, String emotion){
+    public void setItem(final Context context, Bitmap id, Bitmap image, final Long date, String emotion){
         View view = LayoutInflater.from(context).inflate(R.layout.griditem,this);
         btn = (ImageButton)findViewById(R.id.faceButton);
         title = (TextView)findViewById(R.id.emotionGrid);

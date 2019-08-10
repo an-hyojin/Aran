@@ -25,7 +25,7 @@
             android:drawableLeft="@drawable/backbtn"
             android:drawablePadding="8dp"
             android:gravity="left|center_vertical"
-            android:background="@color/colorYellow"
+            style="?android:attr/borderlessButtonStyle"
             />
     </LinearLayout>
     <TextView

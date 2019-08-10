@@ -23,7 +23,7 @@
             android:drawableLeft="@drawable/backbtn"
             android:drawablePadding="8dp"
             android:gravity="left|center_vertical"
-            android:background="@color/colorYellow"
+            style="?android:attr/borderlessButtonStyle"
             />
     </LinearLayout>
     <TextView
@@ -48,17 +48,20 @@
             android:layout_height="80dp"
             android:id="@+id/easy"
             android:layout_margin="10dp"
+            android:autoSizeTextType="uniform"
             android:background="@drawable/out"
             android:text="쉬움"/>
         <Button
             android:layout_margin="10dp"
             android:layout_width="200dp"
             android:layout_height="80dp"
+            android:autoSizeTextType="uniform"
             android:background="@drawable/out"
             android:id="@+id/middle"
             android:text="보통"/>
         <Button
             android:layout_margin="10dp"
+            android:autoSizeTextType="uniform"
             android:layout_width="200dp"
             android:layout_height="80dp"
             android:background="@drawable/out"

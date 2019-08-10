@@ -25,7 +25,7 @@
             android:drawableLeft="@drawable/backbtn"
             android:drawablePadding="8dp"
             android:gravity="left|center_vertical"
-            android:background="@color/colorYellow"
+            style="?android:attr/borderlessButtonStyle"
             />
         <LinearLayout
             android:layout_width="fill_parent"
@@ -41,9 +41,9 @@
                 android:textColor="@color/colorBlack"
                 android:autoSizeTextType="uniform"
                 android:paddingLeft="3dp"
-            android:drawablePadding="8dp"
-            android:drawableLeft="@drawable/retry"
-            android:background="@color/colorYellow" />
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/retry"
+                style="?android:attr/borderlessButtonStyle" />
         </LinearLayout>
     </LinearLayout>
 

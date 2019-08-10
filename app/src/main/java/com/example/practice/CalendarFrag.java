@@ -101,7 +101,7 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
 
                         @Override
                         public void onHeartButtonClicked() {
-                            saveDayEmotion("기쁨");
+                            saveDayEmotion("사랑");
                         }
 
                         @Override
