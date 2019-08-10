@@ -14,7 +14,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class AnimationActivity extends YouTubeBaseActivity implements View.OnClickListener {
 
     YouTubePlayerView youtubeView;
-    ImageButton backBtn;
+    Button backBtn;
     Button button;
     YouTubePlayer.OnInitializedListener listener;
 
@@ -23,7 +23,7 @@ public class AnimationActivity extends YouTubeBaseActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
 
-        backBtn = (ImageButton)findViewById(R.id.back);
+        backBtn = (Button)findViewById(R.id.back);
         backBtn.setOnClickListener(this);
 
         button = (Button) findViewById(R.id.youtubeButton);

@@ -27,13 +27,13 @@ import java.util.ArrayList;
 public class SmallDrawActivity extends AppCompatActivity {
 
     Button clearBtn, drawBtn, saveBtn, blackBtn, redBtn, blueBtn, eraserBtn;
-    ImageButton backBtn;
+    Button backBtn;
     EditText textInput;
     LinearLayout drawLinear;
     ImageView showImg;
     Paint p = new Paint();
     PorterDuffXfermode clear = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-    ArrayList<Point> points = new ArrayList<Point>();
+    ArrayList<Point> points = new ArrayList<>();
     DrawView m;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -47,7 +47,7 @@ public class SmallDrawActivity extends AppCompatActivity {
         redBtn = findViewById(R.id.red);
         blueBtn = findViewById(R.id.blue);
         eraserBtn = findViewById(R.id.eraser);
-        backBtn = (ImageButton)findViewById(R.id.back);
+        backBtn = (Button)findViewById(R.id.back);
         showImg = (ImageView)findViewById(R.id.backgroundImage);
         Intent intent = getIntent();
         byte[] arr = getIntent().getByteArrayExtra("image");

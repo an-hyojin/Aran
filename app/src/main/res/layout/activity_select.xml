@@ -43,25 +43,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
-        <ImageButton
+        <Button
             android:layout_width="200dp"
             android:layout_height="80dp"
             android:id="@+id/easy"
             android:layout_margin="10dp"
-            android:background="@drawable/easylevel"
+            android:background="@drawable/out"
             android:text="쉬움"/>
-        <ImageButton
+        <Button
             android:layout_margin="10dp"
             android:layout_width="200dp"
             android:layout_height="80dp"
-            android:background="@drawable/middlelevel"
+            android:background="@drawable/out"
             android:id="@+id/middle"
             android:text="보통"/>
-        <ImageButton
+        <Button
             android:layout_margin="10dp"
             android:layout_width="200dp"
             android:layout_height="80dp"
-            android:background="@drawable/hardlevel"
+            android:background="@drawable/out"
             android:id="@+id/hard"
             android:text="어려움"/>
     </LinearLayout>

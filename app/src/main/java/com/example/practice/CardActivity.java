@@ -1,16 +1,17 @@
 package com.example.practice;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.Window;
-import android.widget.ImageButton;
+        import android.content.Context;
+        import android.os.Bundle;
+        import android.os.Handler;
+        import android.os.Message;
+        import android.os.SystemClock;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.View;
+        import android.view.Window;
+        import android.widget.Button;
+        import android.widget.ImageButton;
 
-public class HardCardActivity extends AppCompatActivity implements View.OnClickListener {
+public class CardActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int TOTAL_CARD_NUM = 16;
 
     private int[] cardId = {R.id.card01, R.id.card02,R.id.card03,R.id.card04,R.id.card05,R.id.card06,R.id.card07,R.id.card08,R.id.card09,R.id.card10,R.id.card11,R.id.card12,R.id.card13,R.id.card14,R.id.card15,R.id.card16};
@@ -28,7 +29,7 @@ public class HardCardActivity extends AppCompatActivity implements View.OnClickL
 
         setCards();
 
-        CustomDialog dialog = new CustomDialog(this, "감정 카드놀이", "같은 표정을 가진 카드를 짝지어보세요",R.drawable.cards, R.drawable.start);
+        CustomDialog dialog = new CustomDialog(this, "감정 카드놀이", "같은 표정을 가진 카드를 짝지어보세요","시작",R.drawable.cards);
         dialog.setDialogListener(new DialogListenerInterface() {
             @Override
             public void onPositiveClicked() {
@@ -41,8 +42,8 @@ public class HardCardActivity extends AppCompatActivity implements View.OnClickL
             }
         });
         dialog.show();
-        ImageButton retryButton =  findViewById(R.id.retry);
-        ImageButton backButton = findViewById(R.id.back);
+        Button retryButton =  findViewById(R.id.retry);
+        Button backButton = findViewById(R.id.back);
         retryButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
 
@@ -84,7 +85,7 @@ public class HardCardActivity extends AppCompatActivity implements View.OnClickL
                 if (first.value == second.value) {
                     SUCCESS_COUNT++;
                     if (SUCCESS_COUNT == TOTAL_CARD_NUM/2) {
-                        CustomDialog finalDialog = new CustomDialog(this,"게임종료","게임이 끝났습니다.", R.drawable.cards, R.drawable.admitbtn);
+                        CustomDialog finalDialog = new CustomDialog(this,"게임종료","게임이 끝났습니다.","확인", R.drawable.cards);
                         finalDialog.show();
                     }
                     CustomDialog dialog = valueToDialog(first.value, this);
@@ -102,28 +103,28 @@ public class HardCardActivity extends AppCompatActivity implements View.OnClickL
         CustomDialog customDialog;
         switch (value){
             case 0:
-                customDialog = new CustomDialog(context,"기쁨","기쁘거나 좋아서 마음이 벅참", R.drawable.smile, R.drawable.admitbtn);
+                customDialog = new CustomDialog(context,"기쁨","기쁘거나 좋아서 마음이 벅참", "확인",R.drawable.smile);
                 break;
             case 1:
-                customDialog = new CustomDialog(context,"슬픔","가슴 아프거나 불쌍한 생각이 들거나 하여 마음이 아프고 괴로움.", R.drawable.sad, R.drawable.admitbtn);
+                customDialog = new CustomDialog(context,"슬픔","가슴 아프거나 불쌍한 생각이 들거나 하여 마음이 아프고 괴로움.","확인", R.drawable.sad);
                 break;
             case 2:
-                customDialog = new CustomDialog(context,"화남","몹시 못마땅하거나 언짢아서 성을 냄.", R.drawable.angry, R.drawable.admitbtn);
+                customDialog = new CustomDialog(context,"화남","몹시 못마땅하거나 언짢아서 성을 냄.","확인", R.drawable.angry);
                 break;
             case 3:
-                customDialog = new CustomDialog(context,"싫어함(증오)","마음에 들지 않거나 나쁘게 생각하여 가까이하거나 가지거나 받아들이고 싶지 않음.", R.drawable.disgust, R.drawable.admitbtn);
+                customDialog = new CustomDialog(context,"싫어함(증오)","마음에 들지 않거나 나쁘게 생각하여 가까이하거나 가지거나 받아들이고 싶지 않음.","확인", R.drawable.disgust);
                 break;
             case 4:
-                customDialog = new CustomDialog(context,"뿌듯함","욕구가 충족되었을 때의 흐뭇하고 흡족한 마음이나 느낌.", R.drawable.full, R.drawable.admitbtn);
+                customDialog = new CustomDialog(context,"뿌듯함","욕구가 충족되었을 때의 흐뭇하고 흡족한 마음이나 느낌.", "확인",R.drawable.full);
                 break;
             case 5:
-                customDialog = new CustomDialog(context,"놀람","기대하지 않던 일을 겪게 될 때 느끼는 감정.", R.drawable.surprised, R.drawable.admitbtn);
+                customDialog = new CustomDialog(context,"놀람","기대하지 않던 일을 겪게 될 때 느끼는 감정.", "확인",R.drawable.surprised);
                 break;
             case 6:
-                customDialog = new CustomDialog(context,"사랑","남을 돕고 이해하고 가까이하려는 마음.", R.drawable.heart, R.drawable.admitbtn);
+                customDialog = new CustomDialog(context,"사랑","남을 돕고 이해하고 가까이하려는 마음.","확인", R.drawable.heart);
                 break;
             case 7:
-                customDialog = new CustomDialog(context, "무서움","어떤것에 대하여 두려운 느낌이 있고 무슨일이 일어날까봐 겁남.", R.drawable.scary, R.drawable.admitbtn);
+                customDialog = new CustomDialog(context, "무서움","어떤것에 대하여 두려운 느낌이 있고 무슨일이 일어날까봐 겁남.", "확인",R.drawable.scary);
                 break;
             default:
                 customDialog = null;

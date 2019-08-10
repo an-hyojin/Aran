@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class CalendarActivity extends AppCompatActivity {
     Button bt1,bt2,bt3;
+    Button back;
     FragmentManager fm;
     FragmentTransaction tran;
     TipFrag tipFrag;
@@ -22,6 +23,13 @@ public class CalendarActivity extends AppCompatActivity {
         bt1 = (Button) findViewById(R.id.bt1);
         bt2 = (Button) findViewById(R.id.bt2);
         bt3 = (Button) findViewById(R.id.bt3);
+        back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         tipFrag = new TipFrag(); //프래그먼트 객채셍성
         calendarFrag = new CalendarFrag(); //프래그먼트 객채셍성
         statisticsFrag = new StatisticsFrag();

@@ -4,14 +4,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 public class RetryDialog extends Dialog implements  View.OnClickListener {
-    ImageButton positiveBtn;
-    ImageButton negativeBtn;
+    Button positiveBtn;
+    Button negativeBtn;
     TextView textView;
     TextView title;
     DialogListenerInterface customDialogLister;
@@ -19,8 +20,8 @@ public class RetryDialog extends Dialog implements  View.OnClickListener {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.retrydialog);
-        positiveBtn = (ImageButton)findViewById(R.id.positiveBtn);
-        negativeBtn = (ImageButton)findViewById(R.id.negativeBtn);
+        positiveBtn = (Button)findViewById(R.id.positiveBtn);
+        negativeBtn = (Button)findViewById(R.id.negativeBtn);
         textView = (TextView)findViewById(R.id.text);
         title = (TextView)findViewById(R.id.title);
         positiveBtn.setOnClickListener(this);

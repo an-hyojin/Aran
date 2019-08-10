@@ -29,7 +29,7 @@ public class ImageActivity extends Activity {
     String emotion;
     Button removeBtn;
 
-    ImageButton backBtn;
+    Button backBtn;
     ImageView photoView, drawingView;
     TextView emotionView, dateView;
 
@@ -44,7 +44,7 @@ public class ImageActivity extends Activity {
         emotionView = (TextView)findViewById(R.id.emotion);
         dateView = (TextView)findViewById(R.id.date);
         removeBtn = (Button)findViewById(R.id.remove);
-        backBtn = (ImageButton)findViewById(R.id.back);
+        backBtn = (Button)findViewById(R.id.back);
         Intent intent = getIntent();
         final Long key = intent.getLongExtra("dateKey", 0);
         SimpleDateFormat dayTime = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");

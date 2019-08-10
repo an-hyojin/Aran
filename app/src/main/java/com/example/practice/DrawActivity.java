@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<String> emotionList;
     ArrayList<Long> dateList;
 
-    ImageButton backBtn, addBtn;
+    Button backBtn, addBtn;
     GridView gridView;
     GridAdapter adapter;
     SQLiteDatabase sqlDB;
@@ -38,13 +39,13 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
-        backBtn = (ImageButton)findViewById(R.id.back);
+        backBtn = (Button)findViewById(R.id.back);
         backBtn.setOnClickListener(this);
-        addBtn = (ImageButton)findViewById(R.id.add);
+        addBtn = (Button)findViewById(R.id.add);
         addBtn.setOnClickListener(this);
         gridView = (GridView)findViewById(R.id.gridView);
         init();
-        CustomDialog dialog = new CustomDialog(this, "감정 따라그리기", "갤러리에서 사진을 선택한 후 그때 느낀 감정을 따라 그려보세요", R.drawable.drawing, R.drawable.start);
+        CustomDialog dialog = new CustomDialog(this, "감정 따라그리기", "갤러리에서 사진을 선택한 후 그때 느낀 감정을 따라 그려보세요","확인", R.drawable.drawing);
 
         dialog.show();
 

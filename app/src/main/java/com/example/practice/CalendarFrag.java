@@ -111,7 +111,7 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
                     });
                     dayEmotionDialog.show();
                 }else{
-                    CustomDialog customDialog = new CustomDialog(getContext(),"이미 감정을 입력했습니다.","감정은 하루에 한번만 입력할 수 있습니다.",R.drawable.drawing,R.drawable.admitbtn);
+                    CustomDialog customDialog = new CustomDialog(getContext(),"이미 감정을 입력했습니다.","감정은 하루에 한번만 입력할 수 있습니다.","확인",R.drawable.surprised);
                     customDialog.show();
                 }
             }
@@ -154,11 +154,6 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
 
         calendar.add(Calendar.MONTH, 1);
 
-        if(dayOfMonth == SUNDAY)
-        {
-            dayOfMonth += 7;
-        }
-
         lastMonthStartDay -= (dayOfMonth-1)-1;
 
 
@@ -168,19 +163,7 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
         dayEmotionDBHelper = new DayEmotionDBHelper(getContext());
         sqlDB = dayEmotionDBHelper.getWritableDatabase();
 
-/*
-        SQLiteStatement p1 = sqlDB.compileStatement("INSERT INTO dayEmotionDB VALUES (?,?, ?, ?,?);");
 
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
-        String str = dayTime.format(today);
-        String[] infos = str.split("-");
-        p1.bindString(1, str);
-        p1.bindLong(2, Long.valueOf(infos[0]));
-        p1.bindLong(3, Long.valueOf(infos[1]));
-        p1.bindLong(4, Long.valueOf(infos[2]));
-        p1.bindString(5, "뿌듯함");
-        p1.execute();
-*/
         DayInfo day;
         Cursor cursor = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE (year="+mThisMonthCalendar.get(Calendar.YEAR)+" and month="+(mThisMonthCalendar.get(Calendar.MONTH) + 1)+") ORDER BY day;", null);
 
@@ -188,13 +171,6 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
         cursor.moveToFirst();
 
 
-
-//        if(cursor.getCount()!=0){
-//            cursor.moveToFirst();
-//
-//            System.out.println("들어옴1");
-//
-//        }
         for(int i=0; i<dayOfMonth-1; i++) {//이번 달 이전
 
             day = new DayInfo();
