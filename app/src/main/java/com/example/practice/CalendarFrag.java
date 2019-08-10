@@ -23,7 +23,7 @@ import java.util.Date;
 public class CalendarFrag extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
     View view;
     public static int SUNDAY        = 1;
-
+    Date date;
     DayEmotionDBHelper dayEmotionDBHelper;
     private TextView mTvCalendarTitle;
     private GridView mGvCalendar;
@@ -39,6 +39,7 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
         view = inflater.inflate(R.layout.calendar, container, false);
         Button bLastMonth = view.findViewById(R.id.gv_calendar_activity_b_last);
         Button bNextMonth =view.findViewById(R.id.gv_calendar_activity_b_next);
+        Button addEmotion = view.findViewById(R.id.addDayemotion);
 
         mTvCalendarTitle = view.findViewById(R.id.gv_calendar_activity_tv_title);
         mGvCalendar =view.findViewById(R.id.gv_calendar_activity_gv_calendar);
@@ -52,9 +53,88 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
         mThisMonthCalendar = Calendar.getInstance();
         mThisMonthCalendar.set(Calendar.DAY_OF_MONTH, 1);
         getCalendar(mThisMonthCalendar);
+        addEmotion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DayEmotionDBHelper dayEmotionDBHelper = new DayEmotionDBHelper(getContext());
+                sqlDB = dayEmotionDBHelper.getWritableDatabase();
+                date = new Date();
+                SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
+                String str = dayTime.format(date);
+                String[] infos = str.split("-");
+                Long year = Long.valueOf(infos[0]);
+                Long month = Long.valueOf(infos[1]);
+                Long day = Long.valueOf(infos[2]);
+                Cursor temp = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE (year="+year+" and month="+month+" and day =" + day +");", null);
+                if(temp.getCount()==0) {
+                    DayEmotionDialog dayEmotionDialog = new DayEmotionDialog(getContext());
+                    dayEmotionDialog.setDayEmotionDialogListener(new DayEmotionDialogListener() {
+                        @Override
+                        public void onSmileButtonClicked() {
+                            saveDayEmotion("기쁨");
+                        }
+
+                        @Override
+                        public void onAngryButtonClicked() {
+                            saveDayEmotion("화남");
+                        }
+
+                        @Override
+                        public void onSadButtonClicked() {
+                            saveDayEmotion("슬픔");
+                        }
+
+                        @Override
+                        public void onFullButtonClicked() {
+                            saveDayEmotion("뿌듯함");
+                        }
+
+                        @Override
+                        public void onDisgustButtonClicked() {
+                            saveDayEmotion("싫어함");
+                        }
+
+                        @Override
+                        public void onSurprisedButtonClicked() {
+                            saveDayEmotion("놀라움");
+                        }
+
+                        @Override
+                        public void onHeartButtonClicked() {
+                            saveDayEmotion("기쁨");
+                        }
+
+                        @Override
+                        public void onScaryButtonClicked() {
+                            saveDayEmotion("무서움");
+                        }
+                    });
+                    dayEmotionDialog.show();
+                }else{
+                    CustomDialog customDialog = new CustomDialog(getContext(),"이미 감정을 입력했습니다.","감정은 하루에 한번만 입력할 수 있습니다.",R.drawable.drawing,R.drawable.admitbtn);
+                    customDialog.show();
+                }
+            }
+        });
         return view;
     }
+    private void saveDayEmotion(String emotion){
+        dayEmotionDBHelper = new DayEmotionDBHelper(getContext());
+        sqlDB = dayEmotionDBHelper.getWritableDatabase();
 
+        SQLiteStatement p1 = sqlDB.compileStatement("INSERT INTO dayEmotionDB VALUES (?,?, ?, ?,?);");
+
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
+        String str = dayTime.format(date);
+        String[] infos = str.split("-");
+        p1.bindString(1, str);
+        p1.bindLong(2, Long.valueOf(infos[0]));
+        p1.bindLong(3, Long.valueOf(infos[1]));
+        p1.bindLong(4, Long.valueOf(infos[2]));
+        p1.bindString(5, emotion);
+        p1.execute();
+        getCalendar(mThisMonthCalendar);
+    }
     private void getCalendar(Calendar calendar)
     {
         int lastMonthStartDay;
@@ -116,9 +196,9 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
 //
 //        }
         for(int i=0; i<dayOfMonth-1; i++) {//이번 달 이전
-            int date = lastMonthStartDay+i;
+
             day = new DayInfo();
-            day.setDay(Integer.toString(date));
+            day.setDay("");
             day.setInMonth(false);
 
             mDayList.add(day);
@@ -133,17 +213,10 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
                     cursor.moveToNext();
                 }
            }
-
             mDayList.add(day);
 
         }
-        for(int i=1; i<42-(thisMonthLastDay+dayOfMonth-1)+1; i++) {//다음달
-            day = new DayInfo();
-            day.setDay(Integer.toString(i));
-            day.setInMonth(false);
-            mDayList.add(day);
-        }
-
+        cursor.close();
         initCalendarAdapter();
     }
 
