@@ -25,19 +25,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
-    <ImageButton
+    <Button
         android:id="@+id/positiveBtn"
         android:layout_height="60dp"
         android:layout_width="90dp"
-        android:background="@drawable/yesbtn"
+        android:text="네"
+        android:textColor="@color/colorBlack"
+        android:textSize="26dp"
+        android:background="@drawable/out"
         android:layout_margin="15dp"
        />
 
-    <ImageButton
+    <Button
         android:id="@+id/negativeBtn"
         android:layout_height="60dp"
         android:layout_width="90dp"
         android:layout_margin="15dp"
-        android:background="@drawable/nobtn"/>
+        android:text="아니요"
+        android:textColor="@color/colorBlack"
+        android:textSize="26dp"
+        android:background="@drawable/out"/>
     </LinearLayout>
 </LinearLayout>
