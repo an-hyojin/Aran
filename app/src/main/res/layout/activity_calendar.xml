@@ -42,47 +42,47 @@
         android:layout_height="match_parent"
         android:weightSum="10"
         android:orientation="vertical">
-    <FrameLayout
-        android:layout_weight="9"
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_weight="9"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </FrameLayout>
-    <LinearLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/bt1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+        </FrameLayout>
+        <LinearLayout
             android:layout_weight="1"
-            android:text="캘린더" />
-
-        <Button
-            android:id="@+id/bt2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:text="통계" />
+            android:gravity="bottom"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/bt3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:text="육아팁" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/bt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="캘린더" />
+
+            <Button
+                android:id="@+id/bt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="통계" />
+
+            <Button
+                android:id="@+id/bt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="육아팁" />
+        </LinearLayout>
 
     </LinearLayout>
 

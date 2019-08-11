@@ -10,7 +10,10 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.Button;
+=======
+>>>>>>> 654615afa0eefd8ea4e2a5583f348d7debb6aebd
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -27,7 +30,11 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<String> emotionList;
     ArrayList<Long> dateList;
 
+<<<<<<< HEAD
     Button backBtn, addBtn;
+=======
+    ImageButton backBtn, addBtn;
+>>>>>>> 654615afa0eefd8ea4e2a5583f348d7debb6aebd
     GridView gridView;
     GridAdapter adapter;
     SQLiteDatabase sqlDB;
@@ -39,6 +46,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
+<<<<<<< HEAD
         backBtn = (Button)findViewById(R.id.back);
         backBtn.setOnClickListener(this);
         addBtn = (Button)findViewById(R.id.add);
@@ -46,6 +54,15 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         gridView = (GridView)findViewById(R.id.gridView);
         init();
         CustomDialog dialog = new CustomDialog(this, "감정 따라그리기", "갤러리에서 사진을 선택한 후 그때 느낀 감정을 따라 그려보세요","확인", R.drawable.drawing);
+=======
+        backBtn = (ImageButton)findViewById(R.id.back);
+        backBtn.setOnClickListener(this);
+        addBtn = (ImageButton)findViewById(R.id.add);
+        addBtn.setOnClickListener(this);
+        gridView = (GridView)findViewById(R.id.gridView);
+        init();
+        CustomDialog dialog = new CustomDialog(this, "감정 따라그리기", "갤러리에서 사진을 선택한 후 그때 느낀 감정을 따라 그려보세요", R.drawable.drawing, R.drawable.start);
+>>>>>>> 654615afa0eefd8ea4e2a5583f348d7debb6aebd
 
         dialog.show();
 
@@ -129,6 +146,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                         intent.putExtra("image",realByte);
                         startActivityForResult(intent,DRAW_AND_SAVE );
                     }
+<<<<<<< HEAD
                     break;
                 case DRAW_AND_SAVE:
                     Bundle extras2 = data.getExtras();
@@ -158,10 +176,45 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
              }
+=======
+                    break;
+                case DRAW_AND_SAVE:
+                    Bundle extras2 = data.getExtras();
+                    if(extras2!=null){
+                        drawByte = extras2.getByteArray("drawing");
+                        String emotion = extras2.getString("emotion");
+                        Toast.makeText(this, emotion, Toast.LENGTH_SHORT).show();
+                        drawImage =BitmapFactory.decodeByteArray(drawByte,0, drawByte.length);
+                        sqlDB = faceDBHelper.getWritableDatabase();
+                        SQLiteStatement p = sqlDB.compileStatement("INSERT INTO faceTBL VALUES (?,?, ?, ?);");
+                        Date date = new Date();
+                        p.bindLong(1, date.getTime());
+                        p.bindString(2, emotion);
+                        p.bindBlob(3, drawByte);
+                        p.bindBlob(4, realByte);
+                        p.execute();
+                        sqlDB.close();
+                        emotionList.add(emotion);
+                        dateList.add(date.getTime());
+                        imgList.add(drawImage);
+                        idList.add(realPhoto);
+                        adapter = new GridAdapter(this, imgList, idList, dateList, emotionList);
+                        gridView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+                default:
+                    break;
+
+            }
+>>>>>>> 654615afa0eefd8ea4e2a5583f348d7debb6aebd
         }
     }
 
     public Bitmap getBitmapBybyte(byte[] b){
         return BitmapFactory.decodeByteArray(b, 0, b.length);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 654615afa0eefd8ea4e2a5583f348d7debb6aebd

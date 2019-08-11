@@ -10,7 +10,7 @@
         android:layout_height="60dp"
         android:background="@drawable/titile"
         android:orientation="horizontal"
-        tools:context=".CardActivity"
+        tools:context=".HardCardActivity"
         >
 
         <Button

@@ -16,7 +16,7 @@ public class CalendarActivity extends AppCompatActivity {
     CalendarFrag calendarFrag;
     StatisticsFrag statisticsFrag;
 
-@Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
@@ -71,4 +71,3 @@ public class CalendarActivity extends AppCompatActivity {
     }
 
 }
-

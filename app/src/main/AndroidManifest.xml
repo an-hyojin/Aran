@@ -15,13 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <activity android:name=".CardActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".DrawActivity" />
         <activity android:name=".AnimationActivity" />
-        <activity android:name=".MatchEmotionActivity" />
-        <activity android:name=".StickerBookActivity" />
+        <activity android:name=".MatchEmotionActivity"/>
+	    <activity android:name=".StickerBookActivity" />
         <activity android:name=".EasyCardActivity" />
         <activity android:name=".MiddleCardActivity" />
         <activity android:name=".SelectActivity" />

@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button button1, button2, button3,button4,button5,button6;
+    Button button1,button2,button3,button4,button5,button6;
     @Override
     // 액티비티가 생성되는 순간에 딱 한번 호출
     // 모든 초기화와 사용자 인터페이스 설정이 여기에 들어감
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn4:
-                intent = new Intent(this, AnimationActivity.class);
+                intent = new Intent(this, SingAndAnimationSelectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn5:

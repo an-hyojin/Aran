@@ -1,7 +1,6 @@
 package com.example.practice;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -33,7 +32,9 @@ public class AnimationActivity extends YouTubeBaseActivity implements View.OnCli
 
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("hJorGesHoFQ&t=593s");
+
+                
+                youTubePlayer.loadVideo("0_95kpvfQEg");
             }//유튜브 로드 성공했을 때
 
             @Override
@@ -43,7 +44,6 @@ public class AnimationActivity extends YouTubeBaseActivity implements View.OnCli
         };
 
         button.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 youtubeView.initialize("AIzaSyDjVs7eH1IZAxpoEjufARWr_sMrM8KbV98", listener);
