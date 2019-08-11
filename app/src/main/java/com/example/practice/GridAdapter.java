@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -41,11 +43,16 @@ public class GridAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
             convertView = new GridItem(context, img.get(position), id.get(position), date.get(position), emotion.get(position));
+            int width = getWidthDP();
+            int height =(int)( 1.1*width);
+            convertView.setLayoutParams(new GridView.LayoutParams(width,height));
         };
-        final int positionF = position;
         return convertView;
 
 
+    }
+    private int getWidthDP(){
+        return  (int)((context.getResources().getDisplayMetrics().widthPixels)/(3.2));
     }
 
 

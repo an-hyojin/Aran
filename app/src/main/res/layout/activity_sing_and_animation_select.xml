@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorYellow"
+        android:orientation="horizontal"
+        tools:context=".SingAndAnimationSelectActivity">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:text="이전으로"
+            android:textColor="@color/colorBlack"
+            android:autoSizeTextType="uniform"
+            android:paddingLeft="3dp"
+            android:drawableLeft="@drawable/backbtn"
+            android:drawablePadding="8dp"
+            android:gravity="left|center_vertical"
+            style="?android:attr/borderlessButtonStyle"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:layout_width="match_parent"
+            android:text="골라주세여"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/animationButtonn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/animation_act" />
+        <Button
+            android:id="@+id/singButtonn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sing_act" />
+    </LinearLayout>
+
+
+</LinearLayout>

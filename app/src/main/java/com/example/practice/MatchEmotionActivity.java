@@ -31,8 +31,8 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
     private ImageButton emotion06;
     private ImageButton emotion07;
     private ImageButton emotion08;
-    private ImageButton retryButton;
-    private ImageButton backButton;
+    private Button retryButton;
+    private Button backButton;
 
     private int rightAnswer;
     private int rightAnswerCount = 0;
@@ -117,11 +117,11 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_emotion);
-        backBtn = (Button)findViewById(R.id.back);
-        backBtn.setOnClickListener(this);
+        backButton = (Button)findViewById(R.id.back);
 
-        retryButton = (ImageButton) findViewById(R.id.retry);
-        backButton = (ImageButton) findViewById(R.id.back);
+
+        retryButton = (Button) findViewById(R.id.retry);
+
         retryButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
 
@@ -207,7 +207,6 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         //get pushed button.
-        ImageButton answerBtn = (ImageButton) findViewById(view.getId());
 
         switch(view.getId()){
             case R.id.retry:
@@ -229,11 +228,12 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
                 onBackPressed();
                 return;
         }
+        ImageButton answerBtn = (ImageButton) findViewById(view.getId());
 
         int id = getIdFromButton(answerBtn);
         if(id==rightAnswer){
 
-            CustomDialog custom = new CustomDialog(this, "정답입니다!","확인", getIdText(rightAnswer), getIdResource(rightAnswer));
+            CustomDialog custom = new CustomDialog(this, "정답입니다!",getIdText(rightAnswer),"확인", getIdResource(rightAnswer));
 
             custom.setDialogListener(new DialogListenerInterface() {
                 @Override
@@ -260,7 +260,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
             rightAnswerCount++;
         }else {
 
-            CustomDialog custom = new CustomDialog(this, "다시 생각해보세요!","확인", getIdText(rightAnswer), getIdResource(rightAnswer));
+            CustomDialog custom = new CustomDialog(this, "다시 생각해보세요!", getIdText(rightAnswer),"확인", getIdResource(rightAnswer));
 
             custom.setDialogListener(new DialogListenerInterface() {
                 @Override
