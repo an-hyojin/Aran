@@ -31,6 +31,7 @@ public class SmallDrawActivity extends AppCompatActivity {
     EditText textInput;
     LinearLayout drawLinear;
     ImageView showImg;
+
     PorterDuffXfermode clear = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
 
     DrawView drawView;
@@ -52,11 +53,9 @@ public class SmallDrawActivity extends AppCompatActivity {
 
         byte[] arr = getIntent().getByteArrayExtra("image");
         Bitmap img = BitmapFactory.decodeByteArray(arr, 0, arr.length);
-       // showImg.setImageBitmap(img);
+        showImg.setImageBitmap(img);
 
         drawLinear = (LinearLayout)findViewById(R.id.drawLayout);
-        drawView = new DrawView(this);
-        drawLinear.addView(drawView);
         clearBtn = (Button)findViewById(R.id.clear);
         clearBtn.setOnClickListener(new View.OnClickListener() { //지우기 버튼 눌렸을때
             @Override
@@ -123,25 +122,41 @@ public class SmallDrawActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus){
+        if(hasFocus &&drawView==null){
+            if(drawLinear != null){
+                drawView = new DrawView(this, drawLinear.getMeasuredWidth(), drawLinear.getMeasuredHeight());
+                drawLinear.addView(drawView);
+            }
+        }
+        super.onWindowFocusChanged(hasFocus);
+    }
 
 
 
     class DrawView extends View {
         PorterDuffXfermode clear = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
         Path drawLine;
-        Canvas canvas = new Canvas();
+        Canvas canvas;
         Paint paint;
+        Bitmap drawingSpace;
+
         int x,y;
-        float pointX = -1, pointY = -1;
+        int pointX = -1;
+        int pointY = -1;
         int color = Color.BLACK;
         PorterDuffXfermode use = null;
-        public DrawView(Context context) {
+        public DrawView(Context context, int width, int height) {
             super(context);
+
+            drawingSpace = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            canvas = new Canvas(drawingSpace);
             paint = new Paint();
             paint.setColor(Color.BLACK);
             paint.setStrokeWidth(15);
             paint.setStyle(Paint.Style.STROKE);
-
+            drawLine =new Path();
         }
 
         public void setColorAndEraser(int color,PorterDuffXfermode type){
@@ -150,13 +165,15 @@ public class SmallDrawActivity extends AppCompatActivity {
         }
 
         public void clear(){
-            drawLine.reset();
+            canvas = new Canvas(drawingSpace);
             invalidate();
         }
 
         @Override
         protected  void onDraw(Canvas canvas){
-            canvas.drawLine(pointX, pointY, x, y, paint);
+            if(drawingSpace!= null){
+                canvas.drawBitmap(drawingSpace,0 ,0,null);
+            }
         }
 
         @Override
@@ -165,15 +182,19 @@ public class SmallDrawActivity extends AppCompatActivity {
             y = (int) event.getY(0);
             switch (event.getAction()){
                 case MotionEvent.ACTION_DOWN:
+                    drawLine.reset();
+                    drawLine.moveTo(x,y);
                     pointX = x;
                     pointY = y;
                     break;
                 case MotionEvent.ACTION_MOVE:
                    if(pointX != -1) {
-                       invalidate();
                        pointX = x;
                        pointY = y;
+                       drawLine.lineTo(x,y);
+                       canvas.drawPath(drawLine, paint);
                    }
+                   invalidate();
                     break;
                 case MotionEvent.ACTION_UP:
                     if(pointX != -1){

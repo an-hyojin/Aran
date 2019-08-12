@@ -89,14 +89,18 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <Button
                     android:id="@+id/emotion01"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="4dip"
                     android:layout_weight="1"
-                    android:background="@drawable/angrycard"
-                    android:onClick="onClick" />
+                    android:background="@drawable/level"
+                    android:drawableLeft="@drawable/angry_drawable"
+                    android:drawablePadding="8dp"
+                    android:onClick="onClick"
+                    android:paddingLeft="3dp"
+                    android:text="화남" />
 
                 <ImageButton
                     android:id="@+id/emotion02"
