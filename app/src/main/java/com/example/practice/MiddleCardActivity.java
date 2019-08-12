@@ -26,7 +26,7 @@ public class MiddleCardActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_easy_card);
+        setContentView(R.layout.activity_middle_card);
 
         setCards();
 

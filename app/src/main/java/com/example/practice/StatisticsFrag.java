@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 public class StatisticsFrag extends Fragment {
     View view;
     PieChart pieChart;
+    ScrollView scrollView;
     ListView listView;
     SQLiteDatabase sqlDB;
     DayEmotionDBHelper dayEmotionDBHelper;
@@ -35,7 +38,7 @@ public class StatisticsFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.statistics, container, false);
         pieChart = (PieChart)view.findViewById(R.id.piechart);
-
+        scrollView = (ScrollView)view.findViewById(R.id.scrollView);
         listView = (ListView)view.findViewById(R.id.listView);
         dayEmotionDBHelper = new DayEmotionDBHelper(getContext());
         sqlDB = dayEmotionDBHelper.getWritableDatabase();
@@ -87,6 +90,13 @@ public class StatisticsFrag extends Fragment {
         listView.setAdapter(listAdapter);
         listAdapter.notifyDataSetChanged();
         pieChart.setData(data);
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
         return view;
     }
 }
