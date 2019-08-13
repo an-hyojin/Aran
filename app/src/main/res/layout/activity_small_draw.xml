@@ -102,11 +102,16 @@
             android:layout_height="wrap_content"
             android:text="이때느낀 감정은 무엇인가요?  "
           />
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emotion"
             android:text="감정을 입력하세요"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputEmotion"
+            android:text="입력"/>
     </LinearLayout>
 
 </LinearLayout>

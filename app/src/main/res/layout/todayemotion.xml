@@ -7,12 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <ImageButton
+            android:layout_margin="5dp"
             android:id="@+id/smile"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/smile"/>
         <ImageButton
+            android:layout_margin="5dp"
             android:id="@+id/sad"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -48,7 +50,6 @@
             android:background="@drawable/scary"/>
     </LinearLayout>
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <ImageButton
@@ -63,11 +64,38 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/surprised"/>
-        </LinearLayout>
-    <ImageButton
+        <ImageButton
+            android:id="@+id/etc"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/what_emotion"/>
+    </LinearLayout>
+    <EditText
+        android:layout_gravity="center"
+        android:id="@+id/emotionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ></EditText>
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <Button
+        android:layout_margin="5dp"
         android:id="@+id/admit"
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/admitbtn"/>
+        android:text="확인"
+        android:background="@drawable/buttonborder"/>
+    <Button
+        android:layout_margin="5dp"
+        android:id="@+id/dismiss"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:text="취소"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/buttonborder"/>
+</LinearLayout>
 </LinearLayout>

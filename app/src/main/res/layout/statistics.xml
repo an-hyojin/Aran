@@ -14,15 +14,15 @@
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/piechart"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3">
+                android:layout_height="match_parent"
+                android:layout_weight="2">
             </com.github.mikephil.charting.charts.PieChart>
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"></ListView>
+            android:layout_height="match_parent"
+            android:layout_weight="3"></ListView>
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

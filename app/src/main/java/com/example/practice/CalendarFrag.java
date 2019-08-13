@@ -22,7 +22,6 @@ import java.util.Date;
 
 public class CalendarFrag extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
     View view;
-    public static int SUNDAY        = 1;
     Date date;
     DayEmotionDBHelper dayEmotionDBHelper;
     private TextView mTvCalendarTitle;
@@ -53,6 +52,20 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
         mThisMonthCalendar = Calendar.getInstance();
         mThisMonthCalendar.set(Calendar.DAY_OF_MONTH, 1);
         getCalendar(mThisMonthCalendar);
+        sqlDB = dayEmotionDBHelper.getWritableDatabase();
+//
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-01,2019,08,01,'싫어함')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-02,2019,08,02,'사랑')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-03,2019,08,03,'기쁨')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-04,2019,08,04,'기쁨')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-05,2019,08,05,'죄책감')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-06,2019,08,06,'싫어함')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-07,2019,08,07,'슬픔')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-08,2019,08,08,'기쁨')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-09,2019,08,09,'기쁨')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-10,2019,08,10,'놀라움')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-11,2019,08,11,'무서움')");
+//        sqlDB.execSQL("INSERT INTO dayEmotionDB VALUES (2019-08-12,2019,08,12,'뿌듯함')");
         addEmotion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,44 +83,14 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
                     DayEmotionDialog dayEmotionDialog = new DayEmotionDialog(getContext());
                     dayEmotionDialog.setDayEmotionDialogListener(new DayEmotionDialogListener() {
                         @Override
-                        public void onSmileButtonClicked() {
-                            saveDayEmotion("기쁨");
+                        public void onPositiveButtonClicked(String emotion) {
+                            saveDayEmotion(emotion);
                         }
 
                         @Override
-                        public void onAngryButtonClicked() {
-                            saveDayEmotion("화남");
+                        public void onNegativeButtonClicked() {
                         }
 
-                        @Override
-                        public void onSadButtonClicked() {
-                            saveDayEmotion("슬픔");
-                        }
-
-                        @Override
-                        public void onFullButtonClicked() {
-                            saveDayEmotion("뿌듯함");
-                        }
-
-                        @Override
-                        public void onDisgustButtonClicked() {
-                            saveDayEmotion("싫어함");
-                        }
-
-                        @Override
-                        public void onSurprisedButtonClicked() {
-                            saveDayEmotion("놀라움");
-                        }
-
-                        @Override
-                        public void onHeartButtonClicked() {
-                            saveDayEmotion("사랑");
-                        }
-
-                        @Override
-                        public void onScaryButtonClicked() {
-                            saveDayEmotion("무서움");
-                        }
                     });
                     dayEmotionDialog.show();
                 }else{
@@ -133,6 +116,7 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
         p1.bindLong(4, Long.valueOf(infos[2]));
         p1.bindString(5, emotion);
         p1.execute();
+
         getCalendar(mThisMonthCalendar);
     }
     private void getCalendar(Calendar calendar)

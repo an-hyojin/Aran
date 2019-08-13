@@ -55,6 +55,8 @@
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
             android:layout_width="match_parent"
+
+            android:textColor="@color/colorBlack"
             android:text="@string/card_act"/>
 
     </LinearLayout>

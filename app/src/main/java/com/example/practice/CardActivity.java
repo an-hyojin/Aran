@@ -11,6 +11,9 @@ package com.example.practice;
         import android.widget.Button;
         import android.widget.ImageButton;
 
+        import java.util.ArrayList;
+        import java.util.Random;
+
 public class CardActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int TOTAL_CARD_NUM = 16;
 

@@ -51,6 +51,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
                 android:text="보고 그린 사진"/>
              <ImageView
                 android:id="@+id/photo"
@@ -60,6 +61,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
                 android:text="그린 그림"/>
             <ImageView
                 android:id="@+id/drawing"
@@ -72,10 +74,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
                 android:text="이때 느낀 감정 : "/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
                 android:id="@+id/emotion"/>
             <Button
                 android:layout_width="wrap_content"

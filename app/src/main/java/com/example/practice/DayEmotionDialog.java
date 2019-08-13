@@ -2,12 +2,17 @@ package com.example.practice;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.InputType;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class DayEmotionDialog extends Dialog implements  View.OnClickListener{
-    ImageButton smile, sad, angry,  heart, full, surprised, disgust, scary;
+    ImageButton smile, sad, angry,  heart, full, surprised, disgust, scary,etc;
+    Button positiveButton, dismissButton;
+    EditText emotionShow;
     DayEmotionDialogListener dayEmotionDialogListener;
     public DayEmotionDialog(Context context) {
         super(context);
@@ -29,7 +34,14 @@ public class DayEmotionDialog extends Dialog implements  View.OnClickListener{
         disgust.setOnClickListener(this);
         scary = findViewById(R.id.scary);
         scary.setOnClickListener(this);
-
+        etc = findViewById(R.id.etc);
+        etc.setOnClickListener(this);
+        emotionShow = findViewById(R.id.emotionText);
+        emotionShow.setInputType(InputType.TYPE_NULL);
+        positiveButton = findViewById(R.id.admit);
+        positiveButton.setOnClickListener(this);
+        dismissButton = findViewById(R.id.dismiss);
+        dismissButton.setOnClickListener(this);
 
     }
     public void setDayEmotionDialogListener(DayEmotionDialogListener dayEmotionDialogListener){
@@ -40,35 +52,47 @@ public class DayEmotionDialog extends Dialog implements  View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.smile:
-                dayEmotionDialogListener.onSmileButtonClicked();
-                dismiss();
+                emotionShow.setText(Emotion.기쁨.name());
+                emotionShow.setInputType(InputType.TYPE_NULL);
+
                 break;
             case R.id.sad:
-                dayEmotionDialogListener.onSadButtonClicked();
-                dismiss();
+                emotionShow.setText(Emotion.슬픔.name());
+                emotionShow.setInputType(InputType.TYPE_NULL);
                 break;
             case R.id.surprise:
-                dayEmotionDialogListener.onSurprisedButtonClicked();
-                dismiss();
+                emotionShow.setText(Emotion.놀라움.name());
+                emotionShow.setInputType(InputType.TYPE_NULL);
                 break;
             case R.id.angry:
-                dayEmotionDialogListener.onAngryButtonClicked();
-                dismiss();
+                emotionShow.setText(Emotion.화남.name());
+                emotionShow.setInputType(InputType.TYPE_NULL);
                 break;
             case R.id.scary:
-                dayEmotionDialogListener.onScaryButtonClicked();
-                dismiss();
+                emotionShow.setText(Emotion.무서움.name());
+                emotionShow.setInputType(InputType.TYPE_NULL);
                 break;
             case R.id.full:
-                dayEmotionDialogListener.onFullButtonClicked();
-                dismiss();
+                emotionShow.setText(Emotion.뿌듯함.name());
+                emotionShow.setInputType(InputType.TYPE_NULL);
                 break;
             case R.id.heart:
-                dayEmotionDialogListener.onHeartButtonClicked();
-                dismiss();
+                emotionShow.setText(Emotion.사랑.name());
+                emotionShow.setInputType(InputType.TYPE_NULL);
                 break;
             case R.id.disgust:
-                dayEmotionDialogListener.onDisgustButtonClicked();
+                emotionShow.setText(Emotion.싫어함.name());
+                emotionShow.setInputType(InputType.TYPE_NULL);
+                break;
+            case R.id.etc:
+                emotionShow.setText("감정을 입력해주세요!");
+                emotionShow.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+                break;
+            case R.id.admit:
+                dayEmotionDialogListener.onPositiveButtonClicked(emotionShow.getText().toString());
+                dismiss();
+                break;
+            case R.id.dismiss:
                 dismiss();
                 break;
         }

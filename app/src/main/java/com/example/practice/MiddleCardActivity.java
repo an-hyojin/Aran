@@ -11,6 +11,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class MiddleCardActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int TOTAL_CARD_NUM = 12;
 
@@ -50,9 +53,28 @@ public class MiddleCardActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+    public ArrayList<Integer> setNumbers(){
+        Random random = new Random();
+        ArrayList<Integer> numbers = new ArrayList<>();
+        boolean[] isSet = new boolean[8];
+        for(int i = 0; i<TOTAL_CARD_NUM/2;i++){
+            while(numbers.size()<i+1) {
+                int num = random.nextInt(8);
+                if (!isSet[num]) {
+                    isSet[num] = true;
+                    numbers.add(num);
+                }
+            }
+        }
+        return numbers;
+    }
+
     public void setCards(){
+        ArrayList<Integer> numbers = setNumbers();
         for(int i=0; i<TOTAL_CARD_NUM; i++) {
-            cardArray[i] = new Card(i/2);
+
+            cardArray[i] = new Card(numbers.get(i/2));
+
             findViewById(cardId[i]).setOnClickListener(this);
             cardArray[i].card = findViewById(cardId[i]);
             cardArray[i].back();

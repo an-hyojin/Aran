@@ -116,7 +116,7 @@ public class CalendarAdapter extends BaseAdapter {
         }else if(emotion.equals("뿌듯함")){
             return R.drawable.full;
         }else{
-            return R.drawable.yesbtn;
+            return R.drawable.what_emotion;
         }
     }
     public class DayViewHolder {

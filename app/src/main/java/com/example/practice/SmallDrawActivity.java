@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -27,8 +28,9 @@ import java.util.ArrayList;
 public class SmallDrawActivity extends AppCompatActivity {
 
     Button clearBtn, drawBtn, saveBtn, blackBtn, redBtn, blueBtn, eraserBtn;
-    Button backBtn;
-    EditText textInput;
+    Button backBtn, inputEmotionBtn;
+    TextView textInput;
+
     LinearLayout drawLinear;
     ImageView showImg;
 
@@ -40,8 +42,8 @@ public class SmallDrawActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_small_draw);
-
-        textInput = (EditText)findViewById(R.id.emotion);
+        inputEmotionBtn = (Button)findViewById(R.id.inputEmotion);
+        textInput = (TextView)findViewById(R.id.emotion);
         drawBtn = (Button)findViewById(R.id.paint);
         saveBtn = (Button)findViewById(R.id.save);
         blackBtn = findViewById(R.id.black);
@@ -85,6 +87,24 @@ public class SmallDrawActivity extends AppCompatActivity {
                 finish();
             }
 
+        });
+        inputEmotionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DayEmotionDialog dayEmotionDialog = new DayEmotionDialog(SmallDrawActivity.this);
+                dayEmotionDialog.setDayEmotionDialogListener(new DayEmotionDialogListener() {
+                    @Override
+                    public void onPositiveButtonClicked(String emotion) {
+                        textInput.setText(emotion);
+                    }
+
+                    @Override
+                    public void onNegativeButtonClicked() {
+
+                    }
+                });
+                dayEmotionDialog.show();
+            }
         });
         backBtn.setOnClickListener(new View.OnClickListener(){
             @Override

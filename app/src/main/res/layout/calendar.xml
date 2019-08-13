@@ -105,24 +105,34 @@
     </LinearLayout>
 
     <!-- layout_height match_parent로 수정-->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <GridView
-    android:id="@+id/gv_calendar_activity_gv_calendar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:listSelector="@drawable/gridview_selector"
-    android:numColumns="7"
-    android:stretchMode="columnWidth" />
+            <GridView
+                android:id="@+id/gv_calendar_activity_gv_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:listSelector="@drawable/gridview_selector"
+                android:numColumns="7"
+                android:stretchMode="columnWidth" />
+        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="right">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:id="@+id/addDayemotion"
-        android:text="추가"/>
+        android:orientation="vertical"
+        android:gravity="end|bottom">
+
+        <Button
+            android:id="@+id/addDayemotion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:text="추가" />
     </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </LinearLayout>

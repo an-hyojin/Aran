@@ -2,10 +2,14 @@ package com.example.practice;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,6 +22,7 @@ public class listViewAdapter extends BaseAdapter {
         this.context = context;
         this.emotionList = emotionList;
         this.emotionCountList = emotionCountList;
+        System.out.println("크기 : " + emotionCountList.size());
     }
 
     @Override
@@ -37,19 +42,33 @@ public class listViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null){
-            int resource = R.drawable.circle;
-            String emotionString = emotionList.get(position);
-            for(Emotion e : Emotion.values()){
-               if(emotionList.get(position).equals(e.name())){
-                   resource= e.getEmotionResource();
-                   break;
-               }
-           }
+        ListViewHolder holder;
 
-            convertView = new listViewItem(context,emotionString, resource, emotionCountList.get(position));
-            convertView.setLayoutParams(new ListView.LayoutParams(getWidthDP(), getCellHeightDP()));
-        };
+        if (convertView == null) {
+            holder = new ListViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.customlistitem, null);
+            holder.emotion1 = (TextView) convertView.findViewById(R.id.emotionText);
+            holder.emotionCount2 = (TextView) convertView.findViewById(R.id.emotionCount);
+            holder.emotionImage = (ImageView) convertView.findViewById(R.id.emotionImage);
+            convertView.setTag(holder);
+        } else {
+            holder = (ListViewHolder) convertView.getTag();
+        }
+        holder.emotion1.setText(emotionList.get(position));
+        holder.emotionCount2.setText("이 감정을 " +emotionCountList.get(position).toString()+"번 느꼈습니다.");
+
+        int resource = R.drawable.what_emotion;
+
+        for (Emotion e : Emotion.values()) {
+            if (emotionList.get(position).equals(e.name())) {
+                resource = e.getEmotionResource();
+                break;
+            }
+        }
+        holder.emotionImage.setImageResource(resource);
+        convertView.setLayoutParams(new ListView.LayoutParams(getWidthDP(), getCellHeightDP()));
+
         return convertView;
     }
 
@@ -61,5 +80,8 @@ public class listViewAdapter extends BaseAdapter {
     private int getWidthDP(){
         return  context.getResources().getDisplayMetrics().widthPixels;
     }
-
+    private class ListViewHolder{
+        TextView emotion1, emotionCount2;
+        ImageView emotionImage;
+    }
 }

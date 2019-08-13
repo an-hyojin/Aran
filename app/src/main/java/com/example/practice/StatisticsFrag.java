@@ -24,6 +24,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StatisticsFrag extends Fragment {
     View view;
@@ -54,23 +55,54 @@ public class StatisticsFrag extends Fragment {
         pieChart.setHoleColor(Color.WHITE);
         pieChart.setTransparentCircleRadius(61f);
         ArrayList<PieEntry> yValues = new ArrayList<PieEntry>();
-        Cursor all = sqlDB.rawQuery("SELECT * FROM dayEmotionDB",null);
-        int allCnt = all.getCount();
 
         ArrayList<String> emotionList = new ArrayList<>();
         ArrayList<Integer> emotionCountList = new ArrayList<>();
-
+        HashMap<String, Integer> tempMap = new HashMap<>();
         for(Emotion e : Emotion.values()) {
             Cursor temp = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE emotion = '" + e.name() + "'", null);
             int count = temp.getCount();
             if (count != 0) {
-                emotionList.add(e.name());
-                emotionCountList.add(count);
-                allCnt -= count;
-                yValues.add(new PieEntry(count, e.name()));
+                tempMap.put(e.name(),count);
             }
         }
-        yValues.add(new PieEntry(allCnt, "기타"));
+        String not="";
+        for(Emotion e : Emotion.values()){
+            if(e.name()!="뿌듯함"){
+                not +="emotion != '" + e.name() +"' and ";
+            }else{
+                not += "emotion != '" + e.name() + "'";
+            }
+        }
+        Cursor etc = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE ("+ not +");",null);
+        if(etc.getCount()!= 0) {
+
+            etc.moveToFirst();
+
+            while(!etc.isAfterLast()) {
+                String emotion = etc.getString(4);
+                if(tempMap.containsKey(emotion)){
+                    Integer Num = tempMap.get(emotion);
+                    tempMap.put(emotion,Num+1);
+                }else{
+                    tempMap.put(emotion,1);
+                }
+                etc.moveToNext();
+            }
+
+        }
+        for(String key : tempMap.keySet()){
+            Integer Num = tempMap.get(key);
+            yValues.add(new PieEntry(Num, key));
+            emotionList.add(key);
+            emotionCountList.add(Num);
+        }
+//        for(int i = 0 ; i<emotionCountList.size(); i++){
+//            System.out.println("감정 :" + emotionList.get(i)+ " 횟수 : " + emotionCountList.get(i));
+//
+//        }
+
+
         Description description = new Description();
         description.setText("기록한 감정들"); //라벨
         description.setTextSize(15);
@@ -88,15 +120,15 @@ public class StatisticsFrag extends Fragment {
         data.setValueTextColor(Color.YELLOW);
         listViewAdapter listAdapter = new listViewAdapter(getContext(), emotionList, emotionCountList);
         listView.setAdapter(listAdapter);
-        listAdapter.notifyDataSetChanged();
+    //    listAdapter.notifyDataSetChanged();
         pieChart.setData(data);
-        listView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                scrollView.requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });
+//        listView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                scrollView.requestDisallowInterceptTouchEvent(true);
+//                return false;
+//            }
+//        });
         return view;
     }
 }
