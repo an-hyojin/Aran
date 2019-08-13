@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:background="@drawable/title">
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            android:layout_height="60dp"
+            android:background="@drawable/title"
+            android:layout_margin="5dp"
+            android:text="@string/app_name"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/buttonborder"
+                android:drawableLeft="@drawable/drawing_drawable"
+                android:drawablePadding="30dp"
+                android:gravity="left|center"
+                style="?android:attr/borderlessButtonStyle"
+                android:paddingLeft="10dp"
+                android:text="감정따라그리기"
+                android:textSize="25sp" />
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:background="@drawable/buttonborder"
+                android:drawableLeft="@drawable/drawing_drawable"
+                android:drawablePadding="30dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:gravity="left|center"
+                android:paddingLeft="10dp"
+                android:text="다양한 표정 맞추기" />
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:background="@drawable/buttonborder"
+                android:drawableLeft="@drawable/card_drawable"
+                android:drawablePadding="30dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:gravity="left|center"
+                android:paddingLeft="10dp"
+                android:text="감정카드" />
+
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/buttonborder"
+                android:drawableLeft="@drawable/drawing_drawable"
+                android:drawablePadding="30dp"
+                android:gravity="left|center"
+                android:paddingLeft="10dp"
+                android:text="애니메이션" />
+
+            <Button
+                android:id="@+id/btn5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/buttonborder"
+                android:drawableLeft="@drawable/drawing_drawable"
+                android:drawablePadding="30dp"
+                android:gravity="left|center"
+                android:paddingLeft="10dp"
+                android:text="감정 캘린더" />
+
+            <Button
+                android:id="@+id/btn6"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/noborder"
+                android:drawableLeft="@drawable/drawing_drawable"
+                android:drawablePadding="30dp"
+                android:gravity="left|center"
+                android:paddingLeft="10dp"
+                android:text="스티커 북" />
+
+        </LinearLayout>
+
+</LinearLayout>
