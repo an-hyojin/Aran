@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/title"
+        android:orientation="horizontal"
+        tools:context=".StickerBookActivity"
+        >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:text="이전으로"
+            android:textColor="@color/colorBlack"
+            android:autoSizeTextType="uniform"
+            android:paddingLeft="3dp"
+            android:drawableLeft="@drawable/backbtn"
+            android:drawablePadding="8dp"
+            android:gravity="left|center_vertical"
+            style="?android:attr/borderlessButtonStyle"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:layout_width="match_parent"
+            android:text="@string/stickerBook_ack"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="2"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="331dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dip"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sticker01"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker02"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color2"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker03"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color3"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker04"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color4"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker05"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color5"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dip"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sticker06"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker07"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color2"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker08"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color3"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker09"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color4"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker10"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color5"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dip"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sticker11"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker12"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color2"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker13"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color3"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker14"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color4"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker15"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color5"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dip"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sticker16"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker17"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color2"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker18"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color3"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker19"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color4"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/sticker20"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/color5"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_margin="4dip"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dip"
+            android:layout_weight="1"
+            android:weightSum="6"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/frontbtn"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:background="@drawable/arrow_btn"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="4dip"/>
+            <ImageButton
+                android:id="@+id/backbtn"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="4dip"
+                android:background="@drawable/arrow_btn2"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="4dip"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
