@@ -26,7 +26,9 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
     DialogListenerInterface customDialogLister;
     TextToSpeech speech;
     LinearLayout container;
-    public CustomDialog(Context context, String titleString, String textString, String bottomString, int topImageResource){
+    boolean isRead;
+
+    public CustomDialog(Context context, String titleString, String textString, String bottomString, int topImageResource , boolean isRead){
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.customdialog);
@@ -34,7 +36,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         title = (TextView)findViewById(R.id.title);
         text = (TextView)findViewById(R.id.text);
         imageView = (ImageView)findViewById(R.id.image);
-
+        this.isRead = isRead;
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) container.getLayoutParams();
         int width = context.getResources().getDisplayMetrics().widthPixels;
         width =(int) (width* 0.7);
@@ -50,16 +52,18 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         final String temp = textString;
         imageView.setBackgroundResource(topImageResource);
         positiveBtn.setText(bottomString);
-        speech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                speech.setLanguage(Locale.KOREAN);
-                speech.setPitch(0.6f);
-                speech.setSpeechRate(0.95f);
-                speech.speak(temp,TextToSpeech.QUEUE_FLUSH, null);
-            }
-        });
+        if(isRead) {
+            speech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    speech.setLanguage(Locale.KOREAN);
+                    speech.setPitch(0.6f);
+                    speech.setSpeechRate(0.95f);
+                    speech.speak(temp, TextToSpeech.QUEUE_FLUSH, null);
+                }
+            });
 
+        }
 
     }
 
@@ -69,9 +73,11 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
     @Override
     public void dismiss(){
         super.dismiss();
-        speech.stop();
-        speech.stop();
-        speech = null;
+        if(isRead) {
+            speech.stop();
+            speech.stop();
+            speech = null;
+        }
     }
     public void onClick(View v){
         if(v == positiveBtn){

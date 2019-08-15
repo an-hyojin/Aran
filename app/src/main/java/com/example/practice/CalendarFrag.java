@@ -81,7 +81,7 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
                 Long day = Long.valueOf(infos[2]);
                 Cursor temp = sqlDB.rawQuery("SELECT * FROM dayEmotionDB WHERE (year="+year+" and month="+month+" and day =" + day +");", null);
                 if(temp.getCount()==0) {
-                    DayEmotionDialog dayEmotionDialog = new DayEmotionDialog(getContext());
+                    DayEmotionDialog dayEmotionDialog = new DayEmotionDialog(getContext(),"Calendar");
                     dayEmotionDialog.setDayEmotionDialogListener(new DayEmotionDialogListener() {
                         @Override
                         public void onPositiveButtonClicked(String emotion) {
@@ -95,7 +95,7 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
                     });
                     dayEmotionDialog.show();
                 }else{
-                    CustomDialog customDialog = new CustomDialog(getContext(),"이미 감정을 입력했습니다.","감정은 하루에 한번만 입력할 수 있습니다.","확인",R.drawable.surprised);
+                    CustomDialog customDialog = new CustomDialog(getContext(),"이미 감정을 입력했습니다.","감정은 하루에 한번만 입력할 수 있습니다.","확인",R.drawable.surprised, false);
                     customDialog.show();
                 }
             }

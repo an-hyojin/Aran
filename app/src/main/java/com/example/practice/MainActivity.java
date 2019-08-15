@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button button1,button2,button3,button4,button5,button6;
+    Switch onOffSound;
     @Override
     // 액티비티가 생성되는 순간에 딱 한번 호출
     // 모든 초기화와 사용자 인터페이스 설정이 여기에 들어감
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button5.setOnClickListener(this);
         button6 = (Button)findViewById(R.id.btn6);
         button6.setOnClickListener(this);
-
+        onOffSound = findViewById(R.id.onoffSound);
     }
 
     public void onClick(View v){
@@ -42,10 +44,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn2:
                 intent = new Intent(this, MatchEmotionActivity.class);
+                intent.putExtra("onOffSound", onOffSound.isChecked());
                 startActivity(intent);
                 break;
             case R.id.btn3:
                 intent = new Intent(this, SelectActivity.class);
+                intent.putExtra("onOffSound", onOffSound.isChecked());
                 startActivity(intent);
                 break;
             case R.id.btn4:

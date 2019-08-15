@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@+id/container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/level"
-    android:gravity="center">
+        android:id="@+id/container"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/buttonborder"
+        android:gravity="center">
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
         android:text="네"
         android:textColor="@color/colorBlack"
         android:textSize="26dp"
-        android:background="@drawable/out"
+        android:background="@drawable/level"
         android:layout_margin="15dp"
        />
 
@@ -45,6 +45,6 @@
         android:text="아니요"
         android:textColor="@color/colorBlack"
         android:textSize="26dp"
-        android:background="@drawable/out"/>
+        android:background="@drawable/level"/>
     </LinearLayout>
 </LinearLayout>

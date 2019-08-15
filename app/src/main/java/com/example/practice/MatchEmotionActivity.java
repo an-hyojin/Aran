@@ -233,7 +233,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
         int id = getIdFromButton(answerBtn);
         if(id==rightAnswer){
 
-            CustomDialog custom = new CustomDialog(this, "정답입니다!",getIdText(rightAnswer),"확인", getIdResource(rightAnswer));
+            CustomDialog custom = new CustomDialog(this, "정답입니다!",getIdText(rightAnswer),"확인", getIdResource(rightAnswer),false);
 
             custom.setDialogListener(new DialogListenerInterface() {
                 @Override
@@ -260,7 +260,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
             rightAnswerCount++;
         }else {
 
-            CustomDialog custom = new CustomDialog(this, "다시 생각해보세요!", getIdText(rightAnswer),"확인", getIdResource(rightAnswer));
+            CustomDialog custom = new CustomDialog(this, "다시 생각해보세요!", getIdText(rightAnswer),"확인", getIdResource(rightAnswer),false);
 
             custom.setDialogListener(new DialogListenerInterface() {
                 @Override

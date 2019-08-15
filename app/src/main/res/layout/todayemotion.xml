@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container"
-    android:background="@drawable/level"
+    android:background="@drawable/buttonborder"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:gravity="center"
@@ -111,18 +111,18 @@
         android:layout_margin="10dp"
         android:id="@+id/admit"
         android:layout_width="80dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:text="확인"
-        android:background="@drawable/buttonborder"/>
+        android:background="@drawable/level"/>
     <Button
         android:layout_margin="10dp"
         android:id="@+id/dismiss"
         android:layout_width="80dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:text="취소"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/buttonborder"/>
+        android:background="@drawable/level"/>
 </LinearLayout>
 </LinearLayout>
 </LinearLayout>

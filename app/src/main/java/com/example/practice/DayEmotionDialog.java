@@ -19,7 +19,7 @@ public class DayEmotionDialog extends Dialog implements  View.OnClickListener{
     LinearLayout container;
     TextView showTitle;
     DayEmotionDialogListener dayEmotionDialogListener;
-    public DayEmotionDialog(Context context) {
+    public DayEmotionDialog(Context context, String classIswhat) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.todayemotion);
@@ -27,7 +27,8 @@ public class DayEmotionDialog extends Dialog implements  View.OnClickListener{
         smile = findViewById(R.id.smile);
         smile.setOnClickListener(this);
         showTitle = findViewById(R.id.titleText);
-        if(context.equals(SmallDrawActivity.class)){
+        if(classIswhat.equals("SmallDraw")){
+            System.out.println(context.getClass());
             showTitle.setText("이때 느낀 감정을 입력해주세요");
         }
         sad = findViewById(R.id.sad);

@@ -91,7 +91,7 @@ public class SmallDrawActivity extends AppCompatActivity {
         inputEmotionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DayEmotionDialog dayEmotionDialog = new DayEmotionDialog(SmallDrawActivity.this);
+                DayEmotionDialog dayEmotionDialog = new DayEmotionDialog(SmallDrawActivity.this, "SmallDraw");
                 dayEmotionDialog.setDayEmotionDialogListener(new DayEmotionDialogListener() {
                     @Override
                     public void onPositiveButtonClicked(String emotion) {

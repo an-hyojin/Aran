@@ -15,12 +15,14 @@ public class SelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
+        final boolean isSound = getIntent().getBooleanExtra("onOffSound", false);
         easyBtn = findViewById(R.id.easy);
         easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent easyIntent = new Intent(getApplicationContext(), EasyCardActivity.class);
                 easyIntent.putExtra("level", 0);
+                easyIntent.putExtra("onOffSound",isSound);
                 startActivityForResult(easyIntent, END_GAME);
             }
         });
@@ -31,6 +33,7 @@ public class SelectActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent middleIntent = new Intent(getApplicationContext(), MiddleCardActivity.class);
                 middleIntent.putExtra("level", 1);
+                middleIntent.putExtra("onOffSound",isSound);
                 startActivityForResult(middleIntent, END_GAME);
             }
 
@@ -41,6 +44,7 @@ public class SelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent hardIntent = new Intent(getApplicationContext(), CardActivity.class);
+                hardIntent.putExtra("onOffSound",isSound);
                 hardIntent.putExtra("level", 2);
                 startActivityForResult(hardIntent, END_GAME);
             }

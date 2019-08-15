@@ -44,7 +44,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         addBtn.setOnClickListener(this);
         gridView = (GridView)findViewById(R.id.gridView);
         init();
-        CustomDialog dialog = new CustomDialog(this, "감정 따라그리기", "갤러리에서 사진을 선택한 후 그때 느낀 감정을 따라 그려보세요","확인", R.drawable.drawing);
+        CustomDialog dialog = new CustomDialog(this, "감정 따라그리기", "갤러리에서 사진을 선택한 후 그때 느낀 감정을 따라 그려보세요","확인", R.drawable.drawing, false);
 
         dialog.show();
 
