@@ -2,42 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="5dp">
 
-        <Button
+        <ImageButton
             android:id="@+id/gv_calendar_activity_b_last"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:text="지난달" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/left" />
 
         <TextView
+            android:layout_weight="1"
             android:id="@+id/gv_calendar_activity_tv_title"
-            android:layout_width="200dp"
-            android:layout_height="49dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="2011년 몇월"
             android:textColor="#000"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/gv_calendar_activity_b_next"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:id="@+id/gv_calendar_activity_b_next"
+            android:layout_height="50dp"
+            android:background="@drawable/rightbtn"
             android:text="다음달" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:background="#eaeae9"
+        android:background="@color/colorYellow"
         android:orientation="horizontal">
 
         <TextView
@@ -104,7 +117,6 @@
             android:textSize="9sp" />
     </LinearLayout>
 
-    <!-- layout_height match_parent로 수정-->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -116,7 +128,6 @@
                 android:id="@+id/gv_calendar_activity_gv_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:listSelector="@drawable/gridview_selector"
                 android:numColumns="7"
                 android:stretchMode="columnWidth" />
@@ -127,12 +138,15 @@
         android:orientation="vertical"
         android:gravity="end|bottom">
 
-        <Button
+        <ImageButton
             android:id="@+id/addDayemotion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
             android:layout_gravity="end|bottom"
-            android:text="추가" />
+            android:background="@drawable/plusbtn"
+             />
     </LinearLayout>
     </android.support.constraint.ConstraintLayout>
+</LinearLayout>
 </LinearLayout>

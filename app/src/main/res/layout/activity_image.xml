@@ -81,11 +81,6 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlack"
                 android:id="@+id/emotion"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editBtn"
-                android:text="수정"/>
             </LinearLayout>
             <Button
                 android:layout_width="wrap_content"

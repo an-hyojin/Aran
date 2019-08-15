@@ -7,15 +7,22 @@
     android:gravity="center_horizontal"
     android:layout_weight="1">
     <TextView
+        android:background="@drawable/days_border"
         android:id="@+id/dateNumber"
         android:autoSizeTextType="uniform"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:gravity="center" />
-    <ImageView
-        android:id="@+id/emotionImg"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorYellow"/>
 
+        android:background="@drawable/days_border">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/emotionImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </LinearLayout>
 </LinearLayout>

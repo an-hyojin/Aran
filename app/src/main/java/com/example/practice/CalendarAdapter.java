@@ -81,6 +81,11 @@ public class CalendarAdapter extends BaseAdapter {
             int resource = stringToEmotion(day.getEmotion());
             if(resource!=-1){
                 dayViewHolder.emotionImg.setImageResource(resource);
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) dayViewHolder.emotionImg.getLayoutParams();
+                params.width = (int)(getCellWidthDP()*0.9);
+                params.height = params.width;
+
+                dayViewHolder.emotionImg.setLayoutParams(params);
             }
             if (day.isInMonth()) {
                 if (position % 7 == 0) {

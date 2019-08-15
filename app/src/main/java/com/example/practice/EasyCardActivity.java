@@ -9,15 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageButton;
-
+import android.speech.tts.TextToSpeech;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 public class EasyCardActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int TOTAL_CARD_NUM = 8;
-
-
     private int[] cardId = {R.id.card01, R.id.card02, R.id.card03, R.id.card04, R.id.card05, R.id.card06, R.id.card07, R.id.card08};
     private Card[] cardArray = new Card[TOTAL_CARD_NUM];
     private Card first, second;
@@ -133,7 +131,7 @@ public class EasyCardActivity extends AppCompatActivity implements View.OnClickL
                 customDialog = new CustomDialog(context,"화남","몹시 못마땅하거나 언짢아서 성을 냄.","확인", R.drawable.angry);
                 break;
             case 3:
-                customDialog = new CustomDialog(context,"싫어함(증오)","마음에 들지 않거나 나쁘게 생각하여 가까이하거나 가지거나 받아들이고 싶지 않음.","확인", R.drawable.disgust);
+                customDialog = new CustomDialog(context,"싫어함(증오)","마음에 들지 않거나 나쁘게 생각하여 가까이하거나 받아들이고 싶지 않음.","확인", R.drawable.disgust);
                 break;
             case 4:
                 customDialog = new CustomDialog(context,"뿌듯함","욕구가 충족되었을 때의 흐뭇하고 흡족한 마음이나 느낌.", "확인",R.drawable.full);
@@ -217,6 +215,7 @@ public class EasyCardActivity extends AppCompatActivity implements View.OnClickL
 
 
     }
+
 
 
     private class Timer extends Thread {

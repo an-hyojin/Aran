@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -36,9 +37,9 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.calendar, container, false);
-        Button bLastMonth = view.findViewById(R.id.gv_calendar_activity_b_last);
-        Button bNextMonth =view.findViewById(R.id.gv_calendar_activity_b_next);
-        Button addEmotion = view.findViewById(R.id.addDayemotion);
+        ImageButton bLastMonth = view.findViewById(R.id.gv_calendar_activity_b_last);
+        ImageButton bNextMonth =view.findViewById(R.id.gv_calendar_activity_b_next);
+        ImageButton addEmotion = view.findViewById(R.id.addDayemotion);
 
         mTvCalendarTitle = view.findViewById(R.id.gv_calendar_activity_tv_title);
         mGvCalendar =view.findViewById(R.id.gv_calendar_activity_gv_calendar);
@@ -153,15 +154,17 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
 
         System.out.println("카운트=" + cursor.getCount());
         cursor.moveToFirst();
-
+        int plusdays=1;
 
         for(int i=0; i<dayOfMonth-1; i++) {//이번 달 이전
-
             day = new DayInfo();
             day.setDay("");
             day.setInMonth(false);
-
             mDayList.add(day);
+            if(plusdays%7==0){
+                plusdays=0;
+            }
+            plusdays++;
         }
         for(int i=1; i <= thisMonthLastDay; i++) {//이번달
             day = new DayInfo();
@@ -173,8 +176,20 @@ public class CalendarFrag extends Fragment implements View.OnClickListener, Adap
                     cursor.moveToNext();
                 }
            }
-            mDayList.add(day);
 
+            if(plusdays%7==0){
+                plusdays=0;
+            }
+            plusdays++;
+            mDayList.add(day);
+        }
+        if(plusdays>1){
+            for(int i = plusdays ;i<=7;i++){
+                day = new DayInfo();
+                day.setDay("");
+                day.setInMonth(false);
+                mDayList.add(day);
+            }
         }
         cursor.close();
         initCalendarAdapter();

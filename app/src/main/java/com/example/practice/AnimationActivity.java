@@ -32,8 +32,6 @@ public class AnimationActivity extends YouTubeBaseActivity implements View.OnCli
 
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-
-                
                 youTubePlayer.loadVideo("0_95kpvfQEg");
             }//유튜브 로드 성공했을 때
 

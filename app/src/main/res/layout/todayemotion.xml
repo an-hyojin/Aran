@@ -1,26 +1,42 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:id="@+id/container"
+    android:background="@drawable/level"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/titleText"
+        android:layout_gravity="center"
+        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:text="오늘의 감정 입력"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/images1"
         android:layout_height="50dp">
         <ImageButton
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:id="@+id/smile"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/smile"/>
         <ImageButton
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:id="@+id/sad"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/sad"/>
         <ImageButton
+            android:layout_margin="10dp"
             android:id="@+id/angry"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -29,20 +45,24 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/images2"
         android:layout_height="50dp">
         <ImageButton
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:id="@+id/heart"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/heart"/>
         <ImageButton
+            android:layout_margin="10dp"
             android:id="@+id/full"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/full"/>
         <ImageButton
+            android:layout_margin="10dp"
             android:id="@+id/scary"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -50,21 +70,25 @@
             android:background="@drawable/scary"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/images3"
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <ImageButton
+            android:layout_margin="10dp"
             android:id="@+id/disgust"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/disgust"/>
         <ImageButton
+            android:layout_margin="10dp"
             android:id="@+id/surprise"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/surprised"/>
         <ImageButton
+            android:layout_margin="10dp"
             android:id="@+id/etc"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -74,15 +98,17 @@
     <EditText
         android:layout_gravity="center"
         android:id="@+id/emotionText"
+        android:text="감정을 입력해주세요."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ></EditText>
+        android:clickable="false"
+        />
     <LinearLayout
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     <Button
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:id="@+id/admit"
         android:layout_width="80dp"
         android:layout_height="60dp"
@@ -90,12 +116,13 @@
         android:text="확인"
         android:background="@drawable/buttonborder"/>
     <Button
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:id="@+id/dismiss"
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:text="취소"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/buttonborder"/>
+</LinearLayout>
 </LinearLayout>
 </LinearLayout>

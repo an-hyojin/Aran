@@ -135,7 +135,7 @@ public class MiddleCardActivity extends AppCompatActivity implements View.OnClic
                 customDialog = new CustomDialog(context,"화남","몹시 못마땅하거나 언짢아서 성을 냄.","확인", R.drawable.angry);
                 break;
             case 3:
-                customDialog = new CustomDialog(context,"싫어함(증오)","마음에 들지 않거나 나쁘게 생각하여 가까이하거나 가지거나 받아들이고 싶지 않음.","확인", R.drawable.disgust);
+                customDialog = new CustomDialog(context,"싫어함(증오)","마음에 들지 않거나 나쁘게 생각하여 가까이하거나 받아들이고 싶지 않음.","확인", R.drawable.disgust);
                 break;
             case 4:
                 customDialog = new CustomDialog(context,"뿌듯함","욕구가 충족되었을 때의 흐뭇하고 흡족한 마음이나 느낌.", "확인",R.drawable.full);

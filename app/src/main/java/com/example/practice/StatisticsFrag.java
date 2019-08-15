@@ -44,7 +44,7 @@ public class StatisticsFrag extends Fragment {
         dayEmotionDBHelper = new DayEmotionDBHelper(getContext());
         sqlDB = dayEmotionDBHelper.getWritableDatabase();
 
-        pieChart.setUsePercentValues(true);
+        pieChart.setUsePercentValues(false);
         pieChart.setTouchEnabled(false);
         pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(5,10,5,5);
@@ -120,15 +120,14 @@ public class StatisticsFrag extends Fragment {
         data.setValueTextColor(Color.YELLOW);
         listViewAdapter listAdapter = new listViewAdapter(getContext(), emotionList, emotionCountList);
         listView.setAdapter(listAdapter);
-    //    listAdapter.notifyDataSetChanged();
         pieChart.setData(data);
-//        listView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                scrollView.requestDisallowInterceptTouchEvent(true);
-//                return false;
-//            }
-//        });
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                listView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
         return view;
     }
 }

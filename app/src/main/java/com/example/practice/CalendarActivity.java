@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TabHost;
 
 public class CalendarActivity extends AppCompatActivity {
     Button bt1,bt2,bt3;
@@ -15,11 +16,12 @@ public class CalendarActivity extends AppCompatActivity {
     TipFrag tipFrag;
     CalendarFrag calendarFrag;
     StatisticsFrag statisticsFrag;
-
+    TabHost tabs;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
         bt1 = (Button) findViewById(R.id.bt1);
         bt2 = (Button) findViewById(R.id.bt2);
         bt3 = (Button) findViewById(R.id.bt3);
