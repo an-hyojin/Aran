@@ -5,11 +5,12 @@
     android:layout_weight="5">
     <ImageView
         android:id="@+id/emotionImage"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <LinearLayout
-        android:layout_weight="2"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -17,13 +18,15 @@
         <TextView
             android:id="@+id/emotionText"
             android:layout_weight="1"
-            android:autoSizeTextType="uniform"
+            android:textColor="@color/colorBlack"
+            android:textSize="25sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <TextView
             android:id="@+id/emotionCount"
             android:layout_weight="1"
-            android:autoSizeTextType="uniform"
+            android:textColor="@color/colorBlack"
+            android:textSize="25sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

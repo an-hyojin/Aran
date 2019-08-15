@@ -9,10 +9,6 @@ package com.example.practice;
         import android.view.View;
         import android.view.Window;
         import android.widget.Button;
-        import android.widget.ImageButton;
-
-        import java.util.ArrayList;
-        import java.util.Random;
 
 public class CardActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int TOTAL_CARD_NUM = 16;
@@ -138,7 +134,7 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.retry:
-                RetryDialog dialog = new RetryDialog(this, 1);
+                RetryDialog dialog = new RetryDialog(this, "다시하시겠습니까?", "네", "아니요");
                 dialog.setDialogListener(new DialogListenerInterface() {
                     @Override
                     public void onPositiveClicked() {

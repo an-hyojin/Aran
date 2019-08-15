@@ -21,6 +21,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
                 android:text="소리 설정"/>
             <Switch
                 android:layout_width="wrap_content"
@@ -123,6 +124,21 @@
                 android:textColor="@color/colorBlack"
                 android:paddingLeft="20dp"
                 android:text="감정 캘린더" />
+            <Button
+                android:id="@+id/btn7"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="25sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/level"
+                android:drawableLeft="@drawable/stickerbook_drawable"
+                android:drawablePadding="30dp"
+                android:gravity="left|center"
+                android:paddingLeft="20dp"
+                android:text="감정들과 육아팁" />
 
             <Button
                 android:id="@+id/btn6"
@@ -139,6 +155,7 @@
                 android:gravity="left|center"
                 android:paddingLeft="20dp"
                 android:text="스티커 북" />
+
 
         </LinearLayout>
 

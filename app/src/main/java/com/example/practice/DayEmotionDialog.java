@@ -102,7 +102,7 @@ public class DayEmotionDialog extends Dialog implements  View.OnClickListener{
                 emotionShow.setInputType(InputType.TYPE_NULL);
                 break;
             case R.id.surprise:
-                emotionShow.setText(Emotion.놀라움.name());
+                emotionShow.setText(Emotion.놀람.name());
                 emotionShow.setInputType(InputType.TYPE_NULL);
                 break;
             case R.id.angry:

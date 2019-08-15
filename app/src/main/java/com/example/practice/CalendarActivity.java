@@ -9,11 +9,10 @@ import android.widget.Button;
 import android.widget.TabHost;
 
 public class CalendarActivity extends AppCompatActivity {
-    Button bt1,bt2,bt3;
+    Button bt1,bt2;
     Button back;
     FragmentManager fm;
     FragmentTransaction tran;
-    TipFrag tipFrag;
     CalendarFrag calendarFrag;
     StatisticsFrag statisticsFrag;
     TabHost tabs;
@@ -24,7 +23,6 @@ public class CalendarActivity extends AppCompatActivity {
 
         bt1 = (Button) findViewById(R.id.bt1);
         bt2 = (Button) findViewById(R.id.bt2);
-        bt3 = (Button) findViewById(R.id.bt3);
         back = (Button) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,7 +30,7 @@ public class CalendarActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        tipFrag = new TipFrag(); //프래그먼트 객채셍성
+
         calendarFrag = new CalendarFrag(); //프래그먼트 객채셍성
         statisticsFrag = new StatisticsFrag();
         fm = getSupportFragmentManager();
@@ -59,16 +57,8 @@ public class CalendarActivity extends AppCompatActivity {
 
             }
         });
-        bt3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fm =getSupportFragmentManager();
-                tran = fm.beginTransaction();
-                tran.replace(R.id.container,tipFrag);
-                tran.commit();
-            }
-        });
-
+        CustomDialog customDialog = new CustomDialog(CalendarActivity.this, "감정 캘린더", "캘린더에서 하루에 하나씩 감정을 입력하세요. \n 통계에서 입력했던 감정들을 한눈에 볼 수 있습니다.", "확인", R.drawable.calendar,false);
+        customDialog.show();
 
     }
 

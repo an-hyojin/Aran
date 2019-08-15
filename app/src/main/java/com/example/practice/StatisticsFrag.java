@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -97,7 +98,16 @@ public class StatisticsFrag extends Fragment {
             emotionList.add(key);
             emotionCountList.add(Num);
         }
-//        for(int i = 0 ; i<emotionCountList.size(); i++){
+        LinearLayout.LayoutParams param = (LinearLayout.LayoutParams) listView.getLayoutParams();
+        int height = getContext().getResources().getDisplayMetrics().heightPixels/10;
+        param.height = height*emotionList.size()+(int)(height*0.2);
+        listView.setLayoutParams(param);
+
+        LinearLayout.LayoutParams param2 = (LinearLayout.LayoutParams) pieChart.getLayoutParams();
+        int height2 = getContext().getResources().getDisplayMetrics().widthPixels;
+        param2.height = height2;
+        pieChart.setLayoutParams(param2);
+        //        for(int i = 0 ; i<emotionCountList.size(); i++){
 //            System.out.println("감정 :" + emotionList.get(i)+ " 횟수 : " + emotionCountList.get(i));
 //
 //        }
@@ -121,7 +131,7 @@ public class StatisticsFrag extends Fragment {
         listViewAdapter listAdapter = new listViewAdapter(getContext(), emotionList, emotionCountList);
         listView.setAdapter(listAdapter);
         pieChart.setData(data);
-        listView.setOnTouchListener(new View.OnTouchListener() {
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 listView.requestDisallowInterceptTouchEvent(true);

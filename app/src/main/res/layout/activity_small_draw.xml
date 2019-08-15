@@ -1,115 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorIvory"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="vertical">
 
-    android:background="@color/colorWhite"
-    xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/title"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/back"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="105dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:text="이전으로"
-            android:textColor="@color/colorBlack"
             android:autoSizeTextType="uniform"
-            android:paddingLeft="3dp"
             android:drawableLeft="@drawable/backbtn"
             android:drawablePadding="8dp"
             android:gravity="left|center_vertical"
-            style="?android:attr/borderlessButtonStyle"
-            />
+            android:paddingLeft="3dp"
+            android:text="이전으로"
+            android:textColor="@color/colorBlack" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+
+
+            <Button
+                android:id="@+id/save"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:autoSizeTextType="uniform"
+                android:drawableLeft="@drawable/save_drawable"
+                android:drawablePadding="8dp"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="3dp"
+                android:text="저장하기"
+                android:textColor="@color/colorBlack" />
+
+        </LinearLayout>
     </LinearLayout>
+
     <FrameLayout
-        android:layout_gravity="center"
         android:layout_width="380dp"
         android:layout_height="380dp"
+        android:layout_gravity="center"
         android:layout_margin="20dp">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/backgroundImage"/>
-        <LinearLayout
-            android:background="@drawable/border"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:id="@+id/drawLayout">
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:background="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/drawLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            android:orientation="horizontal">
+
+        </LinearLayout>
     </FrameLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="50dp"
+        android:gravity="center"
+
+        >
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="지우기"
-            android:id="@+id/clear"/>
+            android:id="@+id/clear"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/retry_jpg"
+            android:layout_marginRight="10dp"/>
+        <Button
+            android:id="@+id/eraser"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/colorWhite"
+            android:drawableRight="@drawable/eraser_drawable" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="그리기"
-            android:id="@+id/paint"/>
+            android:id="@+id/black"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/black"
+            />
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="저장하기"
-            android:id="@+id/save"/>
+            android:id="@+id/white"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/white"
+            android:layout_marginRight="7dp"
+            />
+
+        <Button
+            android:id="@+id/blue"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/blue" />
+
+        <Button
+            android:id="@+id/red"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/red"
+            android:layout_marginRight="7dp"
+            />
+        <Button
+            android:id="@+id/green"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/green" />
+
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="지우개"
-        android:id="@+id/eraser"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="검정"
-        android:id="@+id/black"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="파랑"
-        android:id="@+id/blue"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="빨강"
-        android:id="@+id/red"/>
-    </LinearLayout>
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10pt"
+            android:text="0"
+            android:layout_marginLeft="30dp"/>
+
+        <SeekBar
+
+            android:id="@+id/seekBar"
+            android:layout_width="295dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:max="30"
+            android:progress="1"
+            android:thumb="@drawable/seekbar_drawable"
+
+            /></LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이때느낀 감정은 무엇인가요?  "
-          />
+            android:textColor="@color/colorBlack"
+            android:text="이때느낀 감정은 무엇인가요?  " />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
             android:id="@+id/emotion"
             android:text="감정을 입력하세요"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
             android:id="@+id/inputEmotion"
             android:text="입력"/>
     </LinearLayout>

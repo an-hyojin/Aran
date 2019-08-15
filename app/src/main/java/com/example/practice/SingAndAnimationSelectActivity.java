@@ -27,7 +27,7 @@ public class SingAndAnimationSelectActivity extends AppCompatActivity implements
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AnimationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AnimationList.class);
                 startActivity(intent);
             }
         });
@@ -35,7 +35,7 @@ public class SingAndAnimationSelectActivity extends AppCompatActivity implements
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SingActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SingList.class);
                 startActivity(intent);
             }
         });

@@ -155,7 +155,7 @@ public class EasyCardActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.retry:
-                RetryDialog dialog = new RetryDialog(this, 1);
+                RetryDialog dialog = new RetryDialog(this, "다시하시겠습니까?", "네", "아니요");
                 dialog.setDialogListener(new DialogListenerInterface() {
                     @Override
                     public void onPositiveClicked() {

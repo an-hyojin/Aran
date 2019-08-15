@@ -3,7 +3,7 @@ package com.example.practice;
 public enum Emotion {
     기쁨(R.drawable.smile),
     슬픔(R.drawable.sad),
-    놀라움(R.drawable.surprised),
+    놀람(R.drawable.surprised),
     화남(R.drawable.angry),
     싫어함(R.drawable.disgust),
     사랑(R.drawable.heart),

@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
@@ -27,16 +28,17 @@ import java.util.ArrayList;
 
 public class SmallDrawActivity extends AppCompatActivity {
 
-    Button clearBtn, drawBtn, saveBtn, blackBtn, redBtn, blueBtn, eraserBtn;
+    Button clearBtn, saveBtn, blackBtn, redBtn, blueBtn, whiteBtn,greenBtn, eraserBtn;
     Button backBtn, inputEmotionBtn;
-    TextView textInput;
-
+    TextView textInput,sizeInput;
     LinearLayout drawLinear;
     ImageView showImg;
-
+    SeekBar seekBar;
     PorterDuffXfermode clear = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-
     DrawView drawView;
+
+    public int number = 0;
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +46,18 @@ public class SmallDrawActivity extends AppCompatActivity {
         setContentView(R.layout.activity_small_draw);
         inputEmotionBtn = (Button)findViewById(R.id.inputEmotion);
         textInput = (TextView)findViewById(R.id.emotion);
-        drawBtn = (Button)findViewById(R.id.paint);
         saveBtn = (Button)findViewById(R.id.save);
         blackBtn = findViewById(R.id.black);
         redBtn = findViewById(R.id.red);
         blueBtn = findViewById(R.id.blue);
+        whiteBtn = findViewById(R.id.white);
+        greenBtn = findViewById(R.id.green);
         eraserBtn = findViewById(R.id.eraser);
-        backBtn = (Button)findViewById(R.id.back);
+        backBtn = (Button) findViewById(R.id.back);
+        showImg = (ImageView) findViewById(R.id.backgroundImage);
+        seekBar = findViewById(R.id.seekBar);
         showImg = (ImageView)findViewById(R.id.backgroundImage);
-
+        sizeInput = findViewById(R.id.size);
         byte[] arr = getIntent().getByteArrayExtra("image");
         Bitmap img = BitmapFactory.decodeByteArray(arr, 0, arr.length);
         showImg.setImageBitmap(img);
@@ -112,36 +117,80 @@ public class SmallDrawActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        redBtn.setOnClickListener(new View.OnClickListener(){
+        redBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-              drawView.setColorAndEraser(Color.RED,null);
+            public void onClick(View v) {
+                drawView.setColorAndEraser(Color.RED, null);
 
             }
         });
-        blackBtn.setOnClickListener(new View.OnClickListener(){
+        blackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                drawView.setColorAndEraser(Color.BLACK,null);
+            public void onClick(View v) {
+                drawView.setColorAndEraser(Color.BLACK, null);
             }
         });
-        blueBtn.setOnClickListener(new View.OnClickListener(){
+        blueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
 
-                drawView.setColorAndEraser(Color.BLUE,null);
+                drawView.setColorAndEraser(Color.BLUE, null);
             }
         });
-        eraserBtn.setOnClickListener(new View.OnClickListener(){
+        whiteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
+                drawView.setColorAndEraser(Color.WHITE, null);
+            }
+        });
+        greenBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawView.setColorAndEraser(Color.GREEN, null);
+            }
+        });
+        eraserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                drawView.setColorAndEraser(Color.BLACK,clear);
+                drawView.setColorAndEraser(Color.BLACK, clear);
 
             }
         });
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                // 메소드 이름대로 사용자가 SeekBar를 움직일때 실행됩니다
+                // 주로사용
+                if (progress < 1) {
+                    progress = 1;
+                    seekBar.setProgress(progress);
+                }
+                number = seekBar.getProgress();
+            }
 
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                //메소드 이름대로 사용자가 SeekBar를 터치했을때 실행됩니다
+                number = seekBar.getProgress();
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // 메소드 이름대로 사용자가 SeekBar를 손에서 땠을때 실행됩니다
+                drawView.setSize((float) seekBar.getProgress());
+                number = seekBar.getProgress();
+                update();
+            }
+        });
+        //drawView.setSize()
     }
+
+    public void update(){
+        sizeInput.setText(new StringBuilder().append(number));
+    }
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus){
         if(hasFocus &&drawView==null){
@@ -166,10 +215,12 @@ public class SmallDrawActivity extends AppCompatActivity {
         int pointX = -1;
         int pointY = -1;
         int color = Color.BLACK;
+        int width,height;
         PorterDuffXfermode use = null;
         public DrawView(Context context, int width, int height) {
             super(context);
-
+            this.width = width;
+            this.height = height;
             drawingSpace = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             canvas = new Canvas(drawingSpace);
             paint = new Paint();
@@ -178,13 +229,16 @@ public class SmallDrawActivity extends AppCompatActivity {
             paint.setStyle(Paint.Style.STROKE);
             drawLine =new Path();
         }
-
+        public void setSize(float size) {
+            paint.setStrokeWidth(size);
+        }
         public void setColorAndEraser(int color,PorterDuffXfermode type){
             paint.setColor(color);
             paint.setXfermode(type);
         }
 
         public void clear(){
+            drawingSpace = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             canvas = new Canvas(drawingSpace);
             invalidate();
         }
@@ -208,13 +262,13 @@ public class SmallDrawActivity extends AppCompatActivity {
                     pointY = y;
                     break;
                 case MotionEvent.ACTION_MOVE:
-                   if(pointX != -1) {
-                       pointX = x;
-                       pointY = y;
-                       drawLine.lineTo(x,y);
-                       canvas.drawPath(drawLine, paint);
-                   }
-                   invalidate();
+                    if(pointX != -1) {
+                        pointX = x;
+                        pointY = y;
+                        drawLine.lineTo(x,y);
+                        canvas.drawPath(drawLine, paint);
+                    }
+                    invalidate();
                     break;
                 case MotionEvent.ACTION_UP:
                     if(pointX != -1){
@@ -232,4 +286,3 @@ public class SmallDrawActivity extends AppCompatActivity {
         }
     }
 }
-

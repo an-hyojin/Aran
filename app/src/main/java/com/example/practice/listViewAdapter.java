@@ -80,6 +80,7 @@ public class listViewAdapter extends BaseAdapter {
     private int getWidthDP(){
         return  context.getResources().getDisplayMetrics().widthPixels;
     }
+
     private class ListViewHolder{
         TextView emotion1, emotionCount2;
         ImageView emotionImage;

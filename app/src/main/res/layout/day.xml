@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:layout_weight="1">
     <TextView
-        android:background="@drawable/days_border"
+        android:background="@drawable/days_color"
         android:id="@+id/dateNumber"
         android:autoSizeTextType="uniform"
         android:layout_width="match_parent"
@@ -16,13 +16,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:gravity="center"
         android:background="@drawable/days_border">
 
         <ImageView
             android:layout_gravity="center"
             android:id="@+id/emotionImg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </LinearLayout>

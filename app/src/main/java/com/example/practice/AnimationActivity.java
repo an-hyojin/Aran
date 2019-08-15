@@ -12,8 +12,9 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 public class AnimationActivity extends YouTubeBaseActivity implements View.OnClickListener {
 
+    ImageButton backBtn;
+
     YouTubePlayerView youtubeView;
-    Button backBtn;
     Button button;
     YouTubePlayer.OnInitializedListener listener;
 
@@ -22,17 +23,17 @@ public class AnimationActivity extends YouTubeBaseActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
 
-        backBtn = (Button)findViewById(R.id.back);
+        backBtn = (ImageButton)findViewById(R.id.back);
         backBtn.setOnClickListener(this);
 
         button = (Button) findViewById(R.id.youtubeButton);
         youtubeView = (YouTubePlayerView) findViewById(R.id.youtubeViewer);
 
         listener = new YouTubePlayer.OnInitializedListener() {
-
+            String id = getIntent().getExtras().getString("videoId");
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("0_95kpvfQEg");
+                youTubePlayer.loadVideo(id);
             }//유튜브 로드 성공했을 때
 
             @Override
@@ -51,8 +52,8 @@ public class AnimationActivity extends YouTubeBaseActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-         switch (v.getId()){
-             case R.id.back:
+        switch (v.getId()){
+            case R.id.back:
                 onBackPressed();
         }
     }

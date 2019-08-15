@@ -1,36 +1,36 @@
-
 package com.example.practice;
 
-        import android.content.DialogInterface;
-        import android.graphics.drawable.Drawable;
-        import android.media.Image;
-        import android.os.Bundle;
-        import android.os.Handler;
-        import android.os.Message;
-        import android.support.v7.app.AlertDialog;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.View;
-        import android.view.Window;
-        import android.widget.Button;
-        import android.widget.ImageButton;
-        import android.widget.ImageView;
-        import android.widget.TextView;
+import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-        import java.util.ArrayList;
-        import java.util.Collections;
-        import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class MatchEmotionActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView countLabel;
+    private TextView sentence;
     private ImageView questionImage;
-    private ImageButton emotion01;
-    private ImageButton emotion02;
-    private ImageButton emotion03;
-    private ImageButton emotion04;
-    private ImageButton emotion05;
-    private ImageButton emotion06;
-    private ImageButton emotion07;
-    private ImageButton emotion08;
+    private Button emotion01;
+    private Button emotion02;
+    private Button emotion03;
+    private Button emotion04;
+    private Button emotion05;
+    private Button emotion06;
+    private Button emotion07;
+    private Button emotion08;
     private Button retryButton;
     private Button backButton;
 
@@ -39,6 +39,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
     private int quizCount = 1;
 
     ArrayList<ArrayList<Integer>> quizArray = new ArrayList<>();
+    ArrayList<ArrayList<String>> quizArray2 = new ArrayList<>();
 
     int quizData[][] = {
             {R.drawable.angry1, 1},
@@ -113,12 +114,84 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
             {R.drawable.satisfied8, 8},
     };
 
+    String quizSentence [][] = {
+            {"내가 아끼는 정원에 누군가가 쓰레기를 버리고 있습니다."},
+            {"친구가 나의 장난감이 자신의 것이라고 고집을 부립니다."},
+            {"동생이 장난을 치며 나를 때립니다."},
+            {"졸린데 형제가 계속 잠을 못 자게 합니다."},
+            {"게임을 번갈아 가면서 하기로 했는데 형, 누나가 게임기를 주지 않습니다."},
+            {"주변에서 “넌 나중에 멋진 사과가 못되겠다!”이라고 놀립니다."},
+            {"아빠가 나의 옷이 이상하다며 다른 옷을 강요합니다."},
+            {"옆집 강아지가 좋아하는 우리 주인을 물려고 합니다."},
+            {"친구와 우리집 마당에서 함께 놀고 있습니다."},
+            {"엄마와 함께 재미있는 책을 읽고 있습니다."},
+            {"가족과 함께 바다로 여행을 가서 뛰어놀고 있습니다."},
+            {"선물 받은 분홍 모자가 너무 마음에 듭니다."},
+            {"친구랑 놀기로 한 날, 비가 올 줄 알았는데 날씨가 너무 좋습니다."},
+            {"누워있는 카페트가 너무 부드럽습니다."},
+            {"아팠던 친구가 다 나아서 함께 놀기로 했습니다."},
+            {"친구와 함께 맛있는 음료수를 먹고 있습니다."},
+            {"조용히 해달라고 부탁했는데 시끄럽게 합니다."},
+            {"친구가 말하는 스타일이 나를 깎아내립니다."},
+            {"친구가 내가 좋아하는 것을 무시합니다."},
+            {"친구가 아무일도 아닌것에 삐쳐있습니다."},
+            {"친구가 내 물건을 훔쳤는데 오히려 화를 냅니다."},
+            {"이상한 냄새가 납니다."},
+            {"가족과 멀리 떨어져 있어야 합니다."},
+            {"이상한 사람이 와서 놀자고 합니다."},
+            {"서로를 믿으며 행복한 미래를 생각합니다."},
+            {"엄마가 아기를 소중히 생각합니다."},
+            {"서로의 이끌림을 느낍니다."},
+            {"환한 미소를 지으며 뽀뽀를 합니다."},
+            {"서로를 아끼며 감정을 나눕니다."},
+            {"엄마와 아이가 행복해하며 뽀뽀를 합니다."},
+            {"오랜만에 보는 연인을 안고 있습니다."},
+            {"아빠와 아이가 서로를 귀중하게 생각합니다."},
+            {"서로 마주보며 둘만의 시간을 보냅니다."},
+            {"언니와 동생이 서로 아끼는 만큼 안고 있습니다."},
+            {"연인에게 속삭이며 감정을 표현합니다."},
+            {"같이 키우던 강아지가 하늘나라에 갔습니다."},
+            {"엄마가 놀이터에서 그만 놀고 집에 가자고 합니다."},
+            {"회사에서 돌아온 아빠의 표정이 좋지않습니다."},
+            {"친구랑 유치원에서 다퉜습니다."},
+            {"친한 친구가 다른 지역으로 이사를 갑니다."},
+            {"어릴 때부터 살던 곳에서 다른 곳으로 이사를 갑니다."},
+            {"영화에서 아이의 집이 타고있어 아이가 갈 곳이 없습니다."},
+            {"부모님이 안아주지 않습니다."},
+            {"유치원에 가야하는데 늦잠을 잤습니다."},
+            {"엄마가 화를 내고있습니다."},
+            {"오늘 무서운 영화를 보고 왔습니다."},
+            {"꿈속에서 무서운 괴물이 쫓아오고있습니다."},
+            {"놀이공원에서 롤러코스터를 탔습니다."},
+            {"할로윈 파티에서 친구가 무서운 분장을 하고 왔습니다."},
+            {"백화점에서 길을 잃었습니다."},
+            {"길을 걸어가고 있는데 건물에서 화분이 떨어졌습니다."},
+            {"오늘 병원가는 날입니다."},
+            {"집에 혼자 있는데 밖에서 문을 두드리는 소리가 났습니다."},
+            {"사진사의 카메라에 귀신이 찍혔습니다."},
+            {"옆에 생일선물이 놓여져 있었습니다."},
+            {"동영상에 아는사람이 나왔습니다."},
+            {"갑자기 집에 친구들이 찾아왔습니다."},
+            {"밥을 먹었는데 정말 맛이 있었습니다."},
+            {"안경을 샀는데 정말 잘 어울립니다."},
+            {"눈 앞에서 믿을 수 없는 일이 일어났습니다."},
+            {"부모님이 깜짝 선물을 사들고 오셨습니다."},
+            {"채소를 싫어했는데 먹어보니까 맛있습니다."},
+            {"다른사람들이 못해낸 일을 내가 해냈습니다."},
+            {"새로산 옷이 잘 어울려서 사길 잘했다고 생각했습니다."},
+            {"키가 커서 높은 곳에 있는 물건을 주었습니다."},
+            {"달리기 대회를 해서 1등을 했습니다."},
+            {"마음이 잘 맞는 친구를 사귀게 되었습니다."},
+            {"어려운 문제를 스스로 풀었습니다."},
+            {"새로 산 노트북이 좋다고 친구에게 칭찬 받았습니다."},
+            {"부모님에게 생신선물을 사드렸습니다."},
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_emotion);
         backButton = (Button)findViewById(R.id.back);
-
 
         retryButton = (Button) findViewById(R.id.retry);
 
@@ -126,6 +199,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
         backButton.setOnClickListener(this);
 
         countLabel = findViewById(R.id.countLabel);
+        sentence = findViewById(R.id.sentence);
         questionImage = findViewById(R.id.emotion_image);
         emotion01 = findViewById(R.id.emotion01);
         emotion02 = findViewById(R.id.emotion02);
@@ -142,9 +216,12 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
             ArrayList<Integer> tmpArray = new ArrayList<>();
             tmpArray.add(quizData[i][0]); //image name
             tmpArray.add(quizData[i][1]); //right answer
+            ArrayList<String> tmpArray2 = new ArrayList<>();
+            tmpArray2.add(quizSentence[i][0]); //string
 
             //add tmpArray to quizArray
             quizArray.add(tmpArray);
+            quizArray2.add(tmpArray2);
         }
 
         showNextQuiz();
@@ -159,13 +236,15 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
         int randomNum = random.nextInt(quizArray.size());
 
         ArrayList<Integer> quiz = quizArray.get(randomNum);
+        ArrayList<String> quiz2 = quizArray2.get(randomNum);
 
         questionImage.setImageResource(quiz.get(0));
+        sentence.setText(quiz2.get(0));
         rightAnswer = quiz.get(1);
 
         //remove this quiz from quizArray.
         quizArray.remove(randomNum);
-
+        quizArray2.remove(randomNum);
     }
 
     public void showResult(){
@@ -182,7 +261,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    public int getIdFromButton(ImageButton imageButton){
+    public int getIdFromButton(Button imageButton){
         int id = imageButton.getId();
         if(id ==R.id.emotion01){
             return 1;
@@ -202,7 +281,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
             return 8;
         }
 
-}
+    }
 
     @Override
     public void onClick(View view) {
@@ -210,7 +289,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
 
         switch(view.getId()){
             case R.id.retry:
-                RetryDialog dialog = new RetryDialog(this, 1);
+                RetryDialog dialog = new RetryDialog(this, "다시하시겠습니까?", "네", "아니요");
                 dialog.setDialogListener(new DialogListenerInterface(){
                     @Override
                     public void onPositiveClicked() {
@@ -228,7 +307,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
                 onBackPressed();
                 return;
         }
-        ImageButton answerBtn = (ImageButton) findViewById(view.getId());
+        Button answerBtn = (Button) findViewById(view.getId());
 
         int id = getIdFromButton(answerBtn);
         if(id==rightAnswer){
@@ -260,7 +339,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
             rightAnswerCount++;
         }else {
 
-            CustomDialog custom = new CustomDialog(this, "다시 생각해보세요!", getIdText(rightAnswer),"확인", getIdResource(rightAnswer),false);
+            CustomDialog custom = new CustomDialog(this, "다시 생각해보세요!", getIdText(rightAnswer),"확인", getIdResource(rightAnswer) ,false);
 
             custom.setDialogListener(new DialogListenerInterface() {
                 @Override
@@ -305,8 +384,8 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
                 return "놀람";
             case 8:
                 return "뿌듯함";
-                default:
-                    return "";
+            default:
+                return "";
         }
     }
 
@@ -328,8 +407,8 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
                 return R.drawable.surprised;
             case 8:
                 return R.drawable.full;
-                default:
-                    return R.drawable.angry;
+            default:
+                return R.drawable.angry;
         }
     }
 }

@@ -49,11 +49,11 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         positiveBtn.setOnClickListener(this);
         title.setText(titleString);
         text.setText(textString);
-        final String temp = textString;
+        final String temp = titleString+"\n"+textString;
         imageView.setBackgroundResource(topImageResource);
         positiveBtn.setText(bottomString);
         if(isRead) {
-            speech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+                    speech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
                 @Override
                 public void onInit(int status) {
                     speech.setLanguage(Locale.KOREAN);

@@ -20,7 +20,7 @@ public class RetryDialog extends Dialog implements  View.OnClickListener {
     LinearLayout container;
 
     DialogListenerInterface customDialogLister;
-    public RetryDialog(Context context, int caseNum){
+    public RetryDialog(Context context, String text, String left, String right){
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.retrydialog);
@@ -39,8 +39,9 @@ public class RetryDialog extends Dialog implements  View.OnClickListener {
         params.height = (int) (height * 0.4);
         container.setLayoutParams(params);
 
-        title.setText("다시 시작하시겠습니까?");
-
+        title.setText(text);
+        positiveBtn.setText(left);
+        negativeBtn.setText(right);
     }
 
 

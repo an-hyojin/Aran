@@ -8,10 +8,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/faceandimage"
+        android:textColor="@color/colorBlack"
         android:textSize="25sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
         android:id="@+id/date"/>
 
 
@@ -34,6 +36,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
         android:id="@+id/emotion"/>
     <Button
         android:layout_width="80dp"

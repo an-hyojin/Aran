@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -22,13 +23,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class ImageActivity extends Activity {
+public class ImageActivity extends AppCompatActivity implements  View.OnClickListener {
     FaceDBHelper faceDBHelper;
     SQLiteDatabase sqlDB;
     byte[] photo, drawing;
     String emotion;
     Button removeBtn;
-
+    Long key;
     Button backBtn;
     ImageView photoView, drawingView;
     TextView emotionView, dateView;
@@ -46,8 +47,8 @@ public class ImageActivity extends Activity {
         removeBtn = (Button)findViewById(R.id.remove);
         backBtn = (Button)findViewById(R.id.back);
         Intent intent = getIntent();
-        final Long key = intent.getLongExtra("dateKey", 0);
-        SimpleDateFormat dayTime = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
+        key = intent.getLongExtra("dateKey", 0);
+        SimpleDateFormat dayTime = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분");
         String str = dayTime.format(new Date(key));
         dateView.setText(str);
         Cursor cursor = sqlDB.rawQuery("SELECT * FROM faceTBL WHERE date=="+key+";", null);
@@ -58,17 +59,8 @@ public class ImageActivity extends Activity {
         photo = cursor.getBlob(3);
         photoView.setBackgroundDrawable(BitmapToDrawable(photo));
         emotionView.setText(emotion);
-        drawingView.setBackgroundDrawable(BitmapToDrawable(drawing));
-
-        removeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SQLiteStatement p = sqlDB.compileStatement("DELETE FROM faceTBL WHERE date = (?);");
-                p.bindLong(1,key);
-                p.execute();
-                onBackPressed();
-            }
-        });
+        drawingView.setImageDrawable(BitmapToDrawable(drawing));
+        removeBtn.setOnClickListener(this);
         backBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -81,5 +73,30 @@ public class ImageActivity extends Activity {
         Bitmap temp = BitmapFactory.decodeByteArray(b, 0, b.length);
         return new BitmapDrawable(temp);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.remove:
+                RetryDialog retryDialog = new RetryDialog(ImageActivity.this, "삭제하시겠습니까?", "확인", "취소");
+                retryDialog.setDialogListener(new DialogListenerInterface() {
+                    @Override
+                    public void onPositiveClicked() {
+                        SQLiteStatement p = sqlDB.compileStatement("DELETE FROM faceTBL WHERE date = (?);");
+                        p.bindLong(1,key);
+                        p.execute();
+                        sqlDB.close();
+                        onBackPressed();
+                    }
+
+                    @Override
+                    public void onNegativeClicked() {
+
+                    }
+                });
+                retryDialog.show();
+                break;
+        }
     }
 }

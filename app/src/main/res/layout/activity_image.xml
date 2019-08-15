@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorIvory"
     android:gravity="center_horizontal"
     tools:context=".ImageActivity">
     <LinearLayout
@@ -27,11 +28,28 @@
             android:gravity="left|center_vertical"
             style="?android:attr/borderlessButtonStyle"
             />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+
+
+            <Button
+                android:id="@+id/remove"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:autoSizeTextType="uniform"
+                android:drawableLeft="@drawable/delete_drawable"
+                android:drawablePadding="8dp"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="3dp"
+                android:text="삭제하기"
+                android:textColor="@color/colorBlack" />
+
+        </LinearLayout>
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/date"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -48,45 +66,55 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
-                android:text="보고 그린 사진"/>
-             <ImageView
-                android:id="@+id/photo"
-                android:layout_height="300dp"
-                android:layout_width="300dp" />
-            <TextView
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
-                android:text="그린 그림"/>
+                android:layout_height="30dp"
+                android:text="보고 그린 사진"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/colorBlack"/>
+
             <ImageView
+                android:id="@+id/photo"
+                android:layout_width="300dp"
+                android:layout_height="300dp" />
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="그린 그림"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/colorBlack"/>
+            <ImageView
+                android:background="@color/colorWhite"
                 android:id="@+id/drawing"
                 android:layout_height="300dp"
                 android:layout_width="300dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
-                android:text="이때 느낀 감정 : "/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
-                android:id="@+id/emotion"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이때 느낀 감정 : "
+                    android:textColor="@color/colorBlack"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:id="@+id/emotion"/>
             </LinearLayout>
-            <Button
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/remove"
-                android:text="삭제"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/date"
+                    />
             </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -61,17 +61,29 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:text="Q1"
-        android:textSize="15sp" />
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/sentence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="나는 감정을 느낀다."
+        android:layout_marginTop="2dp"
+        android:textSize="15sp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <ImageView
-            android:layout_weight="1"
             android:id="@+id/emotion_image"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,41 +101,53 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <Button
                     android:id="@+id/emotion01"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="4dip"
                     android:layout_weight="1"
                     android:background="@drawable/angrycard"
-                    android:onClick="onClick"  />
+                    android:onClick="onClick"
+                    android:text="화남"
+                    android:textStyle="bold"
+                    android:gravity="bottom|center_horizontal"/>
 
-                <ImageButton
+                <Button
                     android:id="@+id/emotion02"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="4dip"
                     android:layout_weight="1"
                     android:background="@drawable/smilecard"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:text="기쁨"
+                    android:textStyle="bold"
+                    android:gravity="bottom|center_horizontal"/>
 
-                <ImageButton
+                <Button
                     android:id="@+id/emotion03"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_margin="4dip"
                     android:layout_weight="1"
                     android:background="@drawable/disgustcard"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:text="싫어함"
+                    android:textStyle="bold"
+                    android:gravity="bottom|center_horizontal"/>
 
-                <ImageButton
+                <Button
                     android:id="@+id/emotion04"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="4dip"
                     android:layout_weight="1"
                     android:background="@drawable/heartcard"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:text="사랑"
+                    android:textStyle="bold"
+                    android:gravity="bottom|center_horizontal"/>
             </LinearLayout>
 
             <LinearLayout
@@ -133,41 +157,53 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <Button
                     android:id="@+id/emotion05"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="4dip"
                     android:layout_weight="1"
                     android:background="@drawable/sadcard"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:text="슬픔"
+                    android:textStyle="bold"
+                    android:gravity="bottom|center_horizontal"/>
 
-                <ImageButton
+                <Button
                     android:id="@+id/emotion06"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="4dip"
                     android:layout_weight="1"
                     android:background="@drawable/scarycard"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:text="무서움"
+                    android:textStyle="bold"
+                    android:gravity="bottom|center_horizontal"/>
 
-                <ImageButton
+                <Button
                     android:id="@+id/emotion07"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="4dip"
                     android:layout_weight="1"
                     android:background="@drawable/surprisedcard"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:text="놀람"
+                    android:textStyle="bold"
+                    android:gravity="bottom|center_horizontal"/>
 
-                <ImageButton
+                <Button
                     android:id="@+id/emotion08"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="4dip"
                     android:layout_weight="1"
                     android:background="@drawable/fullcard"
-                    android:onClick="onClick" />
+                    android:onClick="onClick"
+                    android:text="뿌듯함"
+                    android:textStyle="bold"
+                    android:gravity="bottom|center_horizontal"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

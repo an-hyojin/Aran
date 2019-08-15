@@ -9,7 +9,7 @@ import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button button1,button2,button3,button4,button5,button6;
+    Button button1,button2,button3,button4,button5,button6, button7;
     Switch onOffSound;
     @Override
     // 액티비티가 생성되는 순간에 딱 한번 호출
@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button6 = (Button)findViewById(R.id.btn6);
         button6.setOnClickListener(this);
         onOffSound = findViewById(R.id.onoffSound);
+        button7 = findViewById(R.id.btn7);
+        button7.setOnClickListener(this);
     }
 
     public void onClick(View v){
@@ -62,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn6:
                 intent = new Intent(this, StickerBookActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn7:
+                intent = new Intent(this, TipsActivity.class);
                 startActivity(intent);
                 break;
         }
