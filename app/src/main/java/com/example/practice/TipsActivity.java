@@ -34,6 +34,8 @@ public class TipsActivity extends AppCompatActivity {
         tran = fm.beginTransaction();
         tran.replace(R.id.container, emotionsFrag);
         tran.commit();
+        bt1.setBackgroundResource(R.drawable.topbuttonborder);
+        bt2.setBackgroundResource(R.drawable.buttononclickborder);
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +43,8 @@ public class TipsActivity extends AppCompatActivity {
                 tran = fm.beginTransaction();
                 tran.replace(R.id.container, emotionsFrag);
                 tran.commit();
-
+                bt2.setBackgroundResource(R.drawable.buttononclickborder);
+                bt1.setBackgroundResource(R.drawable.topbuttonborder);
             }
         });
         bt2.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +54,8 @@ public class TipsActivity extends AppCompatActivity {
                 tran = fm.beginTransaction();
                 tran.replace(R.id.container,solutionFrag);
                 tran.commit();
-
+                bt1.setBackgroundResource(R.drawable.buttononclickborder);
+                bt2.setBackgroundResource(R.drawable.topbuttonborder);
             }
         });
         CustomDialog customDialog = new CustomDialog(TipsActivity.this, "감정들과 솔루션", "아란에서 사용하는 여덟개의 감정외에 많은 감정들을 학습하고, 아이들에게 알려주세요. \n 그리고 솔루션에서 육아 팁도 확인해보세요.", "확인", R.drawable.heart, false);

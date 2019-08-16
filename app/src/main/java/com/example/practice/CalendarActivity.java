@@ -37,6 +37,7 @@ public class CalendarActivity extends AppCompatActivity {
         tran = fm.beginTransaction();
         tran.replace(R.id.container,calendarFrag);
         tran.commit();
+        bt2.setBackgroundResource(R.drawable.buttononclickborder);
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,12 +45,16 @@ public class CalendarActivity extends AppCompatActivity {
                 tran = fm.beginTransaction();
                 tran.replace(R.id.container,calendarFrag);
                 tran.commit();
+                bt2.setBackgroundResource(R.drawable.buttononclickborder);
+                bt1.setBackgroundResource(R.drawable.topbuttonborder);
 
             }
         });
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bt2.setBackgroundResource(R.drawable.topbuttonborder);
+                bt1.setBackgroundResource(R.drawable.buttononclickborder);
                 fm =getSupportFragmentManager();
                 tran = fm.beginTransaction();
                 tran.replace(R.id.container,statisticsFrag);

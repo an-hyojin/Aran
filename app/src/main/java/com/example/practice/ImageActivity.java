@@ -57,7 +57,7 @@ public class ImageActivity extends AppCompatActivity implements  View.OnClickLis
         emotion = cursor.getString(1);
         drawing = cursor.getBlob(2);
         photo = cursor.getBlob(3);
-        photoView.setBackgroundDrawable(BitmapToDrawable(photo));
+        photoView.setImageDrawable(BitmapToDrawable(photo));
         emotionView.setText(emotion);
         drawingView.setImageDrawable(BitmapToDrawable(drawing));
         removeBtn.setOnClickListener(this);

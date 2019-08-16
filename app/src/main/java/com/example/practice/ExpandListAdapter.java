@@ -5,19 +5,24 @@ import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ExpandableListAdapter;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
+import java.util.AbstractList;
 import java.util.ArrayList;
 
 public class ExpandListAdapter implements ExpandableListAdapter {
-    ArrayList<String> titles, texts;
+    ArrayList<String> titles;
+    ArrayList<ArrayList<SolutionFrag.StringHolder>> texts;
     Context context;
     LayoutInflater inflater = null;
-    public ExpandListAdapter(Context context, ArrayList<String> title, ArrayList<String> text){
+    public ExpandListAdapter(Context context, ArrayList<String> title, ArrayList<ArrayList<SolutionFrag.StringHolder>> text){
         this.context= context;
         this.titles = title;
         this.texts = text;
@@ -40,7 +45,7 @@ public class ExpandListAdapter implements ExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return 1;
+        return texts.get(groupPosition).size();
     }
 
     @Override
@@ -83,8 +88,26 @@ public class ExpandListAdapter implements ExpandableListAdapter {
         if(convertView == null){
             convertView = inflater.inflate(R.layout.solution_text, parent, false);
         }
-        TextView textSolution = (TextView)convertView.findViewById(R.id.solutionText);
-        textSolution.setText(texts.get(groupPosition));
+        ArrayList<SolutionFrag.StringHolder> temp = texts.get(groupPosition);
+        TextView tempT = (TextView)convertView.findViewById(R.id.solutionText0);
+        tempT.setVisibility(View.GONE);
+        tempT =(TextView)convertView.findViewById(R.id.solutionText1);
+        tempT.setVisibility(View.GONE);
+        tempT =(TextView)convertView.findViewById(R.id.solutionText2);
+        tempT.setVisibility(View.GONE);
+
+        int level =temp.get(childPosition).level;
+        TextView textSolution;
+        if(level==0){
+            textSolution = (TextView)convertView.findViewById(R.id.solutionText0);
+        }else if(level==1){
+            textSolution = (TextView)convertView.findViewById(R.id.solutionText1);
+        }else{
+            textSolution = (TextView)convertView.findViewById(R.id.solutionText2);
+        }
+        textSolution.setVisibility(View.VISIBLE);
+
+        textSolution.setText(temp.get(childPosition).string);
         return convertView;
     }
 

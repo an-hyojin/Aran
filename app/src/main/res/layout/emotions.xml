@@ -12,6 +12,7 @@
         android:layout_gravity="center_horizontal"
         android:text="여러 감정들"/>
     <ListView
+        android:background="@color/colorWhite"
         android:id="@+id/emotionList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

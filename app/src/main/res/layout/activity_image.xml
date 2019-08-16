@@ -65,30 +65,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:text="보고 그린 사진"
-                android:autoSizeTextType="uniform"
-                android:textColor="@color/colorBlack"/>
 
             <ImageView
                 android:id="@+id/photo"
+                android:background="@drawable/border"
                 android:layout_width="300dp"
-                android:layout_height="300dp" />
-            <TextView
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp"/>
+            <ImageView
                 android:gravity="center"
-                android:layout_width="match_parent"
+                android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:text="그린 그림"
-                android:autoSizeTextType="uniform"
-                android:textColor="@color/colorBlack"/>
+                android:background="@drawable/pencil"
+                android:layout_marginTop="10dp"/>
             <ImageView
                 android:background="@color/colorWhite"
                 android:id="@+id/drawing"
                 android:layout_height="300dp"
-                android:layout_width="300dp"/>
+                android:layout_width="300dp"
+                android:layout_marginTop="10dp"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,10 +93,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="이때 느낀 감정 : "
+                    android:textSize="25dp"
                     android:textColor="@color/colorBlack"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="25dp"
                     android:textColor="@color/colorBlack"
                     android:id="@+id/emotion"/>
             </LinearLayout>

@@ -29,25 +29,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/bt1"
+            android:background="@drawable/topbuttonborder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
+            android:textSize="20sp"
             android:textColor="@color/colorBlack"
             android:text="캘린더" />
 
         <Button
             android:id="@+id/bt2"
+            android:textSize="20sp"
+            android:background="@drawable/topbuttonborder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:textColor="@color/colorBlack"
             android:layout_weight="1"
             android:text="통계" />
@@ -56,9 +55,9 @@
 
 
         <FrameLayout
-            android:background="@drawable/buttonborder"
             android:layout_weight="1"
             android:id="@+id/container"
+            android:background="@drawable/container_border"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

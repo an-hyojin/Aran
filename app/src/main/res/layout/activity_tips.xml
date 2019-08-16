@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@color/colorWhite">
+    android:background="@color/colorIvory">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -29,36 +29,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/bt1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:textColor="@color/colorBlack"
+            android:background="@drawable/topbuttonborder"
             android:layout_weight="1"
             android:text="감정들" />
 
         <Button
             android:id="@+id/bt2"
             android:textColor="@color/colorBlack"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:background="@drawable/topbuttonborder"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="솔루션" />
 
     </LinearLayout>
-
-
     <FrameLayout
-        android:background="@drawable/buttonborder"
         android:layout_weight="1"
         android:id="@+id/container"
+        android:background="@drawable/container_border"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
