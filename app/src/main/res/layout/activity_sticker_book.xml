@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorIvory"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/title"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:text="이전으로"
+            android:textColor="@color/colorBlack"
+            android:autoSizeTextType="uniform"
+            android:paddingLeft="3dp"
+            android:drawableLeft="@drawable/backbtn"
+            android:drawablePadding="8dp"
+            android:gravity="left|center_vertical"
+            style="?android:attr/borderlessButtonStyle"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/stickerbook"
+            android:textColor="@color/colorBlack"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="스티커 북"
+            android:paddingLeft="35dp"
+            android:background="@drawable/topbuttonborder"
+            android:drawableLeft="@drawable/stickerbookbtn_drawable"
+            android:drawablePadding="10dp"
+            android:gravity="left|center_vertical"/>
+
+
+        <Button
+            android:id="@+id/statistics"
+
+            android:text="통계"
+            android:paddingLeft="50dp"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:layout_weight="1"
+            android:background="@drawable/topbuttonborder"
+            android:drawableLeft="@drawable/statistics_drawable"
+            android:drawablePadding="10dp"
+            android:gravity="left|center_vertical"/>
+
+    </LinearLayout>
+    <FrameLayout
+        android:layout_weight="1"
+        android:id="@+id/container"
+        android:background="@drawable/container_border"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+
+</LinearLayout>

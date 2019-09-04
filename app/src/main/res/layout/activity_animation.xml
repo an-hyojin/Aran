@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorIvory"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/title"
+        android:orientation="horizontal"
+        tools:context=".Animation.AnimationActivity">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:text="이전으로"
+            android:textColor="@color/colorBlack"
+            android:autoSizeTextType="uniform"
+            android:paddingLeft="3dp"
+            android:drawableLeft="@drawable/backbtn"
+            android:drawablePadding="8dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:gravity="left|center_vertical"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_height="30dp"
+            android:id="@+id/info"
+            android:textColor="@color/colorBlack"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:layout_width="match_parent"
+            android:text="@string/animation_act"/>
+    </LinearLayout>
+
+    <view
+        class="com.google.android.youtube.player.YouTubePlayerView"
+        android:id="@+id/youtubeViewer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="3">
+    <Button
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/youtubeButton"
+        android:layout_width="0dp"
+        android:background="@drawable/level"
+        android:layout_height="60dp"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/play_btn_drawable"
+        android:textColor="@color/colorBlack"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="재생" />
+    </LinearLayout>
+</LinearLayout>

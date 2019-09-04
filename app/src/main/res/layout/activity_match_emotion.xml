@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorIvory"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/title"
+        android:orientation="horizontal"
+        tools:context=".MatchEmotion.MatchEmotionActivity"
+        >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:text="이전으로"
+            android:textColor="@color/colorBlack"
+            android:autoSizeTextType="uniform"
+            android:paddingLeft="3dp"
+            android:drawableLeft="@drawable/backbtn"
+            android:drawablePadding="8dp"
+            android:gravity="left|center_vertical"
+            style="?android:attr/borderlessButtonStyle"
+            />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+
+            <Button
+                android:id="@+id/retry"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:text="다시하기"
+                android:textColor="@color/colorBlack"
+                android:autoSizeTextType="uniform"
+                android:paddingLeft="3dp"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/retry"
+                style="?android:attr/borderlessButtonStyle" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_height="30dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:layout_width="match_parent"
+        android:textColor="@color/colorBlack"
+        android:text="@string/matchEmotion_act"/>
+
+    <TextView
+        android:id="@+id/countLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorBlack"
+        android:layout_marginTop="5dp"
+        android:text="Question"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/sentence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorBlack"
+        android:text="나는 감정을 느낀다."
+        android:layout_marginTop="2dp"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:background="@drawable/buttonborder"
+            android:layout_width="match_parent">
+            <ImageView
+                android:id="@+id/emotion_image"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:scaleType="centerInside"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/emotion01"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/level"
+                    android:drawableTop="@drawable/angry_drawable"
+                    android:paddingTop="20dp"
+                    android:onClick="onClick"
+                    android:text="화남"
+                    android:textColor="@color/colorBlack" />
+
+                <Button
+                    android:id="@+id/emotion02"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:textColor="@color/colorBlack"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="기쁨"
+                    android:background="@drawable/level"
+                    android:drawableTop="@drawable/smile_drawable"
+                    android:paddingTop="20dp"/>
+
+                <Button
+                    android:id="@+id/emotion03"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="싫어함"
+                    android:textColor="@color/colorBlack"
+                    android:background="@drawable/level"
+                    android:drawableTop="@drawable/disgust_drawable"
+                    android:paddingTop="20dp"/>
+
+                <Button
+                    android:id="@+id/emotion04"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="사랑"
+                    android:textColor="@color/colorBlack"
+                    android:background="@drawable/level"
+                    android:drawableTop="@drawable/heart_drawable"
+                    android:paddingTop="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/emotion05"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="슬픔"
+                    android:textColor="@color/colorBlack"
+                    android:background="@drawable/level"
+                    android:drawableTop="@drawable/sad_drawable"
+                    android:paddingTop="20dp"/>
+
+                <Button
+                    android:id="@+id/emotion06"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlack"
+                    android:onClick="onClick"
+                    android:text="무서움"
+                    android:background="@drawable/level"
+                    android:drawableTop="@drawable/scary_drawable"
+                    android:paddingTop="20dp"/>
+
+                <Button
+                    android:id="@+id/emotion07"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:text="놀라움"
+                    android:textColor="@color/colorBlack"
+                    android:background="@drawable/level"
+                    android:drawableTop="@drawable/surprised_drawable"
+                    android:paddingTop="20dp"/>
+
+                <Button
+                    android:id="@+id/emotion08"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:textColor="@color/colorBlack"
+                    android:text="뿌듯함"
+                    android:background="@drawable/level"
+                    android:drawableTop="@drawable/full_drawable"
+                    android:paddingTop="20dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

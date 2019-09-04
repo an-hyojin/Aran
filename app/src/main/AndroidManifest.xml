@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.practice">
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/appicon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".Splash"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Tip.TipsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Animation.SingList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Animation.AnimationList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Animation.SingAndAnimationSelectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Card.CardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Calendar.CalendarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Draw.DrawActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Animation.AnimationActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".MatchEmotion.MatchEmotionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Sticker.StickerBookActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Card.EasyCardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Card.MiddleCardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Card.SelectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Draw.ImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Draw.SmallDrawActivity"
+            android:screenOrientation="portrait" />
+        <activity
+        android:name=".MainActivity"
+        android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

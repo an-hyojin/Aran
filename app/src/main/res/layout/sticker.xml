@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_height="140dp"
+    android:layout_width="120dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/stickerGrid"
+        android:textColor="@color/colorBlack"
+        android:background="@drawable/color3"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"/>
+</LinearLayout>
