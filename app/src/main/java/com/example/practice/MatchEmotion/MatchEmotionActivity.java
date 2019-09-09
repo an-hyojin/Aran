@@ -57,6 +57,7 @@ public class MatchEmotionActivity extends AppCompatActivity implements View.OnCl
         return sdf.format(new Date());
     }
 
+    // 사진 데이터
     int quizData[][] = {
             {R.drawable.angry1, 1},
             {R.drawable.angry2, 1},

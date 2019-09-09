@@ -11,7 +11,9 @@ import com.example.practice.Animation.SingAndAnimationSelectActivity;
 import com.example.practice.Calendar.CalendarActivity;
 import com.example.practice.Card.SelectActivity;
 import com.example.practice.Draw.DrawActivity;
+import com.example.practice.Draw.DrawImageActivity;
 import com.example.practice.MatchEmotion.MatchEmotionActivity;
+import com.example.practice.Record.RecordActivity;
 import com.example.practice.Sticker.StickerBookActivity;
 import com.example.practice.Tip.TipsActivity;
 
@@ -31,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button1.setOnClickListener(this);
         button2 = (Button)findViewById(R.id.btn2);
         button2.setOnClickListener(this);
-
         button3 = (Button)findViewById(R.id.btn3);
         button3.setOnClickListener(this);
         button4 = (Button)findViewById(R.id.btn4);
@@ -49,12 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()){
             case R.id.btn1:
-                intent = new Intent(this, DrawActivity.class);
+                intent = new Intent(this, DrawImageActivity.class);
                 intent.putExtra("onOffSound", onOffSound.isChecked());
                 startActivity(intent);
                 break;
             case R.id.btn2:
-                intent = new Intent(this, MatchEmotionActivity.class);
+                intent = new Intent(this, RecordActivity.class);
                 intent.putExtra("onOffSound", onOffSound.isChecked());
                 startActivity(intent);
                 break;

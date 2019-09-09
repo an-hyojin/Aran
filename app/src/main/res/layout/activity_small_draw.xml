@@ -107,6 +107,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginTop="20dp"
+    android:id="@+id/colorPallete"
     android:visibility="gone">
 
     <LinearLayout
@@ -117,65 +118,65 @@
 
         <Button
             android:id="@+id/colorWhite"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorWhite" />
 
         <Button
             android:id="@+id/colorBlack"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorBlack" />
 
         <Button
             android:id="@+id/colorRed"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorRed" />
 
         <Button
             android:id="@+id/colorOrange"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorOrange" />
 
         <Button
             android:id="@+id/colorYellow2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorYellow2" />
 
         <Button
             android:id="@+id/colorGreen"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorGreen" />
 
         <Button
             android:id="@+id/colorSkyBlue"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorSkyBlue" />
 
         <Button
             android:id="@+id/colorBlue"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorBlue" />
 
         <Button
             android:id="@+id/colorPurple"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorPurple" />
 
         <Button
             android:id="@+id/colorPink"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/colorPink" />
-
         >
+
     </LinearLayout>
 
     <LinearLayout
@@ -203,5 +204,6 @@
             android:thumb="@drawable/seekbar_drawable"
             />
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

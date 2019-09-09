@@ -32,6 +32,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<Long> dateList;
 
     Button backBtn, addBtn;
+    // gridview ; 2차원의 그리드에 항목들을 표시하는 뷰그룹
     GridView gridView;
     GridAdapter adapter;
     SQLiteDatabase sqlDB, sqlDB2;
@@ -51,6 +52,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         gridView = (GridView)findViewById(R.id.gridView);
         init();
         boolean isRead = getIntent().getBooleanExtra("onOffSound", false);
+        // 팝업창
         CustomDialog dialog = new CustomDialog(this, "감정 따라그리기", "갤러리에서 사진을 선택한 후 그때 느낀 감정을 따라 그려보세요","확인", R.drawable.drawing, isRead);
 
         dialog.show();
@@ -66,8 +68,9 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
         sqlDB = faceDBHelper.getWritableDatabase();
         stickerDB = new StickerDBHelper(this);
         sqlDB2 = stickerDB.getWritableDatabase();
-
+        // cursor ; db에서 가져온 데이터를 쉽게 처리하기 위해서
         Cursor cursor = sqlDB.rawQuery("SELECT * FROM faceTBL;", null);
+        // 제일 첫번째 행으로 이동
         cursor.moveToFirst();
         while(!cursor.isAfterLast()) {
             long date = cursor.getLong(0);
@@ -76,14 +79,18 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
             Bitmap imgBitmap= getBitmapBybyte(image);
             byte[] photo = cursor.getBlob(3);
             Bitmap photoBitmap = getBitmapBybyte(photo);
+
+            // 리스트에 추가
             imgList.add(imgBitmap);
             idList.add(photoBitmap);
             dateList.add(date);
             emotionList.add(emotion);
+
+            // 다음 행으로 이동
             cursor.moveToNext();
         }
-
-        adapter = new GridAdapter(this, imgList, idList, dateList, emotionList);
+                                                                            //emotionList
+        adapter = new GridAdapter(this, imgList, idList, dateList);
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
@@ -95,6 +102,7 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 intent.setType("image/*");
+                // 다음으로 넘겨주는 코드
                 startActivityForResult(intent, GALLERY_CODE);
                 break;
             case R.id.back:
@@ -110,17 +118,17 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case GALLERY_CODE:
-                    Uri ImageCaptureUri = data.getData();
-                    Intent intent = new Intent("com.android.camera.action.CROP");
-                    intent.setDataAndType(ImageCaptureUri, "image/*");
-                    intent.putExtra("outputX", 200);
-                    intent.putExtra("outputY", 200);
-                    intent.putExtra("aspectX", 1);
+                    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                    super.onActivityResult(requestCode, resultCode, data);
+                    if (resultCode == RESULT_OK) {
+                        switch (requestCode) {
+                            case GALLERY_CODE:
+                                Uri ImageCaptureUri = data.getData();
+                                Intent intent = new Intent("com.android.camera.action.CROP");
+                                intent.setDataAndType(ImageCaptureUri, "image/*");
+                                intent.putExtra("outputX", 200);
+                                intent.putExtra("outputY", 200);
+                                intent.putExtra("aspectX", 1);
                     intent.putExtra("aspectY", 1);
                     intent.putExtra("scale", true);
                     intent.putExtra("return-data", true);
@@ -149,16 +157,17 @@ public class DrawActivity extends AppCompatActivity implements View.OnClickListe
                         SQLiteStatement p = sqlDB.compileStatement("INSERT INTO faceTBL VALUES (?,?, ?, ?);");
                         Date date = new Date();
                         p.bindLong(1, date.getTime());
-                        p.bindString(2, emotion);
+//                        p.bindString(2, emotion);
                         p.bindBlob(3, drawByte);
                         p.bindBlob(4, realByte);
                         p.execute();
                         sqlDB.close();
-                        emotionList.add(emotion);
+//                        emotionList.add(emotion);
                         dateList.add(date.getTime());
                         imgList.add(drawImage);
                         idList.add(realPhoto);
-                        adapter = new GridAdapter(this, imgList, idList, dateList, emotionList);
+                                                                                       // , emotionList
+                        adapter = new GridAdapter(this, imgList, idList, dateList);
                         gridView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
                         sqlDB2 = stickerDB.getWritableDatabase();

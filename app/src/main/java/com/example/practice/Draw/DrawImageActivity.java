@@ -10,10 +10,11 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -22,14 +23,20 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.practice.MainActivity;
 import com.example.practice.R;
+import com.example.practice.Record.RecordActivity;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Random;
 
-public class SmallDrawActivity extends AppCompatActivity {
+public class DrawImageActivity extends AppCompatActivity {
+    Button clearBtn, saveBtn,  eraserBtn,
+            blackBtn, redBtn, orangeBtn,blueBtn,yellowBtn,
+            skyblueBtn,purpleBtn,pinkBtn, whiteBtn,greenBtn;
 
-    Button clearBtn, saveBtn,  eraserBtn, blackBtn, redBtn, orangeBtn,blueBtn,yellowBtn,skyblueBtn,purpleBtn,pinkBtn, whiteBtn,greenBtn;
     Button backBtn,pencilBtn;
+
     TextView textInput,sizeInput;
     LinearLayout drawLinear, colorPallete;
     ImageView showImg;
@@ -37,6 +44,9 @@ public class SmallDrawActivity extends AppCompatActivity {
     PorterDuffXfermode clear = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
     DrawView drawView;
 
+    int Image;
+
+    // 선의 굵기 최소
     public int number = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -45,15 +55,15 @@ public class SmallDrawActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_small_draw); // smalldraw layout을 사용한다.
 
-       // textInput = (TextView)findViewById(R.id.emotion);
+
         saveBtn = (Button)findViewById(R.id.save);
         eraserBtn = findViewById(R.id.eraser);
         backBtn = (Button) findViewById(R.id.back);
-        showImg = (ImageView) findViewById(R.id.backgroundImage);
+
 
         pencilBtn = findViewById(R.id.pencil);
-        // inputEmotionBtn = findViewById(R.id.)
         colorPallete = findViewById(R.id.colorPallete);
+
         // 팔레트
         whiteBtn = findViewById(R.id.colorWhite);
         blackBtn = findViewById(R.id.colorBlack);
@@ -70,17 +80,17 @@ public class SmallDrawActivity extends AppCompatActivity {
         seekBar = findViewById(R.id.seekBar);
         sizeInput = findViewById(R.id.size);
 
-        // 확인 버튼
 
-        byte[] arr = getIntent().getByteArrayExtra("image"); //?
+         // byte[] arr = getIntent().getByteArrayExtra("image"); //?
+
+        showImg = (ImageView) findViewById(R.id.backgroundImage);
 
         // Bitmap ; 이미지를 표현하기 위해 사용
-        Bitmap img = BitmapFactory.decodeByteArray(arr, 0, arr.length);
-        //이미지표현
-        showImg.setImageBitmap(img);
+//        Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.angry2);
+        showImg.setImageBitmap(getImage());
 
-        drawLinear = findViewById(R.id.drawLayout);
-        clearBtn = findViewById(R.id.clear);
+        drawLinear = (LinearLayout)findViewById(R.id.drawLayout);
+        clearBtn = (Button)findViewById(R.id.clear);
 
         clearBtn.setOnClickListener(new View.OnClickListener() { //지우기 버튼 눌렸을때
             @Override
@@ -93,13 +103,15 @@ public class SmallDrawActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                // 뷰가 업데이트 될 때 마다 그때의 뷰 이미지를 저장
                 drawLinear.setDrawingCacheEnabled(true);    // 캐쉬허용
                 Bitmap screenshot = Bitmap.createBitmap(drawLinear.getDrawingCache());
                 drawLinear.setDrawingCacheEnabled(false);   // 캐쉬닫기
 
                 // 완료하면 녹음창으로 넘어가기
                 // intent 수정하기 !
-                Intent outIntent = new Intent(getApplicationContext(), DrawActivity.class);
+                Intent outIntent = new Intent(getApplication(), RecordActivity.class);
+                // 새로운 바이트 배열 출력 스트림
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 screenshot.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
@@ -109,32 +121,15 @@ public class SmallDrawActivity extends AppCompatActivity {
                 bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                 showImg.setImageBitmap(bitmap);
 
+                // 다음 intent로 어떤값을 넘기고 싶을때 putextra를 사용한다.
+                // 그림 그린값 넘기기
                 outIntent.putExtra("drawing",byteArray);
-//                outIntent.putExtra("emotion", textInput.getText().toString());
-                // startactivity  for result 에 관련된것.
-                setResult(RESULT_OK, outIntent);
-                finish();
+                startActivityForResult(outIntent,5000);
+//                setResult(RESULT_OK, outIntent);
+//                finish();
             }
 
         });
-//        inputEmotionBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DayEmotionDialog dayEmotionDialog = new DayEmotionDialog(SmallDrawActivity.this, "SmallDraw");
-//                dayEmotionDialog.setDayEmotionDialogListener(new DayEmotionDialogListener() {
-//                    @Override
-//                    public void onPositiveButtonClicked(String emotion) {
-//                        textInput.setText(emotion);
-//                    }
-//
-//                    @Override
-//                    public void onNegativeButtonClicked() {
-//
-//                    }
-//                });
-//                dayEmotionDialog.show();
-//            }
-//        });
 
         // 이전으로 버튼
         backBtn.setOnClickListener(new View.OnClickListener(){
@@ -234,7 +229,7 @@ public class SmallDrawActivity extends AppCompatActivity {
             }
         });
 
-
+        // 크기 조절 바
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
@@ -262,12 +257,68 @@ public class SmallDrawActivity extends AppCompatActivity {
                 update();
             }
         });
-        //drawView.setSize()
     }
 
     // seekbar size 나타내주는 메소드
     public void update(){
         sizeInput.setText(new StringBuilder().append(number));
+    }
+
+    String EmotionData[] = {
+          "angry","delight","hate","lovely","sad","scary","surprise","satisfied"};
+
+    // 이미지 가져오는 메소드
+    public Bitmap getImage(){
+        Random random = new Random();
+        int i = random.nextInt(EmotionData.length);
+        String num;
+        String packName = this.getPackageName();
+        String FileName ;
+
+        switch (i){
+            case 0: // angry
+                num = Integer.toString(random.nextInt(8)+1);
+                FileName = "angry"+num;
+                Image = getResources().getIdentifier(FileName,"drawable", packName);
+                break;
+            case 1: // delight
+                num =  Integer.toString(random.nextInt(8)+1);
+                FileName = "delight"+num;
+                Image = getResources().getIdentifier(FileName,"drawable", packName);
+                break;
+            case 2: // hate
+                num = Integer.toString(random.nextInt(8)+1);
+                FileName = "hate"+num;
+                Image = getResources().getIdentifier(FileName,"drawable", packName);
+                break;
+            case 3: // lovely
+                num =  Integer.toString(random.nextInt(11)+1);
+                FileName = "lovely"+num;
+                Image = getResources().getIdentifier(FileName,"drawable", packName);
+                break;
+            case 4: // sad
+                num =  Integer.toString(random.nextInt(8)+1);
+                FileName = "sad"+num;
+                Image = getResources().getIdentifier(FileName,"drawable", packName);
+                break;
+            case 5: // scary
+                num = Integer.toString(random.nextInt(8)+1);
+                FileName = "scary"+num;
+                Image = getResources().getIdentifier(FileName,"drawable", packName);
+                break;
+            case 6: // surprise
+                num = Integer.toString(random.nextInt(8)+1);
+                FileName = "surprise"+num;
+                Image = getResources().getIdentifier(FileName,"drawable", packName);
+                break;
+            case 7: // satisfied
+                num = Integer.toString(random.nextInt(8)+1);
+                FileName = "satisfied"+num;
+                Image = getResources().getIdentifier(FileName,"drawable", packName);
+                break;
+
+        }
+       return BitmapFactory.decodeResource(getResources(),Image);
     }
 
     @Override
@@ -281,8 +332,7 @@ public class SmallDrawActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
     }
 
-
-
+    // 그림그리는 클래스
     class DrawView extends View {
         PorterDuffXfermode clear = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
         Path drawLine;
@@ -293,15 +343,16 @@ public class SmallDrawActivity extends AppCompatActivity {
         int x,y;
         int pointX = -1;
         int pointY = -1;
-        int color = Color.BLACK;
+//        int color = Color.BLACK;
         int width,height;
         PorterDuffXfermode use = null;
         public DrawView(Context context, int width, int height) {
-
             super(context);
             this.width = width;
             this.height = height;
-            drawingSpace = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+
+           drawingSpace = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+
             canvas = new Canvas(drawingSpace);
             paint = new Paint();
             paint.setColor(Color.BLACK);
@@ -365,5 +416,16 @@ public class SmallDrawActivity extends AppCompatActivity {
             invalidate();
             return true;
         }
+
+        protected void onActivityResult(int requestCode, int resultCode, Intent data){
+            if(resultCode == RESULT_OK){
+                switch (requestCode){
+                    case  5000:
+                        System.out.println("55555555555555555555555555555555555555555555555");
+                    break;
+                }
+            }
+        }
     }
 }
+
